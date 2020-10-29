@@ -122,14 +122,15 @@ $i=1; ?>
 <div class="modal fade" id="ModalAdd" tabindex="-1" role="dialog" aria-labelledby="ModalAddTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
+    
     <form action="../includes/sqlinsert/add_product.php" method="POST" enctype="multipart/form-data">
-      <div class="modal-header">
-        <h5 class="modal-title" id="ModalAddTitle">Insertar producto</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+         <!--Header-->
+         <div class="modal-header  bg-primary">
+        <h4 class="title text-white"><i class="fa fa-shopping-basket"></i> Agregar nuevo producto!</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
       </div>
-      <div class="modal-body">
+          <div class="modal-body">
               <div class="form-group">
                   <label for="nombre">Nombre</label>
                   <input title="Nombre" type="text" name="nombre" placeholder="nombre" id="nombre" class="form-control" required>
@@ -144,7 +145,7 @@ $i=1; ?>
                   <div class="tile">
             <div class="tile-title-w-btn"> 
             </div>
-            
+        
             <input title="Imagen" type="file" id="imagen" name="imagen" multiple="multiple" class="btn btn-default btn-file" />    
             <div class="tile-title-w-btn"> 
             <img id="imgSalidaAdd" style="height: 500px; width: 100%; display: block;" src="" />         
@@ -187,14 +188,14 @@ $i=1; ?>
               <div class="form-group">
                   <label for="oferta">Oferta</label>
                   <div class="row">
-                      <div class="col-9">
-                      
-                      <select title="Oferta" name="oferta" id="oferta" class="form-control" required>   
+                      <div class="col-9">      
+                  <select title="Oferta" name="oferta" id="oferta" class="form-control" required>   
                   <option value="ON" >Si</option> 
                   <option value="OFF" >NO</option> 
                   </select> 
                       </div>
                   </div>
+              
               </div>
           </div>
       <div class="modal-footer">

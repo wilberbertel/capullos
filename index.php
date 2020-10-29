@@ -4,10 +4,15 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
+<?php
+require_once("includes/load.php");
+$products = allProducts();
+?>
 <!DOCTYPE html>
 <html>
 <head>
-<title>| Home :: w3layouts</title>
+<title>Capullos floristeria</title>
+<link rel="shortcut icon" href="Assets/images/favicon.ico">
 <link href="Assets/css/bootstrap-3.1.1.min.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="Assets/js/jquery.min.js"></script>
@@ -92,106 +97,9 @@ require_once('layout/header.php');
 </div>
 <!--//banner-->
 <!--content-->
-<div class="content">
-	<div class="container">
-		<div class="content-top">
-			<div class="content-top1">
-				<div class="col-md-3 col-md2 animated wow fadeInLeft" data-wow-delay=".5s">
-					<div class="col-md1 simpleCart_shelfItem">
-						<a href="single.php">
-							<img class="img-responsive" src="Assets/images/pi5.png" alt="" />
-						</a>
-						<h3><a href="single.php">Palazzo</a></h3>
-						<div class="price">
-								<h5 class="item_price">$450</h5>
-								<a href="#" class="item_add">Add To Cart</a>
-								<div class="clearfix"> </div>
-						</div>
-					</div>
-				</div>	
-				<div class="col-md-6 animated wow fadeInDown animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInDown;">
-					<div class="col-md3">
-						<div class="up-t">
-							<h3>Flat 50% Offer</h3>
-						</div>
-					</div>
-				</div>
-			<div class="col-md-3 col-md2 animated wow fadeInRight" data-wow-delay=".5s">
-					<div class="col-md1 simpleCart_shelfItem">
-						<a href="single.php">
-							<img class="img-responsive" src="Assets/images/pi4.png" alt="" />
-						</a>
-						<h3><a href="single.php">Pant</a></h3>
-						<div class="price">
-								<h5 class="item_price">$300</h5>
-								<a href="#" class="item_add">Add To Cart</a>
-								<div class="clearfix"> </div>
-						</div>
-					</div>
-				</div>	
-			<div class="clearfix"> </div>
-			</div>	
-			<div class="content-top1">
-				<div class="col-md-3 col-md2 animated wow fadeInLeft" data-wow-delay=".5s">
-					<div class="col-md1 simpleCart_shelfItem">
-						<a href="single.php">
-							<img class="img-responsive" src="Assets/images/pi3.png" alt="" />
-						</a>
-						<h3><a href="single.php">Palazoo</a></h3>
-						<div class="price">
-								<h5 class="item_price">$300</h5>
-								<a href="#" class="item_add">Add To Cart</a>
-								<div class="clearfix"> </div>
-						</div>
-					</div>
-				</div>	
-			<div class="col-md-3 col-md2 animated wow fadeInLeft" data-wow-delay=".5s">
-					<div class="col-md1 simpleCart_shelfItem">
-						<a href="single.php">
-							<img class="img-responsive" src="Assets/images/pi2.png" alt="" />
-						</a>
-						<h3><a href="single.php">Trouser</a></h3>
-						<div class="price">
-								<h5 class="item_price">$300</h5>
-								<a href="#" class="item_add">Add To Cart</a>
-								<div class="clearfix"> </div>
-						</div>
-					</div>
-				</div>	
-			<div class="col-md-3 col-md2 animated wow fadeInRight" data-wow-delay=".5s">
-					<div class="col-md1 simpleCart_shelfItem">
-						<a href="single.php">
-							<img class="img-responsive" src="Assets/images/pi6.png" alt="" />
-						</a>
-						<h3><a href="single.php">Trouser</a></h3>
-						<div class="price">
-								<h5 class="item_price">$300</h5>
-								<a href="#" class="item_add">Add To Cart</a>
-								<div class="clearfix"> </div>
-						</div>
-					</div>
-				</div>	
-			<div class="col-md-3 col-md2 cmn animated wow fadeInRight" data-wow-delay=".5s">
-					<div class="col-md1 simpleCart_shelfItem">
-						<a href="single.php">
-							<img class="img-responsive" src="Assets/images/pi8.png" alt="" />
-						</a>
-						<h3><a href="single.php">Palazoo</a></h3>
-						<div class="price">
-								<h5 class="item_price">$300</h5>
-								<a href="#" class="item_add">Add To Cart</a>
-								<div class="clearfix"> </div>
-						</div>
-					</div>
-				</div>	
-			<div class="clearfix"> </div>
-			</div>			
-		</div>
-	</div>
-</div>
-<!--//content-->
+<br>
 <div class="con-tp">
-		<div class="container">
+<div class="container">
 			<div class="col-md-4 con-tp-lft animated wow fadeInLeft" data-wow-delay=".5s">
 				<a href="products.html">
 					<div class="content-grid-effect slow-zoom vertical">
@@ -266,71 +174,35 @@ require_once('layout/header.php');
 			</a>
 		</div>
 		<div class="clearfix"></div>
-		</div>
 	</div>
+</div>
+<!--//content-->
+<div class="container">
 	<div class="c-btm">
-		<div class="content-top1">
+		<div class="content-top1">	
 			<div class="container">
-				<div class="col-md-3 col-md2 animated wow fadeInLeft" data-wow-delay=".5s">
+			<?php foreach ($products as  $productos) : ?>
+				<div class="col-md-3  animated wow fadeInLeft" data-wow-delay=".5s">
 					<div class="col-md1 simpleCart_shelfItem">
 						<a href="single.php">
-							<img class="img-responsive" src="uploads/product/1603221853.jpeg" alt="" />
+							<img class="img-responsive" src="uploads/product/<?php echo $productos['image_product']; ?>" alt="" />
 						</a>
-						<h3><a href="single.php">Trousers</a></h3>
+						<h3><a href="single.php"><?php echo $productos['namep']; ?></a></h3>
 						<div class="price">
-								<h5 class="item_price">$300</h5>
+								<h5 class="item_price"><?php echo $productos['price']; ?></h5>
 								<a href="#" class="item_add">Add To Cart</a>
 								<div class="clearfix"> </div>
 						</div>
-						
 					</div>
+					<br>	
 				</div>	
-			<div class="col-md-3 col-md2 animated wow fadeInLeft" data-wow-delay=".5s">
-					<div class="col-md1 simpleCart_shelfItem">
-						<a href="single.php">
-							<img class="img-responsive" src="uploads/product/1603221853.jpeg" alt="" />
-						</a>
-						<h3><a href="single.php">Formal</a></h3>
-						<div class="price">
-								<h5 class="item_price">$450</h5>
-								<a href="#" class="item_add">Add To Cart</a>
-								<div class="clearfix"> </div>
-						</div>
-						
-					</div>
-				</div>	
-			<div class="col-md-3 col-md2 animated wow fadeInRight" data-wow-delay=".5s">
-					<div class="col-md1 simpleCart_shelfItem">
-						<a href="single.php">
-							<img class="img-responsive" src="uploads/product/1603162723.jpeg" alt="" />
-						</a>
-						<h3><a href="single.php">Trousers</a></h3>
-						<div class="price">
-								<h5 class="item_price">$350</h5>
-								<a href="#" class="item_add">Add To Cart</a>
-								<div class="clearfix"> </div>
-						</div>
-						
-					</div>
-				</div>	
-			<div class="col-md-3 col-md2 animated wow fadeInRight" data-wow-delay=".5s">
-					<div class="col-md1 simpleCart_shelfItem">
-						<a href="single.php">
-							<img class="img-responsive" src="uploads/product/1603221853.jpeg" alt="" />
-						</a>
-						<h3><a href="single.php">Formal</a></h3>
-						<div class="price">
-								<h5 class="item_price">$400</h5>
-								<a href="#" class="item_add">Add To Cart</a>
-								<div class="clearfix"> </div>
-						</div>
-						
-					</div>
-				</div>	
-			<div class="clearfix"> </div>
+				
+				<?php endforeach; ?>
+<!--CIERRE-->		
 			</div>	
-		</div>
+		</div>			
 	</div>
+</div>
 	<?php require_once('layout/footer.php');?>
 
 	</body>
