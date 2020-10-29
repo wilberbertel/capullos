@@ -5,7 +5,7 @@ if(isset($_POST['nombreEdit']) &&  isset($_POST['statusEdit']) &&  isset($_POST[
     $db->query("update category set 
     name='".$_POST['nombreEdit']."',
     status='".$_POST['statusEdit']."'
-    where id=".$_POST['idEdit']);
+    where id_category=".$_POST['idEdit']);
     $session->msg('s',"Se actulializo  exitosamente. ");
     redirect('../../admin/categories.php', false);
 

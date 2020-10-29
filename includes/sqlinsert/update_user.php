@@ -7,7 +7,7 @@ if(isset($_POST['idEdit'])  &&  isset($_POST['statusEdit'])
                 $db->query("update users set 
                 type='".$_POST['tipoEdit']."',
                 status='".$_POST['statusEdit']."'
-                 where idusers='".$_POST['idEdit']."'");
+                 where id_users='".$_POST['idEdit']."'");
 
                  $session->msg('s',"Datos actualizados exitosamente. ");
                  redirect('../../admin/config_users.php', false);

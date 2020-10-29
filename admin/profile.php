@@ -1,7 +1,7 @@
 <?php //headerAdmin($data);
 require_once("../includes/load.php");
 require_once("layoutAdmin/header_admin.php"); 
-$user = users('10');?>
+$user = users('1');?>
 
 
 <?php

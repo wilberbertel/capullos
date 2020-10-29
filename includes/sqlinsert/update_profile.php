@@ -14,7 +14,7 @@ if(isset($_POST['idEdit']) && isset($_POST['namesEdit']) &&  isset($_POST['lasNa
                 departament='".$_POST['departamentEdit']."',
                 country='".$_POST['countryEdit']."',
                 phone='".$_POST['phoneEdit']."'
-                 where idusers='".$_POST['idEdit']."'");
+                 where id_users='".$_POST['idEdit']."'");
 
                  $session->msg('s',"Datos actualizados exitosamente. ");
                  redirect('../../admin/profile.php', false);

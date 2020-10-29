@@ -58,7 +58,7 @@ $i=1; ?>
                        <td align="center" > 
                        
                        <button  title="Editar Status" class="btn btn-primary btn-small btnEditar " 
-                       data-id="<?php echo $usuario['idusers']; ?>"
+                       data-id="<?php echo $usuario['id_users']; ?>"
                        data-nombres="<?php echo $usuario['name']; ?>"
                        data-apellidos="<?php echo $usuario['surname']; ?>"
                        data-tipo="<?php echo $usuario['type']; ?>"
@@ -68,7 +68,7 @@ $i=1; ?>
                        <i class="fa fa-pencil-square-o"></i> </button>
                      
                        <button  title="Eliminar" class="btn btn-danger btn-small  btnEliminar"
-                       data-id="<?php echo $usuario['idusers']; ?>"
+                       data-id="<?php echo $usuario['id_users']; ?>"
                        data-nombres="<?php echo $usuario['name']; ?>"
                        data-apellidos="<?php echo $usuario['surname']; ?>"
                        data-tipo="<?php echo $usuario['type']; ?>"

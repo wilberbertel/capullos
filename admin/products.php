@@ -73,7 +73,7 @@ $i=1; ?>
                        <td align="center">    
                       
                        <button  title="Ver" class="btn btn-info btn-small btnVer" 
-                       data-id="<?php echo $productos['idproduct']; ?>"
+                       data-id="<?php echo $productos['id_product']; ?>"
                           data-nombre="<?php echo $productos['namep']; ?>"
                           data-descripcion="<?php echo $productos['description']; ?>"
                           data-imagen="<?php echo $productos['image_product']; ?>"
@@ -84,7 +84,7 @@ $i=1; ?>
                           data-toggle="modal" data-target="#modalVer" >
                        <i class="fa fa-eye" ></i> </button>
                        <button  title="Editar" class="btn btn-primary btn-small btnEditar" 
-                       data-id="<?php echo $productos['idproduct']; ?>"
+                       data-id="<?php echo $productos['id_product']; ?>"
                           data-nombre="<?php echo $productos['namep']; ?>"
                           data-descripcion="<?php echo $productos['description']; ?>"
                           data-imagen="<?php echo $productos['image_product']; ?>"
@@ -95,7 +95,7 @@ $i=1; ?>
                           data-toggle="modal" data-target="#modalEditar">
                        <i class="fa fa-pencil-square-o"></i> </button>
                        <button  title="Eliminar" class="btn btn-danger btn-small btnEliminar" 
-                         data-id="<?php echo $productos['idproduct']; ?>"
+                         data-id="<?php echo $productos['id_product']; ?>"
                          data-nombre="<?php echo $productos['namep']; ?>"
                           data-descripcion="<?php echo $productos['description']; ?>"
                           data-imagen="<?php echo $productos['image_product']; ?>"
@@ -266,7 +266,7 @@ $i=1; ?>
                       <div class="col-9">
                       <select title="Categoria" name="categoriaEdit" id="categoriaEdit" class="form-control" required>  
                       <?php foreach ($categories as  $categorias) : ?> 
-                  <option value="<?php echo $categorias['id']; ?>" ><?php echo $categorias['name']; ?></option>'   
+                  <option value="<?php echo $categorias['id_category']; ?>" ><?php echo $categorias['name']; ?></option>'   
                   <?php endforeach; ?>
                   </select> 
                       </div>

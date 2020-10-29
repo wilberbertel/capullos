@@ -10,7 +10,7 @@ if(isset($_POST['idEdit']) &&  isset($_POST['nombreEdit'])   &&  isset($_POST['d
                 category='".remove_junk($_POST['categoriaEdit'])."',
                 status='".remove_junk($_POST['statusEdit'])."',
                 offer='".remove_junk($_POST['ofertaEdit'])."'
-                 where idproduct='".$_POST['idEdit']."'");
+                 where id_product='".$_POST['idEdit']."'");
 
                  $session->msg('s',"Producto actualizado exitosamente. ");
                  redirect('../../admin/products.php', false);

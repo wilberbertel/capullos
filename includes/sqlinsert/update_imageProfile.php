@@ -12,12 +12,12 @@ if($_FILES['imagenNew']['name'] !='' ){
     
         if($extension=='jpg' || $extension == 'png'|| $extension == 'jpeg'){
             if(move_uploaded_file($_FILES['imagenNew']['tmp_name'], $carpeta.$nombreFinal)){
-                $fila = $db->query('select image_profile  from users where idusers='.$_POST['idEditarImg']);
+                $fila = $db->query('select image_profile  from users where id_users='.$_POST['idEditarImg']);
                 $id = mysqli_fetch_row($fila);
                 if(file_exists('../../uploads/users/'.$id[0])){
                     unlink('../../uploads/users/'.$id[0]);
                 }
-                $db->query("update users set image_profile='".$nombreFinal."' where idusers=".$_POST['idEditarImg']);
+                $db->query("update users set image_profile='".$nombreFinal."' where id_users=".$_POST['idEditarImg']);
                 $session->msg('s',"imagen actualizada exitosamente. ");
                 redirect('../../admin/profile.php', false);
             }else{

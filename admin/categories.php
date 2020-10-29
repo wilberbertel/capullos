@@ -63,13 +63,13 @@ $i=0;
                        <td > <?php echo $categorias['status']; ?></td>
                        <td align="center">
                        <button  title="Editar" class="btn btn-primary btn-small btnEditar" 
-                       data-id="<?php echo $categorias['id']; ?>"
+                       data-id="<?php echo $categorias['id_category']; ?>"
                           data-nombre="<?php echo $categorias['name']; ?>"
                           data-status="<?php echo $categorias['status']; ?>"
                           data-toggle="modal" data-target="#modalEditar">
                        <i class="fa fa-pencil-square-o"></i> </button>
                        <button  title="Eliminar" class="btn btn-danger btn-small btnEliminar" 
-                         data-id="<?php echo $categorias['id']; ?>"
+                         data-id="<?php echo $categorias['id_category']; ?>"
                          data-nombre="<?php echo $categorias['name']; ?>"
                           data-status="<?php echo $categorias['status']; ?>"
                           data-toggle="modal" data-target="#modalEliminar">

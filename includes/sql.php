@@ -30,7 +30,7 @@
 function allCategories()
 {
   global $db;
-  $sql  = " SELECT * FROM category  ORDER BY  id DESC";
+  $sql  = " SELECT * FROM category  ORDER BY  id_category DESC";
   return find_by_sql($sql);
 }
 
@@ -38,7 +38,7 @@ function allProducts()
 {
   global $db;
  // $sql  = " SELECT  * FROM product INNER JOIN category  WHERE product.category = category.id;";
- $sql  = "SELECT product.idproduct,
+ $sql  = "SELECT product.id_product,
  product.namep,
      product.image_product,
      product.description,
@@ -46,7 +46,7 @@ function allProducts()
      category.name,
      product.status,
      product.offer
-FROM product INNER JOIN category ON product.category=category.id;";
+FROM product INNER JOIN category ON product.category=category.id_category;";
   return find_by_sql($sql);
 }
 
@@ -72,7 +72,7 @@ function countUsers()
 function users($id)
 {
   global $db;
-  $sql  = " SELECT * FROM users  WHERE  idusers = '$id'";
+  $sql  = " SELECT * FROM users  WHERE  id_users = '$id'";
   $result = $db->query($sql);
   return ($db->fetch_assoc($result));
 }
