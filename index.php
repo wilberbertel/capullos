@@ -6,7 +6,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <?php
 require_once("includes/load.php");
-$products = allProducts();
 ?>
 <!DOCTYPE html>
 <html>
@@ -19,6 +18,9 @@ $products = allProducts();
 <!-- Custom Theme files -->
 <!--theme-style-->
 <link href="Assets/css/style.css" rel="stylesheet" type="text/css" media="all" />	
+<link rel="stylesheet" type="text/css" href="../adminAssets/css/main.css">
+  <link rel="stylesheet" type="text/css" href="../admin/Assets/css/style.css">
+  <!-- Font-icon css-->
 <!--//theme-style-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -181,7 +183,16 @@ require_once('layout/header.php');
 	<div class="c-btm">
 		<div class="content-top1">	
 			<div class="container">
-			<?php foreach ($products as  $productos) : ?>
+			<?php 
+				 $limite = 10;//productos por pagina
+				 $totalQuery = countProducts();
+				 $totalBotones = round($totalQuery['total'] /$limite);  
+				 if(isset($_GET['limite'])){
+					$resultado = allProducts2($_GET['limite'],$limite);
+				  }else{
+					$resultado = allProducts($limite);
+				  }
+			foreach ($resultado as  $productos) : ?>
 				<div class="col-md-3  animated wow fadeInLeft" data-wow-delay=".5s">
 					<div class="col-md1 simpleCart_shelfItem">
 						<a href="single.php">
@@ -189,8 +200,8 @@ require_once('layout/header.php');
 						</a>
 						<h3><a href="single.php"><?php echo $productos['namep']; ?></a></h3>
 						<div class="price">
-								<h5 class="item_price"><?php echo $productos['price']; ?></h5>
-								<a href="#" class="item_add">Add To Cart</a>
+								<h5 class="item_price">$ <?php echo $productos['price']; ?> COL</h5>
+								<a href="#" class="item_add">Añadir al carrito</a>
 								<div class="clearfix"> </div>
 						</div>
 					</div>
@@ -198,7 +209,35 @@ require_once('layout/header.php');
 				</div>	
 				
 				<?php endforeach; ?>
-<!--CIERRE-->		
+<!--CIERRE-->	   
+   <div class="bs-component col-md-12 text-center">	
+			<div>
+                <ul class="pagination">
+				 
+				<?php 
+                  if(isset($_GET['limite'])){
+                    if ($_GET['limite']>0) {
+					  echo '<li class="page-item "><a class="page-link" href="index.php?limite='.($_GET['limite']-10).'">«</a></li>';
+                    }
+                  }
+                  for ($i=0; $i <$totalBotones ; $i++) { 
+					echo '<li class="page-item "><a class="page-link"  href="index.php?limite='.($i*10).'">'.($i+1).'</a></li>';
+                  }
+                  if(isset($_GET['limite'])){
+                    if($_GET['limite']+10<$totalBotones*12){
+					  echo '
+					  <li class="page-item "><a class="page-link" href="index.php?limite='.($_GET['limite']+10).'">»</a></li>';
+                    }
+                  }else{
+					echo '
+					<li class="page-item "><a class="page-link" href="index.php?limite=10">»</a></li>';
+                  }
+                  ?>
+                </ul>
+            </div>
+			</div>
+
+
 			</div>	
 		</div>			
 	</div>

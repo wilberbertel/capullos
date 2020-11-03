@@ -192,13 +192,6 @@ $i=0;
       </div>
     </div>  
 
-
-<div class="col-md-12">
-          <div class="tile">
-            <h3 id="nombreDelete" class="tile-title">Card Title</h3>
-            <h5 id="statusDelete"> </h5>
-          </div>
-        </div>
 <?php //footerAdmin($data);
 
 require_once("layoutAdmin/footer_admin.php") 

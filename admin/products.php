@@ -2,6 +2,7 @@
 require_once("../includes/load.php");
 require_once("layoutAdmin/header_admin.php");
 $categories = allCategories();
+$occasions = allOccasionss();
 $products = allProducts();
 
 $i=1; ?>
@@ -54,6 +55,7 @@ $i=1; ?>
                       <th>Descripcion</th>
                       <th>Precio</th>
                       <th>Categoria</th>
+                      <th>Ocacion</th>
                       <th>Status</th>
                       <th>Oferta</th>
                       <th>Opcion</th>
@@ -68,6 +70,7 @@ $i=1; ?>
                        <td > <?php echo $productos['description']; ?></td>
                        <td > <?php echo $productos['price']; ?></td>
                        <td > <?php echo $productos['name']; ?></td>
+                       <td > <?php echo $productos['name_ocaciones']; ?></td>
                        <td > <?php echo $productos['status']; ?></td>
                        <td > <?php echo $productos['offer']; ?></td>
                        <td align="center">    
@@ -78,6 +81,7 @@ $i=1; ?>
                           data-descripcion="<?php echo $productos['description']; ?>"
                           data-imagen="<?php echo $productos['image_product']; ?>"
                           data-categoria="<?php echo $productos['name']; ?>"
+                          data-ocaciones="<?php echo $productos['name_ocaciones']; ?>"
                           data-status="<?php echo $productos['status']; ?>"
                           data-precio="<?php echo $productos['price']; ?>"
                           data-oferta="<?php echo $productos['offer']; ?>"                          
@@ -89,6 +93,7 @@ $i=1; ?>
                           data-descripcion="<?php echo $productos['description']; ?>"
                           data-imagen="<?php echo $productos['image_product']; ?>"
                           data-categoria="<?php echo $productos['name']; ?>"
+                          data-ocacion="<?php echo $productos['name_ocaciones']; ?>"
                           data-status="<?php echo $productos['status']; ?>"
                           data-precio="<?php echo $productos['price']; ?>"
                           data-oferta="<?php echo $productos['offer']; ?>" 
@@ -100,6 +105,7 @@ $i=1; ?>
                           data-descripcion="<?php echo $productos['description']; ?>"
                           data-imagen="<?php echo $productos['image_product']; ?>"
                           data-categoria="<?php echo $productos['name']; ?>"
+                          data-ocacion="<?php echo $productos['name_ocaciones']; ?>"
                           data-status="<?php echo $productos['status']; ?>"
                           data-precio="<?php echo $productos['price']; ?>"
                           data-oferta="<?php echo $productos['offer']; ?>"  
@@ -176,12 +182,27 @@ $i=1; ?>
                       <div class="col-9">
                       <select title="Categoria" name="categoria" id="categoria" class="form-control" required>  
                       <?php foreach ($categories as  $categorias) : ?> 
-                  <option value="<?php echo $categorias['id']; ?>" ><?php echo $categorias['name']; ?></option>'   
+                  <option value="<?php echo $categorias['id_category']; ?>" ><?php echo $categorias['name']; ?></option>'   
                   <?php endforeach; ?>
                   </select> 
                       </div>
                       <div class="col-3">                  
-                    <a href="categories.php" class="btn btn-primary  btn-small active col-12" role="button" aria-pressed="true">Ir a categorias</a>
+                    <a href="categories.php" class="btn btn-primary  btn-small active col-12" role="button" aria-pressed="true">Ir a Categorias</a>
+                      </div>
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label for="ocacion">Ocacion</label>
+                  <div class="row">
+                      <div class="col-9">
+                      <select title="Ocacion" name="ocacion" id="ocacion" class="form-control" required>  
+                      <?php foreach ($occasions as  $ocaciones) : ?> 
+                  <option value="<?php echo $ocaciones['id_ocaciones']; ?>" ><?php echo $ocaciones['name_ocaciones']; ?></option>'   
+                  <?php endforeach; ?>
+                  </select> 
+                      </div>
+                      <div class="col-3">                  
+                    <a href="occasions.php" class="btn btn-primary  btn-small active col-12" role="button" aria-pressed="true">Ir a Ocaciones</a>
                       </div>
                   </div>
               </div>
@@ -276,6 +297,21 @@ $i=1; ?>
                   </div>
               </div>
               <div class="form-group">
+                  <label for="ocaciones">Ocaciones</label>
+                  <div class="row">
+                      <div class="col-9">
+                      <select title="Ocaciones" name="ocacionesEdit" id="ocacionesEdit" class="form-control" required>  
+                      <?php foreach ($occasions as  $ocaciones) : ?> 
+                  <option value="<?php echo $ocaciones['id_ocaciones']; ?>" ><?php echo $ocaciones['name_ocaciones']; ?></option>'   
+                  <?php endforeach; ?>
+                  </select> 
+                      </div>
+                      <div class="col-3">                  
+                    <a href="#" class="btn btn-primary  btn-small active col-12" role="button" aria-pressed="true">Ir a categorias</a>
+                      </div>
+                  </div>
+              </div>
+              <div class="form-group">
                   <label for="oferta">Oferta</label>
                   <div class="row">
                       <div class="col-9">
@@ -322,9 +358,10 @@ $i=1; ?>
                 
                 <img id="imgSalida" style="height: 500px; width: 100%; display: block;" src="" alt="Card image">
                 <div class="card-body">
-                  <p  id="descripcionVer" class="card-text"></p><h6 class="card-link"  id="ofertaVer"></h6>
+                  <p  id="descripcionVer" class="card-text"></p><h6 class="card-link"  id="ocacionVer"></h6>
                 </div>
                 <div  id="statusVer" class="card-footer text-muted"></div>
+                <div  id="ofertaVer" class="card-footer text-muted"></div>
               </div>
             </div>
           </div>
@@ -391,9 +428,10 @@ $i=1; ?>
                 </div>
                 <img id="imgSalidaDelete" style="height: 500px; width: 100%; display: block;" src="" alt="Card image">
                 <div class="card-body">
-                  <p  id="descripcionDelete" class="card-text"></p><h6 class="card-link"  id="ofertaDelete"></h6>
+                  <p  id="descripcionDelete" class="card-text"></p><h6 class="card-link"  id="ocacionesaDelete"></h6>
                 </div>
                 <div  id="statusDelete" class="card-footer text-muted"></div>
+                <div  id="ofertaDelete" class="card-footer text-muted"></div>
               </div>
             </div>
           </div>
@@ -472,15 +510,18 @@ $(function() {
    var descripcion=$(this).data('descripcion');
    var imagen=$(this).data('imagen');
    var categoria=$(this).data('categoria');
+   var ocaciones=$(this).data('ocaciones');
    var status=$(this).data('status');
    var precio=$(this).data('precio');
    var oferta=$(this).data('oferta');
    $("#nombreDelete").text(nombre);
    $("#descripcionDelete").text("Decripcion: "+descripcion);
    $("#categoriaDelete").text(categoria);
-   $("#statusDelete").text(status);
-   $("#precioDelete").text("$ "+precio);
+   $("#ocacionDelete").text("Ocacion: "+ocaciones);
+   $("#statusDelete").text("Status: "+status);
    $("#ofertaDelete").text("Oferta: "+oferta);
+   $("#precioDelete").text("$ "+precio);
+ 
    document.getElementById("imgSalidaDelete").src="../uploads/product/"+imagen;
 
     });
@@ -532,6 +573,7 @@ $(function() {
    var descripcion=$(this).data('descripcion');
    var imagen=$(this).data('imagen');
    var categoria=$(this).data('categoria');
+   var ocaciones=$(this).data('ocaciones');
    var status=$(this).data('status');
    var precio=$(this).data('precio');
    var oferta=$(this).data('oferta');
@@ -539,9 +581,10 @@ $(function() {
    $("#nombreVer1").text(nombre);
    $("#descripcionVer").text("Decripcion: "+descripcion);
    $("#categoriaVer").text(categoria);
-   $("#statusVer").text(status);
+   $("#ocacionVer").text("Ocacion: "+ocaciones);
+   $("#statusVer").text("Status:"+ status);
+   $("#ofertaVer").text("Oferta:"+ oferta);
    $("#precioVer").text("$ "+precio);
-   $("#ofertaVer").text("Oferta: "+oferta);
    document.getElementById("imgSalida").src="../uploads/product/"+imagen;
    $("#idVer").val(idVer);
  });

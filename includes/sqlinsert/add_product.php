@@ -2,7 +2,7 @@
 include "../load.php";
 
 if(isset($_POST['nombre']) &&  isset($_POST['descripcion'])   &&  isset($_POST['precio'])
-&&  isset($_POST['status']) &&  isset($_POST['categoria'])&&  isset($_POST['oferta']) ){
+&&  isset($_POST['status']) &&  isset($_POST['categoria'])&&   isset($_POST['ocacion'])&& isset($_POST['oferta']) ){
     
     $carpeta="../../uploads/product/";
     $nombre = $_FILES['imagen']['name'];
@@ -15,12 +15,13 @@ if(isset($_POST['nombre']) &&  isset($_POST['descripcion'])   &&  isset($_POST['
    
     if($extension=='jpg' || $extension == 'png'|| $extension == 'jpeg'){
         if(move_uploaded_file($_FILES['imagen']['tmp_name'], $carpeta.$nombreFinal)){
-            $db->query("INSERT INTO product (namep,image_product,description,price,category,status,offer) VALUES (
+            $db->query("INSERT INTO product (namep,image_product,description,price,category,occasions,status,offer) VALUES (
                     '".$_POST['nombre']."',
                     '$nombreFinal',
                     '".$_POST['descripcion']."',                   
                     '".$_POST['precio']."',           
                     '".$_POST['categoria']."',
+                    '".$_POST['ocacion']."',
                     '".$_POST['status']."',
                     '".$_POST['oferta']."'
                 )   ")or die($db->error);
