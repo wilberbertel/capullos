@@ -66,6 +66,33 @@ FROM product p INNER JOIN category c ON p.category=c.id_category
 INNER JOIN occasions o  ON o.id_ocaciones = p.occasions order by id_product DESC limit ".$limite;
   return find_by_sql($sql);
 }
+function allProductsAdmin()
+{
+  global $db;
+ // $sql  = " SELECT  * FROM product INNER JOIN category  WHERE product.category = category.id;";
+/* $sql  = "SELECT product.id_product,
+ product.namep,
+     product.image_product,
+     product.description,
+     product.price,
+     category.name,
+     product.status,
+     product.offer
+FROM product INNER JOIN category ON product.category=category.id_category;";*/
+$sql ="SELECT p.id_product,
+p.namep,
+    p.image_product,
+    p.description,
+    p.price,
+    c.name,
+    p.status,
+    p.offer,
+    o.name_ocaciones
+FROM product p INNER JOIN category c ON p.category=c.id_category 
+INNER JOIN occasions o  ON o.id_ocaciones = p.occasions  order by id_product DESC";
+  return find_by_sql($sql);
+}
+
 
 function allProducts2($limite1,$limite2)
 {
@@ -93,7 +120,23 @@ FROM product p INNER JOIN category c ON p.category=c.id_category
 INNER JOIN occasions o  ON o.id_ocaciones = p.occasions order by id_product DESC limit ".$limite1.",".$limite2;
   return find_by_sql($sql);
 }
-
+function searchProduct($id_product)
+{
+  global $db;
+$sql ="SELECT p.id_product,
+p.namep,
+    p.image_product,
+    p.description,
+    p.price,
+    c.name,
+    p.status,
+    p.offer,
+    o.name_ocaciones
+FROM product p INNER JOIN category c ON p.category=c.id_category 
+INNER JOIN occasions o  ON o.id_ocaciones = p.occasions WHERE  id_product =".$id_product;
+  $result = $db->query($sql);
+  return ($db->fetch_assoc($result));
+}
 function countProducts()
 {
   global $db;
@@ -142,5 +185,11 @@ function buttonProductOrderDesc($limite)
 {
   global $db;
   $sql  = "SELECT * FROM product   order by id_product DESC limit ".$limite;
+  return find_by_sql($sql);
+}
+function allOccasionsByCategory()
+{
+  global $db;
+  $sql  = "SELECT * FROM occasions o INNER JOIN category c ON o.category=c.id_category ";
   return find_by_sql($sql);
 }

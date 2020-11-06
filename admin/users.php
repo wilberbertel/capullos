@@ -63,15 +63,14 @@ $i=1; ?>
                        <td > <?php echo $usuario['surname']; ?></td>
                        <td > <?php echo $usuario['email']; ?></td>
                        <td class="text-success" > <h6><?php echo $usuario['type']; ?></h6></td>
-                       <td align="center" > <?php if($usuario['status'] == 'ACTIVE'){ ?> 
-                       <button  title="Activo" class="btn btn-primary btn-small "  >
-                       <i class="fa fa-fw fa-lg fa-check-circle"></i>ACTIVO </button>
-                       <?php }else{ ?> 
-                       <button  title="Inactivo" class="btn btn-danger btn-small " >
-                       <i class="fa fa-exclamation-triangle"></i>INACTIVO </button>
-                       <?php } ?> 
+                       <td align="center" > <?php if(  $usuario['status']=="ACTIVE"){
+                        ?>
+                       <span class="badge badge-primary"><i class="fa fa-fw fa-lg fa-check-circle"></i>ACTIVE</span> 
+                       <?php }else{?>
+                        <span class="badge badge-danger"><i class="fa fa-exclamation-triangle"></i>INACTIVE</span> 
+                       <?php }?>
                        </td>
-                      
+
                     </tr>
                     <?php endforeach; ?>
               </tbody>

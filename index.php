@@ -1,9 +1,4 @@
-<!--A Design by W3layouts 
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+
 <?php
 require_once("includes/load.php");
 ?>
@@ -67,30 +62,14 @@ require_once('layout/header.php');
 	        		<li>
 	          			<img src="Assets/images/1.jpg" alt="">
 						<div class="tes animated wow fadeInUp animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
-							<h2>MEN & WOMEN</h2>
-							<h3>cccccccccTrousers & Chinos</h3>
-							<h4>UPTO 50%</h4>
-							<p>OFFER</p>
+							<h2>Capullos</h2>
+							
+							<h3>Floristeria</h3>
+						
+							<h4>Recuerdos que perduran</h4>
 						</div>
 	       			 </li>
-			 		 <li>
-	          			<img src="uploads/product/1603162723.jpeg" alt=""> 
-						<div class="tes animated wow fadeInUp animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
-							<h2>MEN & WOMEN</h2>
-							<h3>aaaaaaTrousers & Chinos</h3>
-							<h4>UPTO 50%</h4>
-							<p>OFFER</p>
-						</div>					
-	       			 </li>
-					 <li>
-	          			<img src="Assets/images/2.jpg" alt="">
-						<div class="tes animated wow fadeInUp animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
-							<h2>MEN & WOMEN</h2>
-							<h3>bbbbbbbbbbTrousers & Chinos</h3>
-							<h4>UPTO 50%</h4>
-							<p>OFFER</p>
-						</div>
-	        		</li>	
+			 		
 	      		</ul>
 	 	 	</div>
 		</div>
@@ -195,13 +174,13 @@ require_once('layout/header.php');
 			foreach ($resultado as  $productos) : ?>
 				<div class="col-md-3  animated wow fadeInLeft" data-wow-delay=".5s">
 					<div class="col-md1 simpleCart_shelfItem">
-						<a href="single.php">
+						<a href="single.php?id_product=<?php echo $productos['id_product'];  ?>">
 							<img class="img-responsive" src="uploads/product/<?php echo $productos['image_product']; ?>" alt="" />
 						</a>
-						<h3><a href="single.php"><?php echo $productos['namep']; ?></a></h3>
+						<h3><a href="single.php?id_product=<?php echo $productos['id_product'];  ?>"><?php echo $productos['namep']; ?></a></h3>
 						<div class="price">
 								<h5 class="item_price">$ <?php echo $productos['price']; ?> COL</h5>
-								<a href="#" class="item_add">Añadir al carrito</a>
+								<a href="single.php?id_product=<?php echo $productos['id_product'];  ?>" class="">Ver Detalles</a>
 								<div class="clearfix"> </div>
 						</div>
 					</div>
@@ -224,7 +203,7 @@ require_once('layout/header.php');
 					echo '<li class="page-item "><a class="page-link"  href="index.php?limite='.($i*10).'">'.($i+1).'</a></li>';
                   }
                   if(isset($_GET['limite'])){
-                    if($_GET['limite']+10<$totalBotones*12){
+                    if($_GET['limite']+10<$totalBotones*10){
 					  echo '
 					  <li class="page-item "><a class="page-link" href="index.php?limite='.($_GET['limite']+10).'">»</a></li>';
                     }

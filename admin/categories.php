@@ -60,7 +60,13 @@ $i=0;
                     <tr>
                        <td > <?php echo $i++ ?></td>
                        <td > <?php echo $categorias['name']; ?></td>
-                       <td > <?php echo $categorias['status']; ?></td>
+                       <td align="center" > <?php if(  $categorias['status']=="ACTIVE"){
+                        ?>
+                        <span class="badge badge-primary"><i class="fa fa-fw fa-lg fa-check-circle"></i>ACTIVE</span> 
+                        <?php }else{?>
+                         <span class="badge badge-danger"><i class="fa fa-exclamation-triangle"></i>INACTIVE</span> 
+                        <?php }?>
+                        </td>
                        <td align="center">
                        <button  title="Editar" class="btn btn-primary btn-small btnEditar" 
                        data-id="<?php echo $categorias['id_category']; ?>"

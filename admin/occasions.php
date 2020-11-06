@@ -61,7 +61,13 @@ $i=1;
                     <tr>
                        <td > <?php echo $i++ ?></td>
                        <td > <?php echo $ocaciones['name_ocaciones']; ?></td>
-                       <td > <?php echo $ocaciones['status']; ?></td>
+                       <td align="center" > <?php if(  $ocaciones['status']=="ACTIVE"){
+                        ?>
+                        <span class="badge badge-primary"><i class="fa fa-fw fa-lg fa-check-circle"></i>ACTIVE</span> 
+                        <?php }else{?>
+                         <span class="badge badge-danger"><i class="fa fa-exclamation-triangle"></i>INACTIVE</span> 
+                        <?php }?>
+                        </td>
                        <td align="center">
                        <button  title="Editar" class="btn btn-primary btn-small btnEditar" 
                        data-id="<?php echo $ocaciones['id_ocaciones']; ?>"

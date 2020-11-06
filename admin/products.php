@@ -3,7 +3,7 @@ require_once("../includes/load.php");
 require_once("layoutAdmin/header_admin.php");
 $categories = allCategories();
 $occasions = allOccasionss();
-$products = allProducts();
+$products = allProductsAdmin();
 
 $i=1; ?>
 <main class="app-content">
@@ -71,7 +71,13 @@ $i=1; ?>
                        <td > <?php echo $productos['price']; ?></td>
                        <td > <?php echo $productos['name']; ?></td>
                        <td > <?php echo $productos['name_ocaciones']; ?></td>
-                       <td > <?php echo $productos['status']; ?></td>
+                       <td align="center" > <?php if( $productos['status']=="ACTIVE"){
+                          ?>
+                          <span class="badge badge-primary"><i class="fa fa-fw fa-lg fa-check-circle"></i>ACTIVE</span> 
+                          <?php }else{?>
+                           <span class="badge badge-danger"><i class="fa fa-exclamation-triangle"></i>INACTIVE</span> 
+                          <?php }?>
+                          </td>
                        <td > <?php echo $productos['offer']; ?></td>
                        <td align="center">    
                       
@@ -169,13 +175,7 @@ $i=1; ?>
                       </div>
                     </div>
                   </div>
-              <div class="form-group">
-                  <label for="status">Status</label>
-                  <select title="Status" name="status" id="status" class="form-control" required>    
-                  <option value="ACTIVE" >Active</option>
-                  <option value="INACTIVE" >Inactive</option>
-                  </select> 
-              </div>       
+                   
               <div class="form-group">
                   <label for="categoria">Categoria</label>
                   <div class="row">
@@ -206,7 +206,9 @@ $i=1; ?>
                       </div>
                   </div>
               </div>
-              <div class="form-group">
+        <div class="row">
+           <div class="col-md-4">
+             <div class="form-group">
                   <label for="oferta">Oferta</label>
                   <div class="row">
                       <div class="col-9">      
@@ -218,6 +220,17 @@ $i=1; ?>
                   </div>
               
               </div>
+              </div>
+              <div class="col-md-4 ml-auto"> 
+              <div class="form-group">
+                  <label for="status">Status</label>
+                  <select title="Status" name="status" id="status" class="form-control" required>    
+                  <option value="ACTIVE" >Active</option>
+                  <option value="INACTIVE" >Inactive</option>
+                  </select> 
+              </div> 
+              </div>
+     </div>   
           </div>
       <div class="modal-footer">
         <button title="Cerrar" type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -274,13 +287,7 @@ $i=1; ?>
                       </div>
                     </div>
                   </div>
-              <div class="form-group">
-                  <label for="">Status</label>
-                  <select title="Status" name="statusEdit" id="status" class="form-control" required>    
-                  <option value="ACTIVE" >Active</option>
-                  <option value="INACTIVE" >Inactive</option>
-                  </select> 
-              </div>       
+                  
               <div class="form-group">
                   <label for="categoria">Categoria</label>
                   <div class="row">
@@ -311,6 +318,31 @@ $i=1; ?>
                       </div>
                   </div>
               </div>
+              <div class="row">
+           <div class="col-md-4">
+           <div class="form-group">
+                  <label for="oferta">Oferta</label>
+                  <div class="row">
+                      <div class="col-9">
+                      
+                      <select title="Oferta" name="ofertaEdit" id="ofertaEdit" class="form-control" required>   
+                  <option value="ON" >Si</option> 
+                  <option value="OFF" >NO</option> 
+                  </select> 
+                      </div>
+                  </div>
+              </div>
+              </div>
+              <div class="col-md-4 ml-auto"> 
+              <div class="form-group">
+                  <label for="">Status</label>
+                  <select title="Status" name="statusEdit" id="status" class="form-control" required>    
+                  <option value="ACTIVE" >Active</option>
+                  <option value="INACTIVE" >Inactive</option>
+                  </select> 
+              </div> 
+              </div>
+     </div>  
               <div class="form-group">
                   <label for="oferta">Oferta</label>
                   <div class="row">
@@ -410,13 +442,12 @@ $i=1; ?>
         <div class="modal-content">
          
             <div class="modal-header">
-              <h5 class="modal-title" id="modalEliminarLabel">Eliminar Producto</h5>
+              <h5 class="modal-title" id="modalEliminarLabel">¿Desea eliminar el producto?</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-                <h3>¿Desea eliminar el producto?</h3>
                 <input type="hidden" id="idDelete" name="idDelete">
              <div class="col-lg-12">
             <div class="bs-component">

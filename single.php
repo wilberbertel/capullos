@@ -1,14 +1,21 @@
-<!--A Design by W3layouts 
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+<?php
+require_once("includes/load.php");
+if(isset($_GET['id_product']) && $_GET['id_product']!=""){
+	$product = searchProduct($_GET['id_product']);
+	$ultimos = allProducts(5);
+	$categories = allCategories();
+	$occasions = allOccasionsByCategory();
+}else{
+	redirect('index.php', false);
+
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
-<title>Youth Fashion A Ecommerce Category Flat Bootstrap Responsive Website Template | Singlepage :: w3layouts</title>
+<title><?php echo $product['namep']?> | Capullos</title>
 <link href="Assets/css/bootstrap-3.1.1.min.css" rel='stylesheet' type='text/css' />
+<link rel="shortcut icon" href="Assets/images/favicon.ico">
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="Assets/js/jquery.min.js"></script>
 <!-- Custom Theme files -->
@@ -40,188 +47,98 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 </head>
 <body>
-<?php 
-require_once('layout/header.php');
-?>
+<!--header-->
+
+<?php require_once('layout/header.php');?>
 <div class="breadcrumbs">
 		<div class="container">
 			<ol class="breadcrumb breadcrumb1 animated wow slideInLeft animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: slideInLeft;">
-				<li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-				<li class="active">Single</li>
+				<li><a href="index.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+				<li class="active">Producto- <?php echo $product['namep']?></li>
 			</ol>
 		</div>
 	</div>
 <div class="single">
+
 <div class="container">
 <div class="col-md-9">
 	<div class="col-md-5 grid">		
 		<div class="flexslider">
 			  <ul class="slides">
-			    <li data-thumb="Assets/images/si.jpg">
-			        <div class="thumb-image"> <img src="Assets/images/si.jpg" data-imagezoom="true" class="img-responsive"> </div>
+			    <li data-thumb="uploads/product/<?php echo $product['image_product']; ?>">
+			        <div class="thumb-image"> <img src="uploads/product/<?php echo $product['image_product']; ?>" data-imagezoom="true" class="img-responsive"> </div>
 			    </li>
-			    <li data-thumb="Assets/images/si1.jpg">
-			         <div class="thumb-image"> <img src="Assets/images/si1.jpg" data-imagezoom="true" class="img-responsive"> </div>
+			   <!-- <li data-thumb="uploads/product/<?php echo $product['image_product']; ?>">
+			         <div class="thumb-image"> <img src="uploads/product/<?php echo $product['image_product']; ?>" data-imagezoom="true" class="img-responsive"> </div>
 			    </li>
-			    <li data-thumb="Assets/images/si2.jpg">
-			       <div class="thumb-image"> <img src="Assets/images/si2.jpg" data-imagezoom="true" class="img-responsive"> </div>
-			    </li> 
+			    <li data-thumb="uploads/product/<?php echo $product['image_product']; ?>">
+			       <div class="thumb-image"> <img src="uploads/product/<?php echo $product['image_product']; ?>" data-imagezoom="true" class="img-responsive"> </div>
+			    </li> -->
 			  </ul>
 		</div>
 	</div>	
 <div class="col-md-7 single-top-in">
 						<div class="single-para simpleCart_shelfItem">
-							<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h2>
-							<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
+							<h2><?php echo $product['namep']; ?></h2>
+							<p><?php echo $product['description']; ?></p>
 							<div class="star-on">
-								<ul>
-									<li><a href="#"><i class="glyphicon glyphicon-star"> </i></a></li>
-									<li><a href="#"><i class="glyphicon glyphicon-star"> </i></a></li>
-									<li><a href="#"><i class="glyphicon glyphicon-star"> </i></a></li>
-									<li><a href="#"><i class="glyphicon glyphicon-star"> </i></a></li>
-									<li><a href="#"><i class="glyphicon glyphicon-star"> </i></a></li>
-								</ul>
+							<p>Ocacion: <?php echo $product['name_ocaciones']; ?></p>
 								<div class="review">
-									<a href="#"> 3 reviews </a>/
-									<a href="#">  Write a review</a>
+									<!--<a href="#"> 3 reviews </a>/
+									<a href="#">  Write a review</a>-->
 								</div>
 							<div class="clearfix"> </div>
 							</div>
 							
-								<label  class="add-to item_price">$70.5</label>
+								<label  class="add-to item_price">$ <?php echo $product['price']; ?></label>
 							
+							<div class="available">
+								<h6>ESCRIBE TU MENSAJE O DEDICATORIA</h6>
 							
-								<div class="available">	
-								<h6>Datos :</h6>
-								
-									<div class="form-group col-md-12">
-     								 <label for="inputState">color de la flor</label>
-    								  <select id="inputState" class="form-control">
-									  <option selected>selecciones</option>
-										<option>rojas</option>
-										<option>rojas</option>
-										<option>rojas</option>
-										<option>rojas</option>
-										<option>rojas</option>
-    								  </select>
-										</div>
-
-										<div class="form-group col-md-12">
-     								 <label for="inputState">mensaje</label>
-    								  <select id="inputState" class="form-control">
-									  <option selected>selecciones</option>
-										<option>selecione un mensaje</option>
-										
-    								  </select>
-										</div>
-										
-										<div class="form-group col-md-12">
-     								 <label for="inputState">ocacion</label>
-    								  <select id="inputState" class="form-control">
-									  <option selected>selecciones</option>
-										<option>cumpleaños</option>
-										<option>grado</option>
-										<option>madre</option>
-										<option>amor</option>
-										<option>boda</option>
-    								  </select>
-										</div>
-										
-							</div>
-								
+								<textarea title="mensaje" rows="4" cols="50" name="mensaje" placeholder="Mensaje" id="mensaje" class="form-control" required></textarea>
+								<!--<ul>
+									
+								<li>Size:<select>
+									<option>Large</option>
+									<option>Medium</option>
+									<option>small</option>
+									<option>Large</option>
+									<option>small</option>
+								</select></li>
+								<li>Cost:
+										<select>
+										<option>U.S.Dollar</option>
+										<option>Euro</option>
+									</select></li>
+							</ul>-->
 						</div>
-					</div>
-			<div class="clearfix"> </div>
-			<div class="content-top1">
-				<div class="col-md-4 col-md4">
-					<div class="col-md1 simpleCart_shelfItem">
-						<a href="single.html">
-							<img class="img-responsive" src="Assets/images/pi6.png" alt="" />
-						</a>
-						<h3><a href="single.html">Trouser</a></h3>
-						<div class="price">
-								<h5 class="item_price">$300</h5>
-								<a href="#" class="item_add">Add To Cart</a>
-								<div class="clearfix"> </div>
+								<a href="#" class="cart">Añadir al carrito</a>
 						</div>
-					</div>
-				</div>	
-			<div class="col-md-4 col-md4">
-					<div class="col-md1 simpleCart_shelfItem">
-						<a href="single.html">
-							<img class="img-responsive" src="Assets/images/pi7.png" alt="" />
-						</a>
-						<h3><a href="single.html">Jeans</a></h3>
-						<div class="price">
-								<h5 class="item_price">$300</h5>
-								<a href="#" class="item_add">Add To Cart</a>
-								<div class="clearfix"> </div>
-						</div>
-						
-					</div>
-				</div>	
-			<div class="col-md-4 col-md4">
-					<div class="col-md1 simpleCart_shelfItem">
-						<a href="single.html">
-							<img class="img-responsive" src="Assets/images/pi.png" alt="" />
-						</a>
-						<h3><a href="single.html">Palazoo</a></h3>
-						<div class="price">
-								<h5 class="item_price">$300</h5>
-								<a href="#" class="item_add">Add To Cart</a>
-								<div class="clearfix"> </div>
-						</div>
-						
-					</div>
-				</div>	
-			
-			<div class="clearfix"> </div>
-			</div>		
+					</div>			
 </div>
 <!----->
 <div class="col-md-3 product-bottom">
 			<!--categories-->
 				<div class=" rsidebar span_1_of_left">
-						<h3 class="cate">Categories</h3>
+						<h3 class="cate">Categorias</h3>
+						<?php foreach ($categories as  $categorias) : ?>
 							 <ul class="menu-drop">
-							<li class="item1"><a href="#">Men </a>
+							<li class="item1"><a href="#"><?php echo $categorias['name']?> </a>
+							
 								<ul class="cute">
-									<li class="subitem1"><a href="single.html">Cute Kittens </a></li>
-									<li class="subitem2"><a href="single.html">Strange Stuff </a></li>
-									<li class="subitem3"><a href="single.html">Automatic Fails </a></li>
-								</ul>
-							</li>
-							<li class="item2"><a href="#">Women </a>
-								<ul class="cute">
-									<li class="subitem1"><a href="single.html">Cute Kittens </a></li>
-									<li class="subitem2"><a href="single.html">Strange Stuff </a></li>
-									<li class="subitem3"><a href="single.html">Automatic Fails </a></li>
-								</ul>
-							</li>
-							<li class="item3"><a href="#">Kids</a>
-								<ul class="cute">
-									<li class="subitem1"><a href="single.html">Cute Kittens </a></li>
-									<li class="subitem2"><a href="single.html">Strange Stuff </a></li>
-									<li class="subitem3"><a href="single.html">Automatic Fails</a></li>
-								</ul>
-							</li>
-							<li class="item4"><a href="#">Accesories</a>
-								<ul class="cute">
-									<li class="subitem1"><a href="single.html">Cute Kittens </a></li>
-									<li class="subitem2"><a href="single.html">Strange Stuff </a></li>
-									<li class="subitem3"><a href="single.html">Automatic Fails</a></li>
-								</ul>
-							</li>
-									
-							<li class="item4"><a href="#">Shoes</a>
-								<ul class="cute">
-									<li class="subitem1"><a href="single.html">Cute Kittens </a></li>
-									<li class="subitem2"><a href="single.html">Strange Stuff </a></li>
-									<li class="subitem3"><a href="single.html">Automatic Fails </a></li>
+								<?php foreach ($occasions as  $occasiones) :
+                                if ($occasiones['name'] ==  $categorias['name']) {
+                                    ?>
+									<li class="subitem1"><a href="single.html"><?php echo $occasiones['name_ocaciones']?></a></li>
+									<?php
+                               } 
+								endforeach; ?>								
 								</ul>
 							</li>
 						</ul>
+						<?php endforeach; ?>
 					</div>
+
 				<!--initiate accordion-->
 						<script type="text/javascript">
 							$(function() {
@@ -242,82 +159,33 @@ require_once('layout/header.php');
 							
 							});
 						</script>
-<!--//menu-->
-<!--seller-->
-				<div class="product-bottom">
-						<h3 class="cate">Best Sellers</h3>
-					<div class="product-go">
-						<div class=" fashion-grid">
-							<a href="single.html"><img class="img-responsive " src="Assets/images/pr.jpg" alt=""></a>	
-						</div>
-						<div class=" fashion-grid1">
-							<h6 class="best2"><a href="single.html" >Lorem ipsum dolor sitamet consectetuer  </a></h6>
-							<span class=" price-in1"> $40.00</span>
-						</div>	
-						<div class="clearfix"> </div>
-					</div>
-					<div class="product-go">
-						<div class=" fashion-grid">
-							<a href="single.html"><img class="img-responsive " src="Assets/images/pr1.jpg" alt=""></a>	
-						</div>
-						<div class=" fashion-grid1">
-							<h6 class="best2"><a href="single.html" >Lorem ipsum dolor sitamet consectetuer  </a></h6>
-							<span class=" price-in1"> $40.00</span>
-						</div>	
-						<div class="clearfix"> </div>
-					</div>
-					<div class="product-go">
-						<div class=" fashion-grid">
-							<a href="single.html"><img class="img-responsive " src="Assets/images/pr2.jpg" alt=""></a>	
-						</div>
-						<div class=" fashion-grid1">
-							<h6 class="best2"><a href="single.html" >Lorem ipsum dolor sitamet consectetuer  </a></h6>
-							<span class=" price-in1"> $40.00</span>
-						</div>	
-						<div class="clearfix"> </div>
-					</div>	
-					<div class="product-go">
-						<div class=" fashion-grid">
-							<a href="single.html"><img class="img-responsive " src="Assets/images/pr3.jpg" alt=""></a>	
-						</div>
-						<div class=" fashion-grid1">
-							<h6 class="best2"><a href="single.html" >Lorem ipsum dolor sitamet consectetuer  </a></h6>
-							<span class=" price-in1"> $40.00</span>
-						</div>	
-						<div class="clearfix"> </div>
-					</div>		
-				</div>
 
-<!--//seller-->
-<!--tag-->
-				<div class="tag">	
-						<h3 class="cate">Tags</h3>
-					<div class="tags">
-						<ul>
-							<li><a href="#">design</a></li>
-							<li><a href="#">fashion</a></li>
-							<li><a href="#">lorem</a></li>
-							<li><a href="#">dress</a></li>
-							<li><a href="#">fashion</a></li>
-							<li><a href="#">dress</a></li>
-							<li><a href="#">design</a></li>
-							<li><a href="#">dress</a></li>
-							<li><a href="#">design</a></li>
-							<li><a href="#">fashion</a></li>
-							<li><a href="#">lorem</a></li>
-							<li><a href="#">dress</a></li>
+		<div class="product-bottom">
+						<h3 class="cate">Ultimos Productos</h3>
+					<?php	foreach ($ultimos as  $productos) : ?>
+					<div class="product-go">
+						<div class=" fashion-grid">
+							<a href="single.php?id_product=<?php echo $productos['id_product'];  ?>"><img class="img-responsive " src="uploads/product/<?php echo $productos['image_product']; ?>" alt=""></a>	
+						</div>
+						<div class=" fashion-grid1">
+							<h6 class="best2"><a href="single.php?id_product=<?php echo $productos['id_product'];  ?>" ><?php echo $productos['namep']; ?></a></h6>
+							<h6 class="best2"><?php echo $productos['name']; ?></h6>
+							<span class=" price-in1"> $ <?php echo $productos['price']; ?> COP</span>
+						</div>	
 						<div class="clearfix"> </div>
-						</ul>
-				</div>					
-			</div>
+					</div>
+						<?php endforeach; ?>
+				</div>
 		</div>
+		
 		<div class="clearfix"> </div>
 	</div>
-	</div>
-
-
-
+</div>
+<!--footer-->
 <?php require_once('layout/footer.php');?>
-
-	</body>
+	
+</body>
 </html>
+				
+
+
