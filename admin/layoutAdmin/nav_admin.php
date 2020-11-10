@@ -1,9 +1,16 @@
+<?php $user = current_user();
+$tipo = page_require_tipo($user['type']);
+if($tipo['type']!="ADMINISTRADOR" || $tipo['type']!="SUPER" ){
+
+}
+?>
+<?php if ($session->isUserLoggedIn(true)) : ?>
 <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
 <aside class="app-sidebar">
   <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="Assets/images/avatar.png" alt="User Image">
     <div>
-      <p class="app-sidebar__user-name">Adrian Atencia</p>
-      <p class="app-sidebar__user-designation">Administrador</p>
+      <p class="app-sidebar__user-name"><?php echo $user['name'], $user['surname']?></p>
+      <p class="app-sidebar__user-designation"><?php echo $user['type']?></p>
     </div>
   </div>
   <ul class="app-menu">
@@ -26,3 +33,4 @@
     <li><a class="app-menu__item" href=""><i class="app-menu__icon fa fa-sign-out" aria-hidden="true"></i><span class="app-menu__label">Logout</span></a></li>
   </ul>
 </aside>
+<?php endif; ?>

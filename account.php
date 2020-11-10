@@ -1,14 +1,12 @@
-<!--A Design by W3layouts 
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+<?php 
+require_once("includes/load.php");
+?>
 <!DOCTYPE html>
 <html>
 <head>
-<title>Youth Fashion A Ecommerce Category Flat Bootstrap Responsive Website Template | Account :: w3layouts</title>
+<title>Iniciar sesion| Capullos</title>
 <link href="Assets/css/bootstrap-3.1.1.min.css" rel='stylesheet' type='text/css' />
+<link rel="shortcut icon" href="Assets/images/favicon.ico">
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="jAssets/s/jquery.min.js"></script>
 <!-- Custom Theme files -->
@@ -45,33 +43,34 @@ require_once('layout/header.php');
 <div class="breadcrumbs">
 		<div class="container">
 			<ol class="breadcrumb breadcrumb1 animated wow slideInLeft animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: slideInLeft;">
-				<li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-				<li class="active">Account</li>
+				<li><a href="index.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+				<li class="active">Iniciar sesion</li>
 			</ol>
 		</div>
 	</div>
 <div class="account">
 	<div class="container">
-		<h2>Account</h2>
+		<h2>Iniciar sesion</h2>
+		<?php echo display_msg($msg); ?>
 		<div class="account_grid">
 			   <div class="col-md-6 login-right">
-				<form action="#" method="post">
+				<form action="auth.php" method="post">
 
-					<span>Email Address</span>
+					<span>Dirección de correo electrónico</span>
 					<input type="text" name="email"> 
 				
 					<span>Password</span>
 					<input type="password" name="password"> 
 					<div class="word-in">
-				  		<a class="forgot" href="#">Forgot Your Password?</a>
-				 		 <input type="submit" value="Login">
+				  		<a class="forgot" href="#">¿Olvidó su contraseña?</a>
+				 		 <input type="submit" value="Ingresar">
 				  	</div>
 			    </form>
 			   </div>	
 			    <div class="col-md-6 login-left">
-			  	 <h4>NEW CUSTOMERS</h4>
-				 <p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
-				 <a class="acount-btn" href="register.php">Create an Account</a>
+			  	 <h4>NUEVO CLIENTE</h4>
+				 <p>Al crear una cuenta en nuestra tienda, podrá realizar el proceso de compra más rápidamente, almacenar múltiples direcciones de envío, ver y hacer un seguimiento de sus pedidos en su cuenta y mucho más.</p>
+				 <a class="acount-btn" href="register.php">Crear cuenta</a>
 			   </div>
 			   <div class="clearfix"> </div>
 			 </div>

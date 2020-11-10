@@ -1,4 +1,3 @@
-
 <?php
 require_once("includes/load.php");
 ?>
@@ -53,6 +52,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <?php 
 require_once('layout/header.php');
 ?>
+	<?php echo display_msg($msg); ?>
 <!--banner-->
 <div class="banner">
 	<div class="matter-banner">
@@ -77,6 +77,7 @@ require_once('layout/header.php');
 	<div class="clearfix"> </div>
 </div>
 <!--//banner-->
+
 <!--content-->
 <br>
 <div class="con-tp">
@@ -163,7 +164,7 @@ require_once('layout/header.php');
 		<div class="content-top1">	
 			<div class="container">
 			<?php 
-				 $limite = 10;//productos por pagina
+				 $limite = 12;//productos por pagina
 				 $totalQuery = countProducts();
 				 $totalBotones = round($totalQuery['total'] /$limite);  
 				 if(isset($_GET['limite'])){
@@ -179,7 +180,7 @@ require_once('layout/header.php');
 						</a>
 						<h3><a href="single.php?id_product=<?php echo $productos['id_product'];  ?>"><?php echo $productos['namep']; ?></a></h3>
 						<div class="price">
-								<h5 class="item_price">$ <?php echo $productos['price']; ?> COL</h5>
+								<h5 class="item_price">$ <?php echo numberCOP($productos['price']); ?> COP</h5>
 								<a href="single.php?id_product=<?php echo $productos['id_product'];  ?>" class="">Ver Detalles</a>
 								<div class="clearfix"> </div>
 						</div>
@@ -196,25 +197,25 @@ require_once('layout/header.php');
 				<?php 
                   if(isset($_GET['limite'])){
                     if ($_GET['limite']>0) {
-					  echo '<li class="page-item "><a class="page-link" href="index.php?limite='.($_GET['limite']-10).'">«</a></li>';
+					  echo '<li class="page-item "><a class="page-link" href="index.php?limite='.($_GET['limite']-12).'">«</a></li>';
                     }
                   }
                   for ($i=0; $i <$totalBotones ; $i++) { 
-					echo '<li class="page-item "><a class="page-link"  href="index.php?limite='.($i*10).'">'.($i+1).'</a></li>';
+					echo '<li class="page-item "><a class="page-link"  href="index.php?limite='.($i*12).'">'.($i+1).'</a></li>';
                   }
                   if(isset($_GET['limite'])){
-                    if($_GET['limite']+10<$totalBotones*10){
+                    if($_GET['limite']+12<$totalBotones*12){
 					  echo '
-					  <li class="page-item "><a class="page-link" href="index.php?limite='.($_GET['limite']+10).'">»</a></li>';
+					  <li class="page-item "><a class="page-link" href="index.php?limite='.($_GET['limite']+12).'">»</a></li>';
                     }
                   }else{
 					echo '
-					<li class="page-item "><a class="page-link" href="index.php?limite=10">»</a></li>';
+					<li class="page-item "><a class="page-link" href="index.php?limite=12">»</a></li>';
                   }
                   ?>
                 </ul>
             </div>
-			</div>
+		</div>
 
 
 			</div>	

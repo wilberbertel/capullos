@@ -68,7 +68,7 @@ $i=1; ?>
                        <td align="center" >  <img src="../uploads/product/<?php echo $productos['image_product'];?>" width="25px" height="25px" alt=""></td>
                        <td > <?php echo $productos['namep']; ?></td>
                        <td > <?php echo $productos['description']; ?></td>
-                       <td > <?php echo $productos['price']; ?></td>
+                       <td > <?php echo numberCOP($productos['price']); ?></td>
                        <td > <?php echo $productos['name']; ?></td>
                        <td > <?php echo $productos['name_ocaciones']; ?></td>
                        <td align="center" > <?php if( $productos['status']=="ACTIVE"){
@@ -171,7 +171,7 @@ $i=1; ?>
                       <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text">$</span></div>
                         <input title="Precio" type="number" min="0" name="precio" placeholder="precio" id="precio" class="form-control" required>
-                        <div class="input-group-append"><span class="input-group-text">.00</span></div>
+                   
                       </div>
                     </div>
                   </div>
@@ -283,7 +283,6 @@ $i=1; ?>
                       <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text">$</span></div>
                         <input title="Precio" type="number" min="0" name="precioEdit" placeholder="precio" id="precioEdit" class="form-control" required>
-                        <div class="input-group-append"><span class="input-group-text">.00</span></div>
                       </div>
                     </div>
                   </div>

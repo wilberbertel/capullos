@@ -1,10 +1,16 @@
 <?php //headerAdmin($data);
-require_once("../includes/load.php");
+ require_once("../includes/load.php");
+ $user = current_user();
+ $tipo = page_require_tipo($user['type']);
+ if (!$session->isUserLoggedIn(true)){
+   header("Location: ../index.php");
+ }
+
 require_once("layoutAdmin/header_admin.php"); 
-$user = users('1');?>
+$user = users($user['id_users']);
+?>
 
 
-<?php
  /* if (isset($_POST['submit'])) {
       $carpeta="../../uploads/users/";
       $nombre = $_FILES['file_upload']['name'];

@@ -2,7 +2,7 @@
 require_once("../includes/load.php");
 require_once("layoutAdmin/header_admin.php");
 $totalProducts = countProducts();
-$totalUsers = countUsers();
+$totalUsersClientes = countUsersClientes();
 ?>
 
 <main class="app-content">
@@ -15,13 +15,13 @@ $totalUsers = countUsers();
       <li class="breadcrumb-item"><a href="dashboad.php">Home</a></li>
     </ul>
   </div>
- 
+  <?php echo display_msg($msg); ?>
   <div class="row">
         <div class="col-md-6 col-lg-3">
           <div class="widget-small primary coloured-icon"><i class="icon fa fa-users fa-3x"></i>
             <div class="info">
-              <h4>Usuarios</h4>
-              <p><b><?php echo $totalUsers['total'];?></b></p>
+              <h4>Clientes Registrados</h4>
+              <p><b><?php echo $totalUsersClientes['total'];?></b></p>
             </div>
           </div>
         </div>

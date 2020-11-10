@@ -116,6 +116,16 @@ function randString($length = 5)
    $str .= $cha[mt_rand(0,strlen($cha))];
   return $str;
 }
+function removeJunk($str)
+{
+  $str = nl2br($str);
+  $str = htmlspecialchars(strip_tags($str, ENT_QUOTES));
+  return $str;
+}
+function numberCOP($número)
+{
 
+  return  number_format($número);
+}
 
 ?>

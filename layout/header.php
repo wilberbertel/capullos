@@ -1,3 +1,9 @@
+<?php $user = current_user();
+
+$tipo = page_require_tipo($user['type']);
+
+	  
+?>
 <!--header-->
 <div class="header">
 	<div class="header-top">
@@ -7,12 +13,23 @@
 				</div>
 			<div class="col-sm-4 world animated wow fadeInRight" data-wow-delay=".5s">
 					<div class="cart box_1">
-						<a href="checkout.php">
+					<a href="cart.php">
 						<h3> <div class="total">
-							<span class="simpleCart_total"></span></div>
+						<?php 
+							$total = 0;
+                        if (isset($_SESSION['carritoCapullos'])) {
+							$arreglocarritoCapullos = $_SESSION['carritoCapullos'];
+							for ($i=0; $i < count($arreglocarritoCapullos); $i++) {
+								$total = $total + ($arreglocarritoCapullos[$i]['Precio'] * $arreglocarritoCapullos[$i]['Cantidad'])  ;
+							}
+                          echo "$ ".numberCOP($total)." COP";
+                        }else{
+                          echo "$ ".numberCOP(0)." COP";
+                        }
+                        ?></div>
 							<img src="Assets/images/cart.png" alt=""/></h3>
 						</a>
-						<p><a href="checkout.php" >Ver Carrito</a></p>
+						<p><a href="cart.php" >Ver carritoCapullos</a></p>
 
 					</div>
 			</div>
@@ -76,33 +93,39 @@
 									                
 								</div>				
 							</li>
+						
+							<li><a href="products.php">productos</a></li>
+							<?php if (!$session->isUserLoggedIn(true)) : ?>
+							<?php echo "<li><a href='account.php'>Sign In</a></li>"?>
+								<?php endif; ?>
+							<li class="last"><a href="contact.php">Contactos</a></li>
+							<?php if ($session->isUserLoggedIn(true)) : ?>
+								<li class=""></li>
 							<li class="dropdown mega-dropdown active">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">ocaciones<span class="caret"></span></a>				
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $user['name'];?><span class="caret"></span></a>				
 								<div class="dropdown-menu mega-dropdown-menu">
 									<div class="container-fluid">
 										<!-- Tab panes -->
+								
 										<div class="tab-content">
 										  <div class="tab-pane active" id="men">
 											<ul class="nav-list list-inline">
-												<li><a href="men.html"><img src="Assets/images/ramillete.jpeg" class="img-responsive" alt=""/></a></li>
-												<li><a href="men.html"><img src="Assets/images/ramillete.jpeg" class="img-responsive" alt=""/></a></li>
-												<li><a href="men.html"><img src="Assets/images/ramillete.jpeg" class="img-responsive" alt=""/></a></li>
-												<li><a href="men.html"><img src="Assets/images/ramillete.jpeg" class="img-responsive" alt=""/></a></li>
-												<li><a href="men.html"><img src="Assets/images/ramillete.jpeg" class="img-responsive" alt=""/></a></li>
-												<li><a href="men.html"><img src="Assets/images/ramillete.jpeg" class="img-responsive" alt=""/></a></li>
+												<li><a href="profile.php"><img src="Assets/images/user.png" class="img-responsive" alt=""/>Perfil</a></li>
+												<li><a href="women.html"><img src="Assets/images/clock-shop.png" class="img-responsive" alt=""/>Historial de compras</a></li>
+												<li><a href="women.html"><img src="Assets/images/member.png" class="img-responsive" alt=""/>Config Cuenta</a></li>
+												<li><a href="logout.php"><img src="Assets/images/logout.png" class="img-responsive" alt=""/>Salir</a></li>
 											</ul>
 										  </div>
-										 
 									   </div>
+									  
 									</div>
 									<!-- Nav tabs -->
-									                   
+									                
 								</div>				
 							</li>
-							<li><a href="products.php">productos</a></li>
-							<li><a href="account.php">Sign In</a></li>
-							<li class="last"><a href="contact.php">Contactos</a></li>
+							<?php endif; ?>
 						</ul>
+						
 					 </div><!-- /.navbar-collapse -->
 				  
 				</nav>
@@ -117,9 +140,9 @@
 				<div id="small-dialog" class="mfp-hide">
 				<div class="search-top">
 						<div class="login">
-							<form action="#" method="post">
+							<form  action="busqueda.php" method="POST">
 								<input type="submit" value="">
-								<input type="text" name="search" value="Escriba algo..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}">		
+								<input type="text" name="busqueda" value="Escriba algo..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}">		
 							
 							</form>
 						</div>				

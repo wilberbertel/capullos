@@ -1,3 +1,9 @@
+<?php $user = current_user();
+$tipo = page_require_tipo($user['type']);
+if (!$session->isUserLoggedIn(true)){
+  header("Location: ../index.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,6 +25,7 @@
 </head>
 
 <body class="app sidebar-mini">
+<?php if ($session->isUserLoggedIn(true)) : ?>
   <!-- Navbar-->
   <header class="app-header"><a class="app-header__logo" href="dashboard.php">Capullos</a>
     <!-- Sidebar toggle button--><a class=" app-sidebar__toggle" href="" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
@@ -26,13 +33,14 @@
     <ul class="app-nav">
 
       <!-- User Menu-->
-      <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
+      <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"> <?php echo $user['name'];?> </i></a>
         <ul class="dropdown-menu settings-menu dropdown-menu-right">
           <li><a class="dropdown-item" href="profile.php"><i class="fa fa-user fa-lg"></i> Pefil</a></li>
           <li><a class="dropdown-item" href="opcion.php"><i class=" fa fa-cog fa-lg"></i> Cambiar clave</a></li>
-          <li><a class="dropdown-item" href="logout.php"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
+          <li><a class="dropdown-item" href="../logout.php"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
         </ul>
       </li>
     </ul>
+    <?php endif; ?>
   </header>
   <?php require_once("nav_admin.php") ?>

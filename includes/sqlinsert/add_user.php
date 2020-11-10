@@ -9,7 +9,7 @@ if($user['total']>=1){
 if (isset($_POST['nombres']) && isset($_POST['apellidos'])  && isset($_POST['correo']) && isset($_POST['status']) ) {
 $db->query("INSERT INTO users (email,password,name,surname,image_profile,type,status) VALUES(
     '".$_POST['correo']."',
-    'capullosAdmin',
+    '".sha1('capullosAdmin')."',
     '".$_POST['nombres']."',
     '".$_POST['apellidos']."',
     'default.png',

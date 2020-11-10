@@ -1,6 +1,8 @@
 <?php
 require_once("includes/load.php");
 $ultimos = allProducts(5);
+	$categories = allCategories();
+	$occasions = allOccasionsByCategory();
 ?>
 <!DOCTYPE html>
 <html>
@@ -55,7 +57,7 @@ require_once('layout/header.php');
 		<h2>Todos los productos</h2>
 		<div class="col-md-9">
 		<?php 
-				 $limite = 10;//productos por pagina
+				 $limite = 12;//productos por pagina
 				 $totalQuery = countProducts();
 				 $totalBotones = round($totalQuery['total'] /$limite);  
 				 if(isset($_GET['limite'])){
@@ -64,6 +66,7 @@ require_once('layout/header.php');
 					$resultado = allProducts($limite);
 				  }
 			foreach ($resultado as  $productos) : ?>
+			
 				<div class="col-md-3  animated wow fadeInLeft" data-wow-delay=".5s">
 					<div class="col-md1 simpleCart_shelfItem">
 						<a href="single.php?id_product=<?php echo $productos['id_product'];  ?>">
@@ -71,12 +74,12 @@ require_once('layout/header.php');
 						</a>
 						<h3><a href="single.php?id_product=<?php echo $productos['id_product'];  ?>"><?php echo $productos['namep']; ?></a></h3>
 						<div class="price">
-								<h5 class="item_price">$ <?php echo $productos['price']; ?> COL</h5>
-								<a href="#" class="item_add">Añadir al carrito</a>
+								<h5 class="item_price">$ <?php echo numberCOP($productos['price']); ?> COP</h5>
+								<a href="single.php?id_product=<?php echo numberCOP($productos['id_product']);  ?>" class="">Ver detalles</a>
 								<div class="clearfix"> </div>
 						</div>
 					</div>
-					<br>	
+					<br>
 				</div>	
 				
 				<?php endforeach; ?>
@@ -87,46 +90,24 @@ require_once('layout/header.php');
 	
 		<div class="col-md-3 product-bottom">
 			<!--categories-->
-				<div class=" rsidebar span_1_of_left">
+					<div class=" rsidebar span_1_of_left">
 						<h3 class="cate">Categorias</h3>
+						<?php foreach ($categories as  $categorias) : ?>
 							 <ul class="menu-drop">
-							<li class="item1"><a href="#">Men </a>
+							<li class="item1"><a href="#"><?php echo $categorias['name']?> </a>
+							
 								<ul class="cute">
-									<li class="subitem1"><a href="single.php">Cute Kittens </a></li>
-									<li class="subitem2"><a href="single.php">Strange Stuff </a></li>
-									<li class="subitem3"><a href="single.php">Automatic Fails </a></li>
-								</ul>
-							</li>
-							<li class="item2"><a href="#">Women </a>
-								<ul class="cute">
-									<li class="subitem1"><a href="single.php">Cute Kittens </a></li>
-									<li class="subitem2"><a href="single.php">Strange Stuff </a></li>
-									<li class="subitem3"><a href="single.php">Automatic Fails </a></li>
-								</ul>
-							</li>
-							<li class="item3"><a href="#">Kids</a>
-								<ul class="cute">
-									<li class="subitem1"><a href="single.php">Cute Kittens </a></li>
-									<li class="subitem2"><a href="single.php">Strange Stuff </a></li>
-									<li class="subitem3"><a href="single.php">Automatic Fails</a></li>
-								</ul>
-							</li>
-							<li class="item4"><a href="#">Accessories</a>
-								<ul class="cute">
-									<li class="subitem1"><a href="single.php">Cute Kittens </a></li>
-									<li class="subitem2"><a href="single.php">Strange Stuff </a></li>
-									<li class="subitem3"><a href="single.php">Automatic Fails</a></li>
-								</ul>
-							</li>
-									
-							<li class="item4"><a href="#">Shoes</a>
-								<ul class="cute">
-									<li class="subitem1"><a href="product.html">Cute Kittens </a></li>
-									<li class="subitem2"><a href="product.html">Strange Stuff </a></li>
-									<li class="subitem3"><a href="product.html">Automatic Fails </a></li>
+								<?php foreach ($occasions as  $occasiones) :
+                                if ($occasiones['name'] ==  $categorias['name']) {
+                                    ?>
+									<li class="subitem1"><a href="products_occasions.php?name=<?php echo $occasiones['name_ocaciones']?>"><?php echo $occasiones['name_ocaciones']?></a></li>
+									<?php
+                               } 
+								endforeach; ?>								
 								</ul>
 							</li>
 						</ul>
+						<?php endforeach; ?>
 					</div>
 				<!--initiate accordion-->
 						<script type="text/javascript">
@@ -160,7 +141,7 @@ require_once('layout/header.php');
 						<div class=" fashion-grid1">
 							<h6 class="best2"><a href="single.php?id_product=<?php echo $productos['id_product'];  ?>" ><?php echo $productos['namep']; ?></a></h6>
 							<h6 class="best2"><?php echo $productos['name']; ?></h6>
-							<span class=" price-in1"> $ <?php echo $productos['price']; ?> COP</span>
+							<span class=" price-in1"> $ <?php echo numberCOP($productos['price']); ?> COP</span>
 						</div>	
 						<div class="clearfix"> </div>
 					</div>
@@ -175,20 +156,20 @@ require_once('layout/header.php');
 				<?php 
                   if(isset($_GET['limite'])){
                     if ($_GET['limite']>0) {
-					  echo '<li class="page-item "><a class="page-link" href="products.php?limite='.($_GET['limite']-10).'">«</a></li>';
+					  echo '<li class="page-item "><a class="page-link" href="products.php?limite='.($_GET['limite']-12).'">«</a></li>';
                     }
                   }
                   for ($i=0; $i <$totalBotones ; $i++) { 
-					echo '<li class="page-item "><a class="page-link"  href="products.php?limite='.($i*10).'">'.($i+1).'</a></li>';
+					echo '<li class="page-item "><a class="page-link"  href="products.php?limite='.($i*12).'">'.($i+1).'</a></li>';
                   }
                   if(isset($_GET['limite'])){
-                    if($_GET['limite']+10<$totalBotones*10){
+                    if($_GET['limite']+12<$totalBotones*12){
 					  echo '
-					  <li class="page-item "><a class="page-link" href="products.php?limite='.($_GET['limite']+10).'">»</a></li>';
+					  <li class="page-item "><a class="page-link" href="products.php?limite='.($_GET['limite']+12).'">»</a></li>';
                     }
                   }else{
 					echo '
-					<li class="page-item "><a class="page-link" href="products.php?limite=10">»</a></li>';
+					<li class="page-item "><a class="page-link" href="products.php?limite=12">»</a></li>';
                   }
                   ?>
                 </ul>
