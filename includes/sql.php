@@ -66,6 +66,7 @@ function allOccasionss()
 function allProducts($limite)
 {
   global $db;
+  
 $sql ="SELECT p.id_product,
 p.namep,
     p.image_product,
@@ -101,6 +102,7 @@ INNER JOIN occasions o  ON o.id_ocaciones = p.occasions  order by id_product DES
 function allProducts2($limite1,$limite2)
 {
   global $db;
+ 
  // $sql  = " SELECT  * FROM product INNER JOIN category  WHERE product.category = category.id;";
 /* $sql  = "SELECT product.id_product,
  product.namep,
@@ -195,6 +197,14 @@ function allOccasionsByCategory()
 {
   global $db;
   $sql  = "SELECT * FROM occasions o INNER JOIN category c ON o.category=c.id_category ";
+ //$sql  = "SELECT o.id_ocaciones,o.name_ocaciones , c.name FROM occasions o INNER JOIN category c ON o.category=c.id_category ; ";
+ $result = $db->query($sql);
+ return ($result);
+}
+function allOccasions()
+{
+  global $db;
+  $sql  = "SELECT * FROM occasions";
   return find_by_sql($sql);
 }
 function allProductsSearch($busqueda)
@@ -266,10 +276,39 @@ WHERE
  $result = $db->query($sql);
  return ($result);
 }
+
+function productForCategory($name)
+{
+  global $db;
+$sql ="SELECT p.id_product,
+p.namep,
+    p.image_product,
+    p.description,
+    p.price,
+    c.name,
+    p.status,
+    p.offer,
+    o.name_ocaciones
+FROM product p INNER JOIN category c ON p.category=c.id_category 
+INNER JOIN occasions o  ON o.id_ocaciones = p.occasions 
+WHERE  
+   c.name = '".$name."'
+ order by id_product DESC ;";
+ $result = $db->query($sql);
+ return ($result);
+}
+
 function existOccasions($name)
 {
   global $db;
   $sql  = "SELECT count(*) as total FROM  occasions WHERE name_ocaciones = '$name'";
+  $result = $db->query($sql);
+  return ($db->fetch_assoc($result));
+}
+function existCategory($name)
+{
+  global $db;
+  $sql  = "SELECT count(*) as total FROM  category WHERE name = '$name'";
   $result = $db->query($sql);
   return ($db->fetch_assoc($result));
 }
@@ -316,11 +355,11 @@ $result = $db->query($sql);
 return ($db->fetch_assoc($result));
 }
 
-function page_require_tipo($require_level)
+function page_require_tipo($id)
 {
   global $session;
   global $db;
-  $sql = "SELECT type FROM users WHERE   type = '$require_level'";
+  $sql = "SELECT type FROM users WHERE   id_users = '$id'";
   $result = $db->query($sql);
   return ($db->fetch_assoc($result));
 }

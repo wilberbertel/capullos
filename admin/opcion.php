@@ -1,6 +1,9 @@
 <?php //headerAdmin($data);
 require_once("../includes/load.php");
-$user = users('1');?>
+$user = current_user();
+$user = users($user['id_users']);
+
+?>
 
 <!DOCTYPE html>
 <html>

@@ -1,0 +1,100 @@
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color:#18771c;
+
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+  
+  .buttonVerDetalles {
+    background-color: #4CAF50; 
+    color: white; 
+    border: 2px solid #4CAF50;
+  }
+  
+  .buttonVerDetalles:hover {
+    background-color: #18771c;
+    color: white;
+  }
+  
+  .buttonCerrar {
+    background-color:red; 
+    color: white; 
+    border: 2px solid red;
+  }
+
+  .input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    background-color: #2c9e74;
+    color: white;
+  }
+
+  ::placeholder {
+    color: white;
+  }
+
+  .tableTotal {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  tr:hover {background-color:#f5f5f5;}
+
+  /* menu */
+
+#menu ul {
+  list-style:none;
+  margin:0;
+  padding:0;
+ }
+ 
+ /* items del menu */
+ 
+ #menu ul li {
+  background-color:#2e518b;
+ }
+ 
+ /* enlaces del menu */
+ 
+ #menu ul a {
+  display:block;
+  color:#fff;
+  text-decoration:none;
+  font-weight:400;
+  font-size:15px;
+  padding:10px;
+  font-family:"HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform:uppercase;
+  letter-spacing:1px;
+ }
+ 
+ /* items del menu */
+ 
+ #menu ul li {
+  position:relative;
+  float:left;
+  margin:0;
+  padding:0;
+ }
+ 
+ /* efecto al pasar el ratón por los items del menu */
+ 
+ #menu ul li:hover {
+  background:#5b78a7;
+ }

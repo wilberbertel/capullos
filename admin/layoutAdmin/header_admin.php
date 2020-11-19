@@ -1,7 +1,7 @@
-<?php $user = current_user();
-$tipo = page_require_tipo($user['type']);
-if (!$session->isUserLoggedIn(true)){
-  header("Location: ../index.php");
+<?php 
+$user = current_user();
+if (!$session->isUserLoggedIn(true) || validatePermition($user['type'])==0 || validateStatus($user['status'])==0){
+  redirect('../index.php', false);
 }
 ?>
 <!DOCTYPE html>

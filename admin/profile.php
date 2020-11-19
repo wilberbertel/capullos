@@ -1,41 +1,12 @@
 <?php //headerAdmin($data);
  require_once("../includes/load.php");
  $user = current_user();
- $tipo = page_require_tipo($user['type']);
- if (!$session->isUserLoggedIn(true)){
-   header("Location: ../index.php");
- }
-
 require_once("layoutAdmin/header_admin.php"); 
+if (!$session->isUserLoggedIn(true) || validatePermition($user['type'])==0 || validateStatus($user['status'])==0){
+  redirect('../index.php', false);
+}
 $user = users($user['id_users']);
 ?>
-
-
- /* if (isset($_POST['submit'])) {
-      $carpeta="../../uploads/users/";
-      $nombre = $_FILES['file_upload']['name'];
-   
-      //imagen.casa.jpg
-      $temp= explode('.', $nombre);
-      $extension= end($temp);
-      $i = 0;
-      $nombreFinal = time().'.'.$extension;
-   
-      if ($extension=='jpg' || $extension == 'png'|| $extension == 'jpeg') {
-          if (move_uploaded_file($_FILES['file_upload']['tmp_name'], $carpeta.$nombreFinal)) {
-              $session->msg('s', "Imagen  agregado exitosamente. ");
-              redirect('../../admin/profile.php', false);
-          } else {
-              $session->msg('w', "No se pudo subir la imagen. ");
-              redirect('../../admin/profile.php', false);
-          }
-      } else {
-          $session->msg('w', "Favor de subir una imagen valida. (JPG,PNG,JPEG) ");
-          redirect('../../admin/profile.php', false);
-      }
-  }*/
-?>
-
 <main class="app-content">
       <div class="row user">
         <div class="col-md-12">
@@ -117,6 +88,10 @@ $user = users($user['id_users']);
                       <label>Tipo</label>
                       <input class="form-control"  name = "tipo" type="text" value="<?php echo $user['type'];?>" disabled>
                     </div>
+                    <div class="col-md-8 mb-4">
+                      <label>Ultimo inicio de session</label>
+                      <input class="form-control"  name = "tipo" type="text" value="<?php echo $user['last_login'];?>" disabled>
+                    </div>
                   </div>
                 </form>
               </div>
@@ -146,7 +121,7 @@ $user = users($user['id_users']);
             </div>
             <h4 class="line-head"></h4>
                 <form  action="../includes/sqlinsert/update_profile.php" method="POST" enctype="multipart/form-data">
-                <input type="hidden" id="idEdit" name="idEdit" value="<?php echo $user['idusers'];?>" >
+                <input type="hidden" id="idEdit" name="idEdit" value="<?php echo $user['id_users'];?>" >
                   <div class="row mb-4">
                     <div class="col-md-4">
                     <label>Nombres</label>

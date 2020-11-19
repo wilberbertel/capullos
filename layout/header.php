@@ -1,9 +1,11 @@
-<?php $user = current_user();
-
-$tipo = page_require_tipo($user['type']);
-
-	  
+<?php 
+require_once("includes/load.php");
+$user = current_user();
+$tipo = page_require_tipo($user['type']);	 
+$categories = allCategories(); 
+$occasions = allOccasions();
 ?>
+
 <!--header-->
 <div class="header">
 	<div class="header-top">
@@ -22,9 +24,9 @@ $tipo = page_require_tipo($user['type']);
 							for ($i=0; $i < count($arreglocarritoCapullos); $i++) {
 								$total = $total + ($arreglocarritoCapullos[$i]['Precio'] * $arreglocarritoCapullos[$i]['Cantidad'])  ;
 							}
-                          echo "$ ".numberCOP($total)." COP";
+                          echo "$ COP ".numberCOP($total)." ";
                         }else{
-                          echo "$ ".numberCOP(0)." COP";
+                          echo "$ COP ".numberCOP(0)." ";
                         }
                         ?></div>
 							<img src="Assets/images/cart.png" alt=""/></h3>
@@ -71,12 +73,12 @@ $tipo = page_require_tipo($user['type']);
 					<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 						<ul class="nav navbar-nav nav_1">
 							<li><a href="index.php">Home</a></li>
-							<li class="dropdown mega-dropdown active">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">categorias<span class="caret"></span></a>				
+							<!--<li class="dropdown mega-dropdown active">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Categorias<span class="caret"></span></a>				
 								<div class="dropdown-menu mega-dropdown-menu">
 									<div class="container-fluid">
 										<!-- Tab panes -->
-										<div class="tab-content">
+										<!--	<div class="tab-content">
 										  <div class="tab-pane active" id="men">
 											<ul class="nav-list list-inline">
 												<li><a href="women.html"><img src="Assets/images/ramillete.jpeg" class="img-responsive" alt=""/></a></li>
@@ -86,21 +88,48 @@ $tipo = page_require_tipo($user['type']);
 												<li><a href="women.html"><img src="Assets/images/ramillete.jpeg" class="img-responsive" alt=""/></a></li>
 												<li><a href="women.html"><img src="Assets/images/ramillete.jpeg" class="img-responsive" alt=""/></a></li>
 											</ul>
+											
 										  </div>
 									   </div>
 									</div>
-									<!-- Nav tabs -->
+									
 									                
 								</div>				
-							</li>
+							</li>-->
 						
-							<li><a href="products.php">productos</a></li>
+						<li class="dropdown mega-dropdown active">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Categorias<span class="caret"></span></a>				
+								<div class="dropdown-menu mega-dropdown-menu">
+									
+										<!-- Tab panes -->
+										
+											<ul class="nav-list list">
+											<?php foreach ($categories as  $categorias) : ?>
+												<li><a href="products_category.php?name=<?php echo $categorias['name']?>"><?php echo $categorias['name'];?></a></li>
+											<?php endforeach; ?>	
+											</ul>            
+								</div>				
+								</li>
+								<li class="dropdown mega-dropdown active">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Ocaciones<span class="caret"></span></a>				
+								<div class="dropdown-menu mega-dropdown-menu">
+									
+										<!-- Tab panes -->
+										
+											<ul class="nav-list list">
+											<?php foreach ($occasions as  $ocaciones) : ?>
+												<li><a href="products_occasions.php?name=<?php echo $ocaciones['name_ocaciones']?>"><?php echo $ocaciones['name_ocaciones'];?></a></li>
+											<?php endforeach; ?>	
+											</ul>            
+								</div>				
+								</li>
+							<li><a href="products.php">Productos</a></li>
 							<?php if (!$session->isUserLoggedIn(true)) : ?>
 							<?php echo "<li><a href='account.php'>Sign In</a></li>"?>
 								<?php endif; ?>
 							<li class="last"><a href="contact.php">Contactos</a></li>
 							<?php if ($session->isUserLoggedIn(true)) : ?>
-								<li class=""></li>
+								
 							<li class="dropdown mega-dropdown active">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $user['name'];?><span class="caret"></span></a>				
 								<div class="dropdown-menu mega-dropdown-menu">
@@ -111,8 +140,8 @@ $tipo = page_require_tipo($user['type']);
 										  <div class="tab-pane active" id="men">
 											<ul class="nav-list list-inline">
 												<li><a href="profile.php"><img src="Assets/images/user.png" class="img-responsive" alt=""/>Perfil</a></li>
-												<li><a href="women.html"><img src="Assets/images/clock-shop.png" class="img-responsive" alt=""/>Historial de compras</a></li>
-												<li><a href="women.html"><img src="Assets/images/member.png" class="img-responsive" alt=""/>Config Cuenta</a></li>
+												<li><a href="shopping_history.php"><img src="Assets/images/clock-shop.png" class="img-responsive" alt=""/>Historial de compras</a></li>
+											<!--	<li><a href="women.html"><img src="Assets/images/member.png" class="img-responsive" alt=""/>Config Cuenta</a></li>-->
 												<li><a href="logout.php"><img src="Assets/images/logout.png" class="img-responsive" alt=""/>Salir</a></li>
 											</ul>
 										  </div>

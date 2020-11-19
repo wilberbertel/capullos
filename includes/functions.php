@@ -69,19 +69,7 @@ function redirect($url, $permanent = false)
 
     exit();
 }
-/*--------------------------------------------------------------*/
-/* Function for find out total saleing price, buying price and profit
-/*--------------------------------------------------------------*/
-function total_price($totals){
-   $sum = 0;
-   $sub = 0;
-   foreach($totals as $total ){
-     $sum += $total['total_saleing_price'];
-     $sub += $total['total_buying_price'];
-     $profit = $sum - $sub;
-   }
-   return array($sum,$profit);
-}
+
 /*--------------------------------------------------------------*/
 /* Function for Readable date time
 /*--------------------------------------------------------------*/
@@ -124,8 +112,35 @@ function removeJunk($str)
 }
 function numberCOP($número)
 {
-
   return  number_format($número);
 }
+function validatePermition($tipo)
+{
+  //1 -> no igal
+  //o ->1 si
+  $acceso =1;
+  if (strcmp($tipo, "SUPER") !== 0) {
+    $acceso =0;
+  }
+  if (strcmp($tipo, "ADMINISTRADOR") !== 0) {
+    $acceso =0;
+  }
+  if(strcmp($tipo, "CLIENTE") !== 0)
+  {
+    $acceso =1;
+  }
+  return  $acceso;
+}
 
+function validateStatus($status)
+{
+  //1 -> no igal
+  //o ->1 si
+  $acceso =1;
+  if (strcmp($status, "ACTIVE") !== 0) {
+    $acceso =0;
+  }
+  
+  return  $acceso;
+}
 ?>

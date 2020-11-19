@@ -57,10 +57,10 @@ require_once('layout/header.php');
 				<form action="auth.php" method="post">
 
 					<span>Dirección de correo electrónico</span>
-					<input type="text" name="email"> 
+					<input type="text" name="email" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" required> 
 				
 					<span>Password</span>
-					<input type="password" name="password"> 
+					<input type="password" name="password" required> 
 					<div class="word-in">
 				  		<a class="forgot" href="#">¿Olvidó su contraseña?</a>
 				 		 <input type="submit" value="Ingresar">

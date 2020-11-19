@@ -6,6 +6,7 @@ require_once("includes/load.php");
 <head>
 <title>Capullos floristeria</title>
 <link rel="shortcut icon" href="Assets/images/favicon.ico">
+<link rel="stylesheet" type="text/css" href="Assets/css/myStyle.css">
 <link href="Assets/css/bootstrap-3.1.1.min.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="Assets/js/jquery.min.js"></script>
@@ -13,7 +14,7 @@ require_once("includes/load.php");
 <!--theme-style-->
 <link href="Assets/css/style.css" rel="stylesheet" type="text/css" media="all" />	
 <link rel="stylesheet" type="text/css" href="../adminAssets/css/main.css">
-  <link rel="stylesheet" type="text/css" href="../admin/Assets/css/style.css">
+
   <!-- Font-icon css-->
 <!--//theme-style-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -60,11 +61,11 @@ require_once('layout/header.php');
 	    	<div class="callbacks_container">
 	      		<ul class="rslides" id="slider">
 	        		<li>
-	          			<img src="Assets/images/1.jpg" alt="">
+	          			<img src="Assets/images/portadaflor.png" alt="">
 						<div class="tes animated wow fadeInUp animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
-							<h2>Capullos</h2>
+							<h2>Floristeria</h2>
 							
-							<h3>Floristeria</h3>
+							<h3>Capullos</h3>
 						
 							<h4>Recuerdos que perduran</h4>
 						</div>
@@ -173,20 +174,29 @@ require_once('layout/header.php');
 					$resultado = allProducts($limite);
 				  }
 			foreach ($resultado as  $productos) : ?>
-				<div class="col-md-3  animated wow fadeInLeft" data-wow-delay=".5s">
+			<div class="col-md-3  animated wow fadeInLeft" data-wow-delay=".5s">
 					<div class="col-md1 simpleCart_shelfItem">
-						<a href="single.php?id_product=<?php echo $productos['id_product'];  ?>">
+					
 							<img class="img-responsive" src="uploads/product/<?php echo $productos['image_product']; ?>" alt="" />
 						</a>
-						<h3><a href="single.php?id_product=<?php echo $productos['id_product'];  ?>"><?php echo $productos['namep']; ?></a></h3>
+
+						<h3><?php echo $productos['namep']; ?></a></h3>
 						<div class="price">
+						<form action="single.php" method="post">
+						<input type="hidden" name="id_product"  id="id_product" class="form-control"  value="<?php echo $productos['id_product'];?>">
+
 								<h5 class="item_price">$ <?php echo numberCOP($productos['price']); ?> COP</h5>
-								<a href="single.php?id_product=<?php echo $productos['id_product'];  ?>" class="">Ver Detalles</a>
+								<!--<a  style="cursor:pointer;" type="submit" class="enviar"  data-id="<?php echo $productos['id_product'];?>"
+								
+								>Ver detalles</a>-->
+								<button type="submit"  class="button buttonVerDetalles">Ver Detalles</button> 
 								<div class="clearfix"> </div>
+								</form>
 						</div>
 					</div>
-					<br>	
+					<br>
 				</div>	
+
 				
 				<?php endforeach; ?>
 <!--CIERRE-->	   

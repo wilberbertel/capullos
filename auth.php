@@ -20,7 +20,7 @@ if (empty($errors)) {
       header("Location: admin/dashboard.php");
     }
   } else {
-    $session->msg("d", "Nombre de usuario y/o contraseña incorrecto.".$email ."".$password);
+    $session->msg("d", "Nombre de usuario y/o contraseña incorrecto.");
     header("Location: account.php");
   }
 } else {

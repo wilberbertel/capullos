@@ -1,7 +1,7 @@
-<?php $user = current_user();
-$tipo = page_require_tipo($user['type']);
-if($tipo['type']!="ADMINISTRADOR" || $tipo['type']!="SUPER" ){
-
+<?php 
+$user = current_user();
+if (!$session->isUserLoggedIn(true) || validatePermition($user['type'])==0 || validateStatus($user['status'])==0){
+  redirect('../index.php', false);
 }
 ?>
 <?php if ($session->isUserLoggedIn(true)) : ?>
@@ -24,12 +24,16 @@ if($tipo['type']!="ADMINISTRADOR" || $tipo['type']!="SUPER" ){
         <li><a class="treeview-item" href="occasions.php"><i class="icon fa fa-circle-o"></i>Configurar Ocaciones</a></li>
       </ul>
     </li>
+    <?php
+      if ($user['type']=="SUPER") {   
+    ?>
     <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-users" aria-hidden="true"></i><span class="app-menu__label"> Configurar usuarios </span><i class="treeview-indicator fa fa-angle-right"></i></a>
       <ul class="treeview-menu">
         <li><a class="treeview-item" href="users.php"><i class="icon fa fa-circle-o"></i> Usuarios</a></li>
         <li><a class="treeview-item" href="config_users.php"><i class="icon fa fa-circle-o"></i> Configurar usuarios</a></li>
       </ul>
     </li>
+      <?php }?>
     <li><a class="app-menu__item" href=""><i class="app-menu__icon fa fa-sign-out" aria-hidden="true"></i><span class="app-menu__label">Logout</span></a></li>
   </ul>
 </aside>

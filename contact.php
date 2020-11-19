@@ -1,13 +1,8 @@
-<!--A Design by W3layouts 
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!DOCTYPE html>
 <html>
 <head>
-<title> Contact :: w3layouts</title>
+<title>Contacto || Capullos floristeria</title>
+<link rel="shortcut icon" href="Assets/images/favicon.ico">
 <link href="Assets/css/bootstrap-3.1.1.min.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="Assets/js/jquery.min.js"></script>
@@ -118,8 +113,6 @@ require_once('layout/header.php');
 		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3279847.2716062404!2d145.46948275!3d-36.60289065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad4314b7e18954f%3A0x5a4efce2be829534!2sVictoria%2C+Australia!5e0!3m2!1sen!2sin!4v1443674224626" width="100%" height="" frameborder="0" style="border:0" allowfullscreen></iframe>
 	</div>
 <!--//map-->
-
 <?php require_once('layout/footer.php');?>
-
 	</body>
 </html>

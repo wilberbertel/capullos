@@ -1,8 +1,10 @@
 <?php //headerAdmin($data);
 require_once("../includes/load.php");
-//require_once("../includes/functions.php");
-
 require_once("layoutAdmin/header_admin.php") ;
+$user = current_user();
+if (!$session->isUserLoggedIn(true) || validatePermition($user['type'])==0 || validateStatus($user['status'])==0){
+  redirect('../index.php', false);
+}
 $occasions = allOccasionss();
 $categories = allCategories();
 $i=1;

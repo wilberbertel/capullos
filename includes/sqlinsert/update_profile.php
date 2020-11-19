@@ -17,9 +17,9 @@ if(isset($_POST['idEdit']) && isset($_POST['namesEdit']) &&  isset($_POST['lasNa
                  where id_users='".$_POST['idEdit']."'");
 
                  $session->msg('s',"Datos actualizados exitosamente. ");
-                 redirect('../../admin/profile.php', false);
+                 redirect('../../profile.php', false);
 }else{
     $session->msg('d', "No se actualizo  los datos. ");
-    redirect('../../admin/profile.php', false);
+    redirect('../../profile.php', false);
 }
 ?>

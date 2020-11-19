@@ -1,8 +1,21 @@
 <?php
 require_once("includes/load.php");
-$ultimos = allProducts(5);
-$categories = allCategories();
-$occasions = allOccasionsByCategory();
+$existeCategory = existCategory($_GET['name']);
+if ($existeCategory['total']<1 ) {
+	$session->msg('d', "No hay categoria  con ese nombre");
+	redirect('error.php', false);
+}else{  
+    if (isset($_GET['name']) && $_GET['name']!="") {
+        $ultimos = allProducts(5);
+        $categories = allCategories();
+        $occasions = allOccasionsByCategory();
+		$productoPorCategory = productForCategory($_GET['name']);
+		
+    } else {
+        $session->msg('d', "No hay categoria con ese nombre");
+        redirect('error.php', false);
+    }
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,6 +25,7 @@ $occasions = allOccasionsByCategory();
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="Assets/js/jquery.min.js"></script>
 <link rel="shortcut icon" href="Assets/images/favicon.ico">
+<link rel="stylesheet" type="text/css" href="Assets/css/myStyle.css">
 <!-- Custom Theme files -->
 <!--theme-style-->
 <link href="Assets/css/style.css" rel="stylesheet" type="text/css" media="all" />	
@@ -54,36 +68,36 @@ require_once('layout/header.php');
     <!--content-->
 <div class="products">
 	<div class="container">
-		<h2>Todos los productos</h2>
+	<h2>Productos  de la categoria: <?php echo $_GET['name']?></h2>
 		<div class="col-md-9">
 		<?php 
-				 $limite = 12;//productos por pagina
-				 $totalQuery = countProducts();
-				 $totalBotones = round($totalQuery['total'] /$limite);  
-				 if(isset($_GET['limite'])){
-					$resultado = allProducts2($_GET['limite'],$limite);
-				  }else{
-					$resultado = allProducts($limite);
-				  }
-			foreach ($resultado as  $productos) : ?>
+			$cont = 0;
+			foreach ($productoPorCategory  as  $productos) : $cont++;  ?>
 			
-				<div class="col-md-3  animated wow fadeInLeft" data-wow-delay=".5s">
-					<div class="col-md1 simpleCart_shelfItem">
-						<a href="single.php?id_product=<?php echo $productos['id_product'];  ?>">
+			<div class="col-md-3  animated wow fadeInLeft" data-wow-delay=".5s">
+					<div class="col-md1 simpleCart_shelfItem">		
 							<img class="img-responsive" src="uploads/product/<?php echo $productos['image_product']; ?>" alt="" />
-						</a>
-						<h3><a href="single.php?id_product=<?php echo $productos['id_product'];  ?>"><?php echo $productos['namep']; ?></a></h3>
+						<h3><?php echo $productos['namep']; ?></a></h3>
 						<div class="price">
-								<h5 class="item_price">$ <?php echo $productos['price']; ?> COP</h5>
-								<a href="single.php?id_product=<?php echo numberCOP($productos['id_product']);  ?>" class="">Ver detalles</a>
+						<form action="single.php" method="post">
+						<input type="hidden" name="id_product"  id="id_product" class="form-control"  value="<?php echo $productos['id_product'];?>">
+
+								<h5 class="item_price">$COP <?php echo numberCOP($productos['price']); ?></h5>
+								<!--<a  style="cursor:pointer;" type="submit" class="enviar"  data-id="<?php echo $productos['id_product'];?>"
+								
+								>Ver detalles</a>-->
+								<button type="submit"  class="button buttonVerDetalles">Ver Detalles</button> 
 								<div class="clearfix"> </div>
+								</form>
 						</div>
 					</div>
 					<br>
 				</div>	
-				
-				<?php endforeach; ?>
-				
+				<?php endforeach; 
+					if($cont==0){
+					echo '<h2>No hay productos  de esta categoria</h2>';
+					echo"<a class='acount-btn' href='javascript:history.back()'>Volver atras</a>";
+				}?>
 		
 	</div>
 
@@ -98,7 +112,7 @@ require_once('layout/header.php');
 							
 								<ul class="cute">
 								<?php foreach ($occasions as  $occasiones) :
-                                if ($occasiones['name'] ==  $categorias['name']) {
+                                if ($occasiones['category'] ==  $categorias['id_category']) {
                                     ?>
 									<li class="subitem1"><a href="products_occasions.php?name=<?php echo $occasiones['name_ocaciones']?>"><?php echo $occasiones['name_ocaciones']?></a></li>
 									<?php
@@ -131,17 +145,21 @@ require_once('layout/header.php');
 						</script>
 
 
-				<div class="product-bottom">
+		<div class="product-bottom">
 						<h3 class="cate">Ultimos Productos</h3>
 					<?php	foreach ($ultimos as  $productos) : ?>
+						<form action="single.php" method="post">
+						<input type="hidden" name="id_product"  id="id_product" class="form-control"  value="<?php echo $productos['id_product'];?>">
+
 					<div class="product-go">
 						<div class=" fashion-grid">
-							<a href="single.php?id_product=<?php echo $productos['id_product'];  ?>"><img class="img-responsive " src="uploads/product/<?php echo $productos['image_product']; ?>" alt=""></a>	
+						<button type="submit"  class=""><img class="img-responsive " src="uploads/product/<?php echo $productos['image_product']; ?>" alt=""></a>	
 						</div>
+						</form>
 						<div class=" fashion-grid1">
-							<h6 class="best2"><a href="single.php?id_product=<?php echo $productos['id_product'];  ?>" ><?php echo $productos['namep']; ?></a></h6>
+							<h6 class="best2"><?php echo $productos['namep']; ?></h6>
 							<h6 class="best2"><?php echo $productos['name']; ?></h6>
-							<span class=" price-in1"> $ <?php echo numberCOP($productos['price']); ?> COP</span>
+							<span class=" price-in1"> $COP <?php echo numberCOP($productos['price']); ?> </span>
 						</div>	
 						<div class="clearfix"> </div>
 					</div>
@@ -149,36 +167,7 @@ require_once('layout/header.php');
 				</div>						
 			</div>
 		</div>
-		<div class="bs-component col-md-12 text-center">	
-			<div>
-                <ul class="pagination">
-				 
-				<?php 
-                  if(isset($_GET['limite'])){
-                    if ($_GET['limite']>0) {
-					  echo '<li class="page-item "><a class="page-link" href="products.php?limite='.($_GET['limite']-12).'">«</a></li>';
-                    }
-                  }
-                  for ($i=0; $i <$totalBotones ; $i++) { 
-					echo '<li class="page-item "><a class="page-link"  href="products.php?limite='.($i*12).'">'.($i+1).'</a></li>';
-                  }
-                  if(isset($_GET['limite'])){
-                    if($_GET['limite']+12<$totalBotones*12){
-					  echo '
-					  <li class="page-item "><a class="page-link" href="products.php?limite='.($_GET['limite']+12).'">»</a></li>';
-                    }
-                  }else{
-					echo '
-					<li class="page-item "><a class="page-link" href="products.php?limite=12">»</a></li>';
-                  }
-                  ?>
-                </ul>
-            </div>
-			</div>
-
-
-			</div>	
-		</div>			
+				
 	</div>
 </div>
 		<div class="clearfix"> </div>

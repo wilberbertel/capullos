@@ -20,14 +20,18 @@ if(isset($_SESSION['carritoCapullos']) ){
       }else{
         //NO ESTABA EL REGISTRO
 	  $nombre = "";
-	  $descripcion = "";
-	  $mensaje = "";
+    $descripcion = "";
+    $de ="";
+    $mensaje = "";
+    $para="";
       $precio = "";
       $imagen = "";
 	  $res =  searchProduct($_POST['id_product']);
       $nombre = $res['namep'];
-	  $descripcion = $res['description'];
-	  $mensaje = $_POST['mensaje'];
+    $descripcion = $res['description'];
+    $de = $_POST['de'];
+    $mensaje = $_POST['mensaje'];
+    $para= $_POST['para'];
 	  $precio =$res['price'];
 	  $imagen = $res['image_product'];
 
@@ -35,7 +39,9 @@ if(isset($_SESSION['carritoCapullos']) ){
 		'Id'=>$_POST['id_product'],
 		'Nombre'=>$nombre,
 		'Decripcion'=>$descripcion,
-		'Mensaje'=>$mensaje,
+    'De'=>$de,
+    'Mensaje'=>$mensaje,
+    'Para'=>$para,
 		'Precio'=>$precio,
 		'Imagen'=>$imagen,
 		'Cantidad'=>1
@@ -49,22 +55,28 @@ if(isset($_SESSION['carritoCapullos']) ){
   if (isset($_POST['id_product'])) {
 	$nombre = "";
 	$descripcion ="";
-	$mensaje = "";
+  $de ="";
+  $mensaje = "";
+  $para="";
     $precio = "";
     $imagen = "";
     $res =  searchProduct($_POST['id_product']);
  
 	$nombre = $res['namep'];
 	$descripcion = $res['description'];
-	$mensaje = $_POST['mensaje'];
+  $de = $_POST['de'];
+  $mensaje = $_POST['mensaje'];
+  $para= $_POST['para'];
 	$precio =$res['price'];
 	$imagen = $res['image_product'];
 
     $arreglo[] = array(
       'Id'=>$_POST['id_product'],
 	  'Nombre'=>$nombre,
-	  'Decripcion'=>$descripcion,
-	  'Mensaje'=>$mensaje,
+    'Decripcion'=>$descripcion,
+    'De'=>$de,
+    'Mensaje'=>$mensaje,
+    'Para'=>$para,
       'Precio'=>$precio,
       'Imagen'=>$imagen,
       'Cantidad'=>1
@@ -78,7 +90,7 @@ if(isset($_SESSION['carritoCapullos']) ){
 <!DOCTYPE html>
 <html>
 <head>
-<title> Carrito de compras :: Capullos</title>
+<title> Carrito de comptras :: Capullos</title>
 <link href="Assets/css/bootstrap-3.1.1.min.css" rel='stylesheet' type='text/css' />
 <link rel="shortcut icon" href="Assets/images/favicon.ico">
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -123,13 +135,15 @@ require_once('layout/header.php');
 		</div>
 	</div>
 <!---->
+<?php 
+if (isset($_SESSION['carritoCapullos'])) {
+?>
 <div class="container">
 	<div class="check-out">
 		<h2>Carrito</h2>
     	    <table >
 		  <tr>
-			<th>Nombre/Descripcion</th>
-			<th>Cantidad</th>		
+      <th>Nombre/Descripcion</th>	
 			<th>Precio</th>		
 			<th>Sub Total</th>
 			<th>Eliminar</th>
@@ -137,7 +151,7 @@ require_once('layout/header.php');
 		  <tr>
 		  <?php
                   $total = 0;
-                  if (isset($_SESSION['carritoCapullos'])) {
+                  
                     $arreglocarritoCapullos = $_SESSION['carritoCapullos'];
                       for ($i=0; $i < count($arreglocarritoCapullos); $i++) {  
                         $total = $total + ($arreglocarritoCapullos[$i]['Precio'] * $arreglocarritoCapullos[$i]['Cantidad'])  ;
@@ -149,51 +163,51 @@ require_once('layout/header.php');
 			
 			</div>
 			<div class="clearfix"> </div></td>
-			<td class="check">  
-                          <button class="btn btn-outline-primary js-btn-minus btnIncremental" type="button">&minus;</button>
-                        
-                        <input type="text" class="form-control text-center txtCantidad"
-                        data-precio ="<?php echo $arreglocarritoCapullos[$i]['Precio'];?>" 
-                        data-id ="<?php echo $arreglocarritoCapullos[$i]['Id'];?>"
-                        value="<?php echo $arreglocarritoCapullos[$i]['Cantidad'];?>"
-                          placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                      
-                          <button class="btn btn-outline-primary js-btn-plus btnIncremental" type="button">&plus;</button>
-                        </td>		
-			<td>$<?php echo numberCOP($arreglocarritoCapullos[$i]['Precio']);?></td>
-			<td>$<?php echo numberCOP($arreglocarritoCapullos[$i]['Precio']);?></td>
+				
+			<td>$COP <?php echo numberCOP($arreglocarritoCapullos[$i]['Precio']);?></td>
+      <td class="cant<?php echo $arreglocarritoCapullos[$i]['Id'];?>">
+      $COP <?php echo numberCOP($arreglocarritoCapullos[$i]['Precio']*$arreglocarritoCapullos[$i]['Cantidad']);?></td>
 			<td><a href="#" class="to-buy btnEliminar" data-id="<?php echo $arreglocarritoCapullos[$i]['Id'];?>">X</a></td>
 		  </tr>
+		 
+		  <?php }  ?>
 		  <th></th>		
 			<th></th>
 			<th></th>
-		  <?php } } ?>
-		  <td><h2>Total: $<?php echo numberCOP($total);?></h2></td>
+		  <td><h2>Total: $COP <?php echo numberCOP($total);?></h2></td>
 	</table>
-	<a href="#" class="to-buy">Proceder con la compra $<?php echo numberCOP($total);?></a>
-	<div class="clearfix"> </div>
+	<a href="billing.php" class="to-buy">Proceder con la compra $<?php echo numberCOP($total);?></a>
+  <div class="clearfix"> </div>
+  <?php }else{
+  	echo	"<div class='container'>
+    <div class='check-out'>
+      <h2>Aun no hay productos en el carrito</h2>
+      <a class='to-buy' href='products.php'>Ir a ver productos</a>
+      </div>
+      </div>";
+}  ?>
     </div>
 </div>
+
 <?php require_once('layout/footer.php');?>
 <script>
     $(document).ready(function(){
       $(".btnEliminar").click(function(event){
         event.preventDefault();
         var id = $(this).data('id');
-		
         var boton = $(this);
+      
         $.ajax({
           method: 'POST',
-          url: './includes/sqlinsert/eliminarCarrito.php',
+          url: 'eliminarCarrito.php',
           data:{
             id:id
           }
         }).done(function(respuesta){
           boton.parent('td').parent('tr').remove();
+          location.reload();
         });
       });
-    
-
      
     });
   </script>
