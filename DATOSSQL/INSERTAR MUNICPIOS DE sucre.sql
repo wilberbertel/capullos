@@ -1,0 +1,26 @@
+INSERT INTO city  (name_city,status,state_id) VALUES ('Sincelejo','INACTIVE',37);
+INSERT INTO city  (name_city,status,state_id) VALUES ('Buenavista','INACTIVE',37);
+INSERT INTO city  (name_city,status,state_id) VALUES ('Caimito','INACTIVE',37);
+INSERT INTO city  (name_city,status,state_id) VALUES ('Chalán','INACTIVE',37);
+INSERT INTO city  (name_city,status,state_id) VALUES ('Colosó','INACTIVE',37);
+INSERT INTO city  (name_city,status,state_id) VALUES ('Corozal','INACTIVE',37);
+INSERT INTO city  (name_city,status,state_id) VALUES ('Coveñas','INACTIVE',37);
+INSERT INTO city  (name_city,status,state_id) VALUES ('El Roble','INACTIVE',37);
+INSERT INTO city  (name_city,status,state_id) VALUES ('Galeras','INACTIVE',37);
+INSERT INTO city  (name_city,status,state_id) VALUES ('Guaranda','INACTIVE',37);
+INSERT INTO city  (name_city,status,state_id) VALUES ('La Unión','INACTIVE',37);
+INSERT INTO city  (name_city,status,state_id) VALUES ('Los Palmitos','INACTIVE',37);
+INSERT INTO city  (name_city,status,state_id) VALUES ('Majagual','INACTIVE',37);
+INSERT INTO city  (name_city,status,state_id) VALUES ('Morroa','INACTIVE',37);
+INSERT INTO city  (name_city,status,state_id) VALUES ('Ovejas','INACTIVE',37);
+INSERT INTO city  (name_city,status,state_id) VALUES ('Palmito','INACTIVE',37);
+INSERT INTO city  (name_city,status,state_id) VALUES ('Sampués','INACTIVE',37);
+INSERT INTO city  (name_city,status,state_id) VALUES ('San Benito Abad','INACTIVE',37);
+INSERT INTO city  (name_city,status,state_id) VALUES ('San Juan de Betulia','INACTIVE',37);
+INSERT INTO city  (name_city,status,state_id) VALUES ('San Marcos','INACTIVE',37);
+INSERT INTO city  (name_city,status,state_id) VALUES ('San Onofre','INACTIVE',37);
+INSERT INTO city  (name_city,status,state_id) VALUES ('Santiago de Tolú','INACTIVE',37);
+INSERT INTO city  (name_city,status,state_id) VALUES ('Sincé','INACTIVE',37);
+INSERT INTO city  (name_city,status,state_id) VALUES ('Sucre','INACTIVE',37);
+INSERT INTO city  (name_city,status,state_id) VALUES ('Tolúviejo','INACTIVE',37);
+
