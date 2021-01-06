@@ -7,16 +7,28 @@ if (!$session->isUserLoggedIn(true) || validatePermition($user['type']) == 0 || 
 <?php if ($session->isUserLoggedIn(true)) : ?>
     <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
     <aside class="app-sidebar">
-        <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="Assets/images/avatar.png" alt="User Image">
+        <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="../uploads/users/<?php echo $user['image_profile']; ?>" alt="User Image">
             <div>
-                <p class="app-sidebar__user-name"><?php echo $user['name'], $user['surname'] ?></p>
+                <p class="app-sidebar__user-name"><?php echo $user['name']; ?></p>
                 <p class="app-sidebar__user-designation"><?php echo $user['type'] ?></p>
             </div>
         </div>
         <ul class="app-menu">
             <li><a class="app-menu__item" href="dashboard.php"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
-            <li><a class="app-menu__item" href="products.php"><i class="app-menu__icon fa fa-archive" aria-hidden="true"></i><span class="app-menu__label">Productos</span></a></li>
-            <li><a class="app-menu__item" href=""><i class="app-menu__icon fa fa-shopping-cart" aria-hidden="true"></i><span class="app-menu__label">Pedidos</span></a></li>
+            <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-archive" aria-hidden="true"></i><span class="app-menu__label">Productos</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a class="treeview-item" href="products.php"><i class="icon fa fa-circle-o"></i>Productos</a></li>
+                    <li><a class="treeview-item" href="additions.php"><i class="icon fa fa-circle-o"></i>Adiciones</a></li>  
+
+                </ul>
+            </li>
+            
+            <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-cart-arrow-down" aria-hidden="true"></i><span class="app-menu__label">Pedidos</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a class="treeview-item" href="pendingOrders.php"><i class="icon fa fa-circle-o"></i>Pedidos Pendientes</a></li>
+                    <li><a class="treeview-item" href="completeOrders.php"><i class="icon fa fa-circle-o"></i>Pedidos Completado</a></li>
+                </ul>
+            </li>
 
             <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-list-alt" aria-hidden="true"></i><span class="app-menu__label"> Categorias / Ocaciones </span><i class="treeview-indicator fa fa-angle-right"></i></a>
                 <ul class="treeview-menu">
@@ -35,7 +47,14 @@ if (!$session->isUserLoggedIn(true) || validatePermition($user['type']) == 0 || 
                     </ul>
                 </li>
             <?php } ?>
-
+            <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-pie-chart" aria-hidden="true"></i><span class="app-menu__label">Reporte de ventas</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a class="treeview-item" href="reportMonth.php"><i class="icon fa fa-circle-o"></i>Ventas por mes</a></li>
+                    <li><a class="treeview-item" href="reportYear.php"><i class="icon fa fa-circle-o"></i>Ventas por año</a></li>
+                    <li><a class="treeview-item" href="reportProduct.php"><i class="icon fa fa-circle-o"></i>Ventas por producto</a></li>
+                    
+                </ul>
+            </li>
             <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-list-alt" aria-hidden="true"></i><span class="app-menu__label"> Pais,Municipio,Ciudad de envio </span><i class="treeview-indicator fa fa-angle-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a class="treeview-item" href="shipping_city.php"><i class="icon fa fa-circle-o"></i>Agregar pais,municipio,ciudad</a></li>
@@ -44,7 +63,7 @@ if (!$session->isUserLoggedIn(true) || validatePermition($user['type']) == 0 || 
                     <li><a class="treeview-item" href="city.php"><i class="icon fa fa-circle-o"></i>Lista de ciudades</a></li>
                 </ul>
             </li>
-            <li><a class="app-menu__item" href=""><i class="app-menu__icon fa fa-sign-out" aria-hidden="true"></i><span class="app-menu__label">Logout</span></a></li>
+            <li><a class="app-menu__item" href="manageData.php"><i class="app-menu__icon fa fa-info-circle" aria-hidden="true"></i><span class="app-menu__label">Admin Datos Tienda</span></a></li>
         </ul>
     </aside>
 <?php endif; ?>

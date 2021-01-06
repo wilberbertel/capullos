@@ -2,9 +2,10 @@
 //headerAdmin($data);
 require_once("../includes/load.php");
 $user = current_user();
-$user = users($user['id_users']);
+if (!$session->isUserLoggedIn(true) || validatePermition($user['type']) == 0 || validateStatus($user['status']) == 0) {
+    redirect('../index.php', false);
+}
 ?>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -29,10 +30,10 @@ $user = users($user['id_users']);
             <div class="lock-box"><img class="rounded-circle user-image" src="../uploads/users/<?php echo $user['image_profile']; ?>">
                 <h4 class="text-center user-name"><?php echo $user['name'] . " " . $user['surname']; ?></h4>
                 <p class="text-center text-muted"><?php echo $user['type']; ?></p>
-                <form class="unlock-form" action="index.html">
+                <form class="unlock-form" action="../includes/sqlinsert/restorePassword.php" method="post">
                     <div class="form-group">
                         <label class="control-label">CORREO</label>
-                        <input class="form-control" type="email" placeholder="Correo electronico" autofocus>
+                        <input class="form-control" type="email" placeholder="Correo electronico" name="email"  id="email" autofocus>
                     </div>
                     <div class="form-group btn-container">
                         <button class="btn btn-primary btn-block" type="submit"><i class="fa fa-unlock fa-lg"></i>Recuperar cuenta </button>

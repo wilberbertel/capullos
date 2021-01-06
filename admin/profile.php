@@ -28,6 +28,7 @@ $user = users($user['id_users']);
                 </ul>
             </div>
         </div>
+        <?php echo display_msg($msg); ?>
 
         <div class="col-md-9">
             <div class="tab-content">
@@ -40,7 +41,6 @@ $user = users($user['id_users']);
                             </div>
                         </div>
                         <div class="post-content">
-<?php echo display_msg($msg); ?>
                             <div class="tile user-settings">
                                 <form>
                                     <div class="row mb-4">
@@ -113,7 +113,7 @@ $user = users($user['id_users']);
                                     <img class="user-img"  style="height: 60px; width: 10%; display: block;"  src="../uploads/users/<?php echo $user['image_profile']; ?>">
 
                                     <button title="Editar imagen" type="button" class="btn btn-primary btnEditarImagen" id="editaImagen"
-                                            data-id="<?php echo $user['idusers']; ?>"
+                                            data-id="<?php echo $user['id_users']; ?>"
                                             data-imagen="<?php echo $user['image_profile']; ?>"
                                             data-toggle="modal" data-target="#modalEditarImagenProfile"
                                             > <i class="fa fa-pencil-square-o" ></i> Editar</button>   

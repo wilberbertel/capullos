@@ -2,14 +2,14 @@
 
 include "../load.php";
 
-if (isset($_POST['idEdit']) && isset($_POST['nombreEdit']) && isset($_POST['descripcionEdit']) && isset($_POST['precioEdit']) && isset($_POST['statusEdit']) && isset($_POST['categoriaEdit']) && isset($_POST['ofertaEdit'])) {
+if (isset($_POST['idEdit']) && isset($_POST['nombreEdit']) && isset($_POST['descripcionEdit']) && isset($_POST['precioEdit']) && isset($_POST['statusEdit']) &&  isset($_POST['categoriaEdit']) && isset($_POST['ocacionesEdit']) ) {
 
     $db->query("update product set namep='" . remove_junk($_POST['nombreEdit']) . "',
                 description='" . remove_junk($_POST['descripcionEdit']) . "',
                 price='" . remove_junk($_POST['precioEdit']) . "',
                 category='" . remove_junk($_POST['categoriaEdit']) . "',
-                status='" . remove_junk($_POST['statusEdit']) . "',
-                offer='" . remove_junk($_POST['ofertaEdit']) . "'
+                occasions='" . remove_junk($_POST['ocacionesEdit']) . "', 
+                status='" . remove_junk($_POST['statusEdit']) . "'            
                  where id_product='" . $_POST['idEdit'] . "'");
 
     $session->msg('s', "Producto actualizado exitosamente. ");

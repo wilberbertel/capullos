@@ -7,5 +7,5 @@ if (isset($_POST['id'])) {
     echo 'listo';
 } else {
     $session->msg('d', "No se elimino  el usuario. " . $_POST['id']);
+    redirect('../../admin/config_users.php', false);
 }
-?>

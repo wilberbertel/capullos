@@ -48,8 +48,6 @@ require_once("includes/load.php");
         <!-- //animation-effect -->
     </head>
     <body>
-
-
         <?php
         require_once('layout/header.php');
         ?>
@@ -61,11 +59,11 @@ require_once("includes/load.php");
                     <div class="callbacks_container">
                         <ul class="rslides" id="slider">
                             <li>
-                                <img src="Assets/images/portadaflor.png" alt="">
+                                <img src="Assets/images/portadaflor1.png" alt="">
                                 <div class="tes animated wow fadeInUp animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
-                                    <h2>Floristeria</h2>
+                                    <h2>Capullos</h2>
 
-                                    <h3>Capullos</h3>
+                                    <h2>Floristería </h2>
 
                                     <h4>Recuerdos que perduran</h4>
                                 </div>
@@ -76,89 +74,8 @@ require_once("includes/load.php");
                 </div>
             </div>
             <div class="clearfix"> </div>
-        </div>
-        <!--//banner-->
-
-        <!--content-->
+        </div>  
         <br>
-        <div class="con-tp">
-            <div class="container">
-                <div class="col-md-4 con-tp-lft animated wow fadeInLeft" data-wow-delay=".5s">
-                    <a href="products.html">
-                        <div class="content-grid-effect slow-zoom vertical">
-                            <div class="img-box"><img src="Assets/images/6.jpg" alt="image" class="img-responsive zoom-img"></div>
-                            <div class="info-box">
-                                <div class="info-content simpleCart_shelfItem">
-                                    <h4>30%offer</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-4 con-tp-lft animated wow fadeInDown animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInDown;">
-                    <a href="products.html">			
-                        <div class="content-grid-effect slow-zoom vertical">
-                            <div class="img-box"><img src="Assets/images/10.jpg" alt="image" class="img-responsive zoom-img"></div>
-                            <div class="info-box">
-                                <div class="info-content simpleCart_shelfItem">
-                                    <h4>45%offer</h4>	
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-4 con-tp-lft animated wow fadeInRight" data-wow-delay=".5s">
-                    <a href="products.html">
-                        <div class="content-grid-effect slow-zoom vertical">
-                            <div class="img-box"><img src="Assets/images/9.jpg" alt="image" class="img-responsive zoom-img"></div>
-                            <div class="info-box">
-                                <div class="info-content simpleCart_shelfItem">
-                                    <h4>50%offer</h4>	
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="clearfix"></div>
-                <div class="col-md-4 con-tp-lft animated wow fadeInLeft" data-wow-delay=".5s">
-                    <a href="products.html">
-                        <div class="content-grid-effect slow-zoom vertical">
-                            <div class="img-box"><img src="Assets/images/12.jpg" alt="image" class="img-responsive zoom-img"></div>
-                            <div class="info-box">
-                                <div class="info-content simpleCart_shelfItem">
-                                    <h4>25%offer</h4>	
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-4 con-tp-lft animated wow fadeInUp animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
-                    <a href="products.html">
-                        <div class="content-grid-effect slow-zoom vertical">
-                            <div class="img-box"><img src="Assets/images/13.jpg" alt="image" class="img-responsive zoom-img"></div>
-                            <div class="info-box">
-                                <div class="info-content simpleCart_shelfItem">
-                                    <h4>50%offer</h4>	
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-4 con-tp-lft animated wow fadeInRight" data-wow-delay=".5s">
-                    <a href="products.html">
-                        <div class="content-grid-effect slow-zoom vertical">
-                            <div class="img-box"><img src="Assets/images/14.jpg" alt="image" class="img-responsive zoom-img"></div>
-                            <div class="info-box">
-                                <div class="info-content simpleCart_shelfItem">
-                                    <h4>35%offer</h4>	
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-        </div>
         <!--//content-->
         <div class="container">
             <div class="c-btm">
@@ -175,10 +92,10 @@ require_once("includes/load.php");
                         }
                         foreach ($resultado as $productos) :
                             ?>
-                            <div class="col-md-3  animated wow fadeInLeft" data-wow-delay=".5s">
+                            <div class="col-md-3 animated wow fadeInLeft" data-wow-delay=".5s">
                                 <div class="col-md1 simpleCart_shelfItem">
 
-                                    <img class="img-responsive" src="uploads/product/<?php echo $productos['image_product']; ?>" alt="" />
+                                    <img class="img-responsive"  style="height: 300px; width: 100%; display: block;" src="uploads/product/<?php echo $productos['image_product']; ?>" alt="" />
                                     </a>
 
                                     <h3><?php echo $productos['namep']; ?></a></h3>

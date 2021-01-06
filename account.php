@@ -6,9 +6,10 @@ require_once("includes/load.php");
     <head>
         <title>Iniciar sesion| Capullos</title>
         <link href="Assets/css/bootstrap-3.1.1.min.css" rel='stylesheet' type='text/css' />
-        <link rel="shortcut icon" href="Assets/images/favicon.ico">
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="jAssets/s/jquery.min.js"></script>
+        <script src="Assets/js/jquery.min.js"></script>
+        <link rel="shortcut icon" href="Assets/images/favicon.ico">
+        <link rel="stylesheet" type="text/css" href="Assets/css/myStyle.css">
         <!-- Custom Theme files -->
         <!--theme-style-->
         <link href="Assets/css/style.css" rel="stylesheet" type="text/css" media="all" />	
@@ -18,6 +19,7 @@ require_once("includes/load.php");
         <meta name="keywords" content="Youth Fashion Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
               Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
         <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+        <link href='//fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
         <!-- start menu -->
         <script src="Assets/js/bootstrap.min.js"></script>
@@ -50,7 +52,7 @@ require_once("includes/load.php");
         </div>
         <div class="account">
             <div class="container">
-                <h2>Iniciar sesion</h2>
+                <h2>Iniciar sesión</h2>
                 <?php echo display_msg($msg); ?>
                 <div class="account_grid">
                     <div class="col-md-6 login-right">
@@ -59,10 +61,10 @@ require_once("includes/load.php");
                             <span>Dirección de correo electrónico</span>
                             <input type="text" name="email" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" required> 
 
-                            <span>Password</span>
+                            <span>Contraseña</span>
                             <input type="password" name="password" required> 
                             <div class="word-in">
-                                <a class="forgot" href="#">¿Olvidó su contraseña?</a>
+                                <a class="forgot" href="resetPassword.php">¿Olvidó su contraseña?</a>
                                 <input type="submit" value="Ingresar">
                             </div>
                         </form>

@@ -46,16 +46,7 @@ if (isset($_POST['id_product']) /* && $_POST['id_product']!="" */) {
         <script src="Assets/js/simpleCart.min.js"></script>
         <!-- slide -->
         <script src="Assets/js/responsiveslides.min.js"></script>
-        <script>
-     $(function () {
-         $("#slider").responsiveSlides({
-             auto: true,
-             speed: 500,
-             namespace: "callbacks",
-             pager: true,
-         });
-     });
-        </script>
+   
 
     </head>
     <body>
@@ -94,21 +85,26 @@ if (isset($_POST['id_product']) /* && $_POST['id_product']!="" */) {
                         <div class="single-para simpleCart_shelfItem">
                             <h2><?php echo $product['namep']; ?></h2>
                             <p><?php echo $product['description']; ?></p>
-
+                         
+                  
                             <div class="star-on">
-                               <!-- <ul>
+                                <ul>
                                     <li><a href="#"><i class="glyphicon glyphicon-star"> </i></a></li>
                                     <li><a href="#"><i class="glyphicon glyphicon-star"> </i></a></li>
                                     <li><a href="#"><i class="glyphicon glyphicon-star"> </i></a></li>
                                     <li><a href="#"><i class="glyphicon glyphicon-star"> </i></a></li>
                                     <li><a href="#"><i class="glyphicon glyphicon-star"> </i></a></li>
-                                </ul>-->
+                                </ul>
                                
                                 <div class="review">
-                                    <h4><a href="products_occasions.php?name=<?php echo $product['name_ocaciones'] ?>">Ocacion: <?php echo $product['name_ocaciones']; ?></a></h4>
-                                    <div class="review">								
-									<a href="#">  <?php echo $product['secondary_sentences'] ?></a>
-								</div>
+                                    <h4><a href="productsOccasions.php?name=<?php echo $product['name_ocaciones'] ?>">Ocacion: <?php echo $product['name_ocaciones']; ?></a></h4>
+                                   
+                                   								
+									<!--<a href="#">  <?php //echo $product['secondary_sentences'] ?></a>-->
+                                    <p><?php echo $product['secondary_sentences']; ?></p>
+                              
+                                
+								
                                 </div>
                                
                                 <div class="clearfix"><br> </div>
@@ -205,7 +201,7 @@ if (isset($_POST['id_product']) /* && $_POST['id_product']!="" */) {
                             <div class="col-md-4 col-md4">
 
                                 <div class="col-md1 simpleCart_shelfItem">
-                                    <img class="img-responsive" src="uploads/product/<?php echo $occasionsByoccasions['image_product']; ?>" alt="" />						
+                                    <img class="img-responsive"  style="height: 300px; width: 100%; display: block;" src="uploads/product/<?php echo $occasionsByoccasions['image_product']; ?>" alt="" />						
                                     <h3><?php echo $occasionsByoccasions['namep']; ?></h3>
                                     <form action="single.php" method="post">
                                         <input type="hidden" name="id_product"  id="id_product" class="form-control"  value="<?php echo$occasionsByoccasions['id_product']; ?>">
@@ -214,7 +210,6 @@ if (isset($_POST['id_product']) /* && $_POST['id_product']!="" */) {
                                             <h5 class="item_price">$COP <?php echo numberCOP($occasionsByoccasions['price']); ?></h5>
                                             <button type="submit"  class="button buttonVerDetalles">Ver Detalles</button> 
                                             <div class="clearfix"> </div>
-
                                         </div>
                                     </form>
                                 </div>
@@ -227,49 +222,17 @@ if (isset($_POST['id_product']) /* && $_POST['id_product']!="" */) {
                         <div class="clearfix"> </div>
                     </div>		
                 </div>
+
                 <div class="col-md-3 product-bottom">
                     <!--categories-->
                     <div class=" rsidebar span_1_of_left">
-                        <h3 class="cate">Ocacion por categorias</h3>
-<?php foreach ($categories as $categorias) : ?>
+                        <h3 class="cate">Categorías</h3>
+                        <?php foreach ($categories as $categorias) : ?>
                             <ul class="menu-drop">
-                                <li class="item1"><a href="products_category.php"><?php echo $categorias['name'] ?> </a>					
-                                    <ul class="cute">
-    <?php
-    foreach ($occasions as $occasiones) :
-        if ($occasiones['category'] == $categorias['id_category']) {
-            ?>
-                                                <li class="subitem1"><a href="products_occasions.php?name=<?php echo $occasiones['name_ocaciones'] ?>"><?php echo $occasiones['name_ocaciones'] ?></a></li>
-                                                <?php
-                                            }
-                                        endforeach;
-                                        ?>								
-                                    </ul>
-                                </li>
+                                <li class="item1"><a href="productsCategory.php?name=<?php echo $categorias['name'] ?>"><?php echo $categorias['name'] ?> </a>  </li>
                             </ul>
-                        <?php endforeach; ?>
+                            <?php endforeach; ?>
                     </div>
-
-                    <!--initiate accordion-->
-                    <script type="text/javascript">
-                        $(function () {
-                            var menu_ul = $('.menu-drop > li > ul'),
-                                    menu_a = $('.menu-drop > li > a');
-                            menu_ul.hide();
-                            menu_a.click(function (e) {
-                                e.preventDefault();
-                                if (!$(this).hasClass('active')) {
-                                    menu_a.removeClass('active');
-                                    menu_ul.filter(':visible').slideUp('normal');
-                                    $(this).addClass('active').next().stop(true, true).slideDown('normal');
-                                } else {
-                                    $(this).removeClass('active');
-                                    $(this).next().stop(true, true).slideUp('normal');
-                                }
-                            });
-
-                        });
-                    </script>
 
                     <div class="product-bottom">
                         <h3 class="cate">Ultimos Productos</h3>
@@ -279,7 +242,7 @@ if (isset($_POST['id_product']) /* && $_POST['id_product']!="" */) {
 
                                 <div class="product-go">
                                     <div class=" fashion-grid">
-                                        <button type="submit"  class=""><img class="img-responsive " src="uploads/product/<?php echo $productos['image_product']; ?>" alt=""></a>	
+                                        <button type="submit"    style="border: none; outline: none;" class=""><img class="img-responsive " src="uploads/product/<?php echo $productos['image_product']; ?>" alt=""></a>	
                                             </div>
                                             </form>
                                             <div class=" fashion-grid1">
@@ -309,26 +272,7 @@ if (isset($_POST['id_product']) /* && $_POST['id_product']!="" */) {
                                                         $(".memenu").memenu();
                                                     });</script>
             <script src="Assets/js/simpleCart.min.js"></script>
-            <!--initiate accordion-->
-            <script type="text/javascript">
-                $(function () {
-                    var menu_ul = $('.menu-drop > li > ul'),
-                            menu_a = $('.menu-drop > li > a');
-                    menu_ul.hide();
-                    menu_a.click(function (e) {
-                        e.preventDefault();
-                        if (!$(this).hasClass('active')) {
-                            menu_a.removeClass('active');
-                            menu_ul.filter(':visible').slideUp('normal');
-                            $(this).addClass('active').next().stop(true, true).slideDown('normal');
-                        } else {
-                            $(this).removeClass('active');
-                            $(this).next().stop(true, true).slideUp('normal');
-                        }
-                    });
-
-                });
-            </script>
+          
             <!-- FlexSlider -->
             <script defer src="Assets/js/jquery.flexslider.js"></script>
             <link rel="stylesheet" href="Assets/css/flexslider.css" type="text/css" media="screen" />

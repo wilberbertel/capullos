@@ -2,7 +2,7 @@
 
 include "../load.php";
 
-if (isset($_POST['nombre']) && isset($_POST['descripcion']) && isset($_POST['precio']) && isset($_POST['status']) && isset($_POST['categoria']) && isset($_POST['ocacion']) && isset($_POST['oferta'])  ) {
+if (isset($_POST['nombre']) && isset($_POST['descripcion']) && isset($_POST['precio']) && isset($_POST['status']) && isset($_POST['categoria']) && isset($_POST['ocacion'])  ) {
 $ocaciones= implode(",",$_POST['ocaciones']);
    /* foreach($_POST['ocaciones'] as $selected){
         $ocaciones=+ $selected.",";// Imprime resultados
@@ -18,7 +18,7 @@ $ocaciones= implode(",",$_POST['ocaciones']);
 
     if ($extension == 'jpg' || $extension == 'png' || $extension == 'jpeg') {
         if (move_uploaded_file($_FILES['imagen']['tmp_name'], $carpeta . $nombreFinal)) {
-            $db->query("INSERT INTO product (namep,image_product,description,price,category,occasions,status,offer,secondary_sentences) VALUES (
+            $db->query("INSERT INTO product (namep,image_product,description,price,category,occasions,status,additions,secondary_sentences) VALUES (
                     '" . $_POST['nombre'] . "',
                     '$nombreFinal',
                     '" . $_POST['descripcion'] . "',                   
@@ -26,7 +26,7 @@ $ocaciones= implode(",",$_POST['ocaciones']);
                     '" . $_POST['categoria'] . "',
                     '" . $_POST['ocacion'] . "',
                     '" . $_POST['status'] . "',
-                    '" . $_POST['oferta'] . "',
+                     'NO',
                     '" .  $ocaciones . "'
                 )   ")or die($db->error);
             $session->msg('s', "Producto agregado exitosamente. ");

@@ -6,7 +6,6 @@ if (!$session->isUserLoggedIn(true) || validatePermition($user['type']) == 0 || 
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
         <meta charset="utf-8">
         <meta name="description" content="Tienda Virtual Capullos">
@@ -22,6 +21,28 @@ if (!$session->isUserLoggedIn(true) || validatePermition($user['type']) == 0 || 
         <!-- Font-icon css-->
         <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="../includes/Highcharts-8.1.0/code/highcharts.js"></script>
+<script src="../includes/Highcharts-8.1.0/code/exporting.js"></script>
+<script src="../includes/Highcharts-8.1.0/code/highcharts-3d.js"></script>
+<script src="../includes/Highcharts-8.1.0/code/modules/exporting.js"></script>
+<script src="../includes/Highcharts-8.1.0/code/modules/export-data.js"></script>
+<script src="../includes/Highcharts-8.1.0/code/modules/accessibility.js"></script>
+<script language="Javascript">
+	function imprSelec(nombre) {
+	  var ficha = document.getElementById(nombre);
+	  var ventimp = window.open(' ', 'popimpr');
+    ventimp.document.write( ficha.innerHTML );
+    var css = ventimp.document.createElement("link");
+css.setAttribute("href", "Assets/css/main.css");
+css.setAttribute("rel", "stylesheet");
+css.setAttribute("type", "text/css");
+ventimp.document.head.appendChild(css);
+	  ventimp.document.close();
+	  ventimp.print( );
+	  ventimp.close();
+	}
+	</script>
     </head>
 
     <body class="app sidebar-mini">

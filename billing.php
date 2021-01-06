@@ -58,12 +58,12 @@ $states = allStateActive();
         <div class="account">
             <form action="pay.php" method="POST">
                 <div class="container">
-                    <h2>Iniciar sesion</h2>
+                    <h2>Inicias sesión.</h2>
                     <?php echo display_msg($msg); ?>
                     <?php if ($session->isUserLoggedIn(true)) { ?>
                         <div class="account_grid">
                             <div class="col-md-4 login-right">					
-                                <h4>DATOS DEL COMPRADO</h4>
+                                <h4>DATOS DEL COMPRADOR</h4>
                                 <br>	
                                 <input type="hidden" name="id_user"  id="id_user" class="form-control"  value="<?php echo $user['id_users']; ?>">
 
@@ -87,7 +87,7 @@ $states = allStateActive();
                                 <h4><hr>.</h4>
                                 <hr>
                                 <b>
-                                <h4>DATOS DE ENVIO</h4>
+                                <h4>DATOS DEL ENVIO</h4>
                                 <div class="col-md-12">	
                                     <span>NOMBRES * </span>
                                 <input type="text" name="namesE" required> 
@@ -101,8 +101,8 @@ $states = allStateActive();
                                         <option value="COL" >Colombia</option> 
                                     </select> 
                                     <span>REGIÓN / PROVINCIA *</span>
-                                    <select  style="width:310px;" name="stateE" id="stateE" class="form-control"    required>
-                                   
+                                    <select  style="width:310px;" name="stateE" id="stateE" class="form-control"   required>
+                                    <option value="" >SELECCIONE UN DEPARTAMENTO</option>
                                         <?php foreach ($states as $state): ?>
                                             <option value="<?php echo $state['id']; ?>"><?php echo $state['name_state']; ?></option>
                                         <?php endforeach; ?>
@@ -120,7 +120,7 @@ $states = allStateActive();
                                 </div>
                                 <div class="col-md-12">	
                                 <span>NOTAS DEL PEDIDO (OPCIONAL)</span>
-                                <textarea  style="width:310px;" id="notaE" name="notaE" rows="4" cols="50" required>	</textarea>
+                                <textarea  style="width:310px;" id="notaE" name="notaE" rows="4" cols="50" ></textarea>
                                 </div>
                             </div>	
                         <?php } else { ?>
@@ -154,8 +154,6 @@ $states = allStateActive();
                                     <div class="col-md-12">	
                                     <span>NOMBRES * </span>
                                 <input type="text" name="namesE" required> 
-
-
                                 <span>APELLIDOS *</span>
                                 <input type="text" name="lastNamesE" required> 
 
@@ -183,7 +181,7 @@ $states = allStateActive();
                                 </div>
                                 <div class="col-md-12">	
                                 <span>NOTAS DEL PEDIDO (OPCIONAL)</span>
-                                <textarea  style="width:310px;" id="notaE" name="notaE" rows="4" cols="50" required>	</textarea>
+                                <textarea  style="width:310px;" id="notaE" name="notaE" rows="4" cols="50" ></textarea>
                                 </div>
                                 </div>	
 
@@ -199,21 +197,22 @@ $states = allStateActive();
                                     $arrayidProduct = Array();
                                     $arreglocarritoCapullos = $_SESSION['carritoCapullos'];
                                     $_SESSION['carritoCapullosCopia'] =       $arreglocarritoCapullos;
-                                    for ($i = 0; $i < count($arreglocarritoCapullos); $i++) {
+                                    for ($i = 0; $i < count($arreglocarritoCapullos); $i++)  {
                                       
-                                  
+                                        if($arreglocarritoCapullos[$i]['Precio']!=0){
                                         $total = $total + ($arreglocarritoCapullos[$i]['Precio'] * $arreglocarritoCapullos[$i]['Cantidad']);
                                         ?>
                                         <table style=" border: 1px solid #ddd;">
 
                                             <tr>
-                                                <th>Producto</th>		
+                                                <th>Producto</th>	
                                                 <th>Sub Total</th>
                                                 <th>Eliminar</th>
                                             </tr>
                                             <tr>
                                                 <td class="ring-in"><?php echo $arreglocarritoCapullos[$i]['Nombre']; ?><img style="width:70px; height:70px;" src="uploads/product/<?php echo $arreglocarritoCapullos[$i]['Imagen']; ?>" class="img-responsive" alt=""></a>
                                                     <div class="clearfix"> </div></td>
+
                                                 <td class="cant<?php echo $arreglocarritoCapullos[$i]['Id']; ?>">$COP <?php echo numberCOP($arreglocarritoCapullos[$i]['Precio'] * $arreglocarritoCapullos[$i]['Cantidad']); ?></td>
                                                 <td><a href="#" class="to-buy btnEliminar" data-id="<?php echo $arreglocarritoCapullos[$i]['Id']; ?>">X</a></td>
                                             </tr>	
@@ -221,15 +220,18 @@ $states = allStateActive();
                                                 <th>DE: </th>		
                                                 <th>MENSAJE: </th>
                                                 <th>PARA:</th>
+                                               
                                             </tr>
                                             <tr>
                                                 <td><?php echo $arreglocarritoCapullos[$i]['De']; ?></td>
                                                 <td><?php echo $arreglocarritoCapullos[$i]['Mensaje']; ?></td>
                                                 <td><?php echo $arreglocarritoCapullos[$i]['Para']; ?></td>
+                                               
+
                                             </tr>			  
                                         </table>
 
-                                    <?php } ?>
+                                    <?php  }} ?>
                                     <table style=" border: 1px solid #ddd;">
                                         <tr>
                                             <th><span>Sub total: </span> </th>		
@@ -239,7 +241,7 @@ $states = allStateActive();
                                         <tr>
                                             <th><span>Envio: </span> </th>		
                                             <th> </th>
-                                            <th><span> $ COP <?php echo numberCOP($total); ?> </span></th>
+                                            <th><span>Gratis. </span></th>
                                         </tr>
                                         <tr>
                                             <th><span>Total: </span> </th>		
@@ -265,20 +267,20 @@ $states = allStateActive();
                                 <br>
                                 <table >
                                     <tr>	
-                                        <th> <input type="radio" id="tranferBancoEpayco" name="tranferBanco" value="EPAYCO" >                                    
+                                        <th> <input type="radio" id="tranferBancoEpayco" name="tranferBanco"  value="EPAYCO" >                                    
                                         <label for="tranferBanco1">TRANSFERENCIA BANCARIA DIRECTA </label>                                                                                                                            
                                          Pague con Giros en Efecty o Super Giros, Wester Union / Transferencia en Bancolombia, DaviPlata, Nequi o BBVA.	
                                          </th>	 
                                           </tr>  
                                                                      
                                     <tr>	
-                                    <th> <input type="radio" id="tranferBancoPaypal" name="tranferBanco" value="PAYPAL" >                                    
+                                    <th> <input type="radio" id="tranferBancoPaypal" name="tranferBanco" disabled value="PAYPAL" >                                    
                                   <label for="tranferBanco2">CUENTA PAYPAL </label>                                                                                                                   
                                          </th>		 
                                     </tr>
                                 </table>  
              
-                                <button type="submit"  class="button buttonVerDetalles">PAGAR</button>                                                        
+                                <button type="submit" class="button buttonVerDetalles"><i class="glyphicon glyphicon-credit-card"> PAGAR</i></button>                                                        
                         </div>
 
                     </div>

@@ -39,9 +39,9 @@ $all = allShippingCity();
                         <form method="post" action="../includes/sqlinsert/add_shippingCity.php?opt=country">
                             <div class="form-group">
                                 <label for="name1">Nombre</label>
-                                <input type="text" class="form-control" id="name1" name="name" placeholder="Nombre" required>
+                                <input type="text" class="form-control" id="name1" name="name" placeholder="Nombre Pais" required>
                             </div>
-                            <button type="submit" class="btn btn-primary">Agregar</button>
+                            <button type="submit" class="btn btn-primary">Agregar Pais</button>
                         </form>
                     </div>
                     <div class="col-md-4">
@@ -59,9 +59,9 @@ $all = allShippingCity();
 
                             <div class="form-group">
                                 <label for="name1">Nombre</label>
-                                <input type="text" class="form-control" id="name1" name="name" placeholder="Nombre" required>
+                                <input type="text" class="form-control" id="name1" name="name" placeholder="Nombre Departamento" required>
                             </div>
-                            <button type="submit" class="btn btn-primary">Agregar</button>
+                            <button type="submit" class="btn btn-primary">Agregar Departamento</button>
                         </form>
                     </div>
                     <div class="col-md-4">
@@ -79,9 +79,9 @@ $all = allShippingCity();
 
                             <div class="form-group">
                                 <label for="name1">Nombre</label>
-                                <input type="text" class="form-control" id="name1" name="name" placeholder="Nombre" required>
+                                <input type="text" class="form-control" id="name1" name="name" placeholder="Nombre Ciudad" required>
                             </div>
-                            <button type="submit" class="btn btn-primary">Agregar</button>
+                            <button type="submit" class="btn btn-primary">Agregar Ciudad</button>
                         </form>
                     </div>
                 </div>

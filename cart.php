@@ -3,13 +3,14 @@ require_once("includes/load.php");
 $user = current_user();
 $arreglo;
 $tipo = page_require_tipo($user['type']);
+$additions = productByAdditions();
 if (isset($_SESSION['carritoCapullos'])) {
     if (isset($_POST['id_product'])) {
         $arreglo = $_SESSION['carritoCapullos'];
         $encontro = false;
         $numero = 0;
         for ($i = 0; $i < count($arreglo); $i++) {
-            if ($arreglo[$i]['Id'] == $_POST['id_product']) {
+            if ($arreglo[$i]['Id'] === $_POST['id_product']) {
                 $encontro = true;
                 $cantidad = $i;
             }
@@ -27,7 +28,7 @@ if (isset($_SESSION['carritoCapullos'])) {
             $para = "";
             $precio = "";
             $imagen = "";
-            $res = searchProduct($_POST['id_product']);
+            $res = searchProductCarrito($_POST['id_product']);
             $nombre = $res['namep'];
             $descripcion = $res['description'];
             $de = $_POST['de'];
@@ -61,7 +62,7 @@ if (isset($_SESSION['carritoCapullos'])) {
         $para = "";
         $precio = "";
         $imagen = "";
-        $res = searchProduct($_POST['id_product']);
+        $res = searchProductCarrito($_POST['id_product']);
 
         $nombre = $res['namep'];
         $descripcion = $res['description'];
@@ -87,6 +88,7 @@ if (isset($_SESSION['carritoCapullos'])) {
     }
 }
 
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -94,6 +96,7 @@ if (isset($_SESSION['carritoCapullos'])) {
         <title> Carrito de comptras :: Capullos</title>
         <link href="Assets/css/bootstrap-3.1.1.min.css" rel='stylesheet' type='text/css' />
         <link rel="shortcut icon" href="Assets/images/favicon.ico">
+        <link rel="stylesheet" type="text/css" href="Assets/css/myStyle.css">
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="Assets/js/jquery.min.js"></script>
         <!-- Custom Theme files -->
@@ -144,7 +147,8 @@ if (isset($_SESSION['carritoCapullos'])) {
                     <h2>Carrito</h2>
                     <table >
                         <tr>
-                            <th>Nombre/Descripcion</th>	
+                            <th>Nombre/Descripción</th>	
+                            <th>Cantidad</th>	
                             <th>Precio</th>		
                             <th>Sub Total</th>
                             <th>Eliminar</th>
@@ -156,6 +160,7 @@ if (isset($_SESSION['carritoCapullos'])) {
                             $arreglocarritoCapullos = $_SESSION['carritoCapullos'];
                          
                             for ($i = 0; $i < count($arreglocarritoCapullos); $i++) {
+                                if($arreglocarritoCapullos[$i]['Precio']!=0){
                                 $total = $total + ($arreglocarritoCapullos[$i]['Precio'] * $arreglocarritoCapullos[$i]['Cantidad']);
                                 ?>
                                 <td class="ring-in"> 
@@ -169,6 +174,7 @@ if (isset($_SESSION['carritoCapullos'])) {
 
                                     </div>
                                     <div class="clearfix"> </div> </form></td>
+                                    <td> <?php echo $arreglocarritoCapullos[$i]['Cantidad']; ?></td>
 
                                 <td>$COP <?php echo numberCOP($arreglocarritoCapullos[$i]['Precio']); ?></td>
                                 <td class="cant<?php echo $arreglocarritoCapullos[$i]['Id']; ?>">
@@ -176,14 +182,48 @@ if (isset($_SESSION['carritoCapullos'])) {
                                 <td><a href="#" class="to-buy btnEliminar" data-id="<?php echo $arreglocarritoCapullos[$i]['Id']; ?>">X</a></td>
                             </tr>
 
-                        <?php } ?>
+                        <?php }else{
+                            
+                        } } ?>
                         <th></th>		
                         <th></th>
                         <th></th>
                         <td><h2>Total: $COP <?php echo numberCOP($total); ?></h2></td>
                     </table>
-                    <a href="billing.php" class="to-buy">Proceder con la compra $<?php echo numberCOP($total); ?></a>
+                    <div style="margin: 0 auto;
+   width: 200px;">
+                    <a href="billing.php" class="button buttonVerDetalles">Proceder con la compra $<?php echo numberCOP($total); ?></a>
+                    </div>
                     <div class="clearfix"> </div>
+                    <br>
+                    <h3 class="cate">Adiciones</h3>
+                    <div class="content-top2">
+                     <br>
+<?php foreach ($additions as $additions) : ?>
+
+                            <div class="col-md-2 col-md2">
+
+                                <div class="col-md1 simpleCart_shelfItem">
+                                    <img class="img-responsive" src="uploads/product/<?php echo $additions['image_product']; ?>" alt="" />						
+                                    <h3><?php echo $additions['namep']; ?></h3>
+                                    <form action="singleAdditions.php" method="post">
+                                        <input type="hidden" name="id_product"  id="id_product" class="form-control"  value="<?php echo$additions['id_product']; ?>">
+
+                                        <div class="price">
+                                            <h5 class="item_price">$COP <?php echo numberCOP($additions['price']); ?></h5>
+                                            <button type="submit"  class="button buttonVerDetalles">Ver Detalles</button>                                             <div class="clearfix"> </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>	
+
+<?php endforeach; ?>
+
+
+                        <div class="clearfix"> </div>
+                    </div>		
+                </div>
                 <?php
                 } else {
                     echo "<div class='container'>
@@ -194,8 +234,11 @@ if (isset($_SESSION['carritoCapullos'])) {
       </div>";
                 }
                 ?>
+                
             </div>
+         
         </div>
+ 
 
 <?php require_once('layout/footer.php'); ?>
         <script>

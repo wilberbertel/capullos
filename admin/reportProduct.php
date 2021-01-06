@@ -1,0 +1,165 @@
+<?php
+//headerAdmin($data);
+require_once("../includes/load.php");
+require_once("layoutAdmin/header_admin.php");
+$user = current_user();
+if (!$session->isUserLoggedIn(true) || validatePermition($user['type']) == 0 || validateStatus($user['status']) == 0) {
+    redirect('../index.php', false);
+}
+$manageData = manageData();
+$products = allProductsAdmin();
+if(isset($_POST['producto'])) {
+$producto = searchProduct($_POST['producto']);
+}
+?>
+   <main class="app-content">
+   
+      <div class="app-title">
+        <div>
+          <h1><i class="fa fa-file-text-o"></i> Reporte de ventas por producto</h1>
+          <p><?php echo converterMonth(getMonth());?></p>
+        </div>
+        <ul class="app-breadcrumb breadcrumb">
+          <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+          <li class="breadcrumb-item"><a href="#">Reporte de ventas por producto</a></li>
+        </ul>
+        
+      </div>
+     
+        <div class="col-md-12">
+            <div class="tile">
+            <form action="reportProduct.php" method="POST">
+                <div class="content-header">
+                    <div class="container-fluid">
+                        <div class="row mb-2">
+                          
+                    
+                            <div class="col-sm-4">
+                           
+                           <h4>Seleccione un producto</h4>
+                      
+                           <select  class="form-control" id="producto" name="producto" required>
+              <option value="" selected disabled hidden>Seleccione un producto</option>
+           <?php foreach ($products as $productos) :      ?>
+            <option value="<?php echo $productos['id_product'] ?>"><?php echo $productos['namep'] ?></option>
+            <?php endforeach; ?>
+                </select>
+              
+               </div><!-- /.col -->
+               <div class="col-sm-12 text-right">
+                                <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#ModalAddCategoria">
+                                    <i class="fa fa-search"></i> buscar
+                                </button>
+                            </div><!-- /.col -->
+                           </div><!-- /.col -->
+                       
+
+                        </div><!-- /.row -->
+                    </div><!-- /.container-fluid -->
+                </div>
+                </form>
+            </div>
+        
+      
+      <?php if(isset($_POST['producto']) ){
+        $ganaciasProducto= gainProduct($_POST['producto']); 
+              
+        if(sizeof($ganaciasProducto)<=0){
+            echo " <div class='col-6'>
+            <h2 class='page-header'>No se encontraron registros</h2>
+            
+          </div>";
+          exit;
+          }
+        
+
+        ?>
+      <div class="row" id="seleccion">
+        <div class="col-md-12" id="seleccion" >
+          <div class="tile">
+            <section class="invoice" id="seleccion">
+              <div class="row mb-4">
+                <div class="col-6">
+                  <h2 class="page-header"><i class="fa fa-building"></i>Capullos  Floristeria</h2>
+                </div>
+                <div class="col-6">
+                  <h5 class="text-right">Fecha : <?php echo get_date(); ?></h5>
+                </div>
+              </div>
+              <div class="row invoice-info">
+                <div class="col-4">
+                  <address><strong><?php echo $manageData['name'];?></strong><br><?php echo $manageData['address'];?><br><?php echo $manageData['phone_mobile']."-".$manageData['phone_fixed'];?><br><?php echo $manageData['whatsapp'];?><br>Email: <?php echo $manageData['email'];?></address>
+                </div>
+                <div class="col-4">
+                </div>
+                <div class="col-4"><b></b><br><br><b>Producto: <?php echo $producto['namep'] ;?></b><br><b>POR: </b> <?php echo $user['name'];?><br><b>TIPO: </b> <?php echo $user['type'];?></div>
+              </div>
+              <div class="row">
+                <div class="col-12 table-responsive">
+                  <table class="table table-bordered">
+                    <thead>
+                 
+                      <tr>
+                        <th>#</th>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Fecha/Hora</th>
+                        <th>Sub Total</th>
+                        <th>Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                     $total= 0;
+                    foreach ($ganaciasProducto as $ganaciasProducto) : ?>
+                     
+                      <tr>
+                        <td>1</td>
+                        <td><?php echo $ganaciasProducto['namep'] ?></td>
+                        <td><?php echo $ganaciasProducto['quantity'] ?></td>
+                        <td><?php echo $ganaciasProducto['fecha']."".$ganaciasProducto['hora'] ?></td>
+                        <td><?php echo numberCOP($ganaciasProducto['price']) ?></td>
+                        <td><?php echo numberCOP($ganaciasProducto['total']) ?></td>
+                      </tr>
+                      <?php
+                      $name = $ganaciasProducto['namep'] ;
+                     $total=$total+$ganaciasProducto['total'];
+                    endforeach; ?>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="row d-print-none mt-2">
+                <div class="col-12 text-right">
+                <h3 class="text-center">Total de ganancias: <?php echo "(".   $name.")"." : $ ".  numberCOP($total);?></h3>
+
+                <a class="btn btn-primary" href="javascript:imprSelec('seleccion');" ><i class="fa fa-print"></i> Imprimir</a></div>
+              </div>
+        
+            </section>
+          </div>
+        </div>
+      </div>
+      <?php } ?>
+    </main>
+
+
+
+<?php
+require_once("layoutAdmin/footer_admin.php")
+?>
+<script language="Javascript">
+	function imprSelec(nombre) {
+	  var ficha = document.getElementById(nombre);
+	  var ventimp = window.open(' ', 'popimpr');
+    ventimp.document.write( ficha.innerHTML );
+    var css = ventimp.document.createElement("link");
+css.setAttribute("href", "Assets/css/main.css");
+css.setAttribute("rel", "stylesheet");
+css.setAttribute("type", "text/css");
+ventimp.document.head.appendChild(css);
+	  ventimp.document.close();
+	  ventimp.print( );
+	  ventimp.close();
+	}
+	</script>

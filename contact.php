@@ -1,3 +1,7 @@
+<?php
+require_once("includes/load.php");
+$manageData = manageData();
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -42,7 +46,7 @@
             <div class="container">
                 <ol class="breadcrumb breadcrumb1 animated wow slideInLeft animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: slideInLeft;">
                     <li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-                    <li class="active">Contact</li>
+                    <li class="active">Contactanos</li>
                 </ol>
             </div>
         </div>
@@ -55,49 +59,51 @@
                         <form action="#" method="post">
                             <div class="contact-bottom">
                                 <div class="col-md-4 in-contact">
-                                    <span>Name</span>
+                                    <span>Nombres</span>
                                     <input type="text" name="name">
                                 </div>
                                 <div class="col-md-4 in-contact">
-                                    <span>Email</span>
+                                    <span>Correo</span>
                                     <input type="text" name="email" >
                                 </div>
                                 <div class="col-md-4 in-contact">
-                                    <span>Phonenumber</span>
+                                    <span>Telefono</span>
                                     <input type="text" name="phonenumber">
                                 </div>
                                 <div class="clearfix"> </div>
                             </div>
 
                             <div class="contact-bottom-top">
-                                <span>Message</span>
+                                <span>Mensaje</span>
                                 <textarea  name="message"> </textarea>								
                             </div>
-                            <input type="submit" value="Send">
+                            <input type="submit" value="Enviar">
                         </form>
                     </div>
                     <div class="address">
                         <div class=" address-more">
-                            <h2>Address</h2>
+                            <h2>Dirección</h2>
                             <div class="col-md-4 address-grid">
                                 <i class="glyphicon glyphicon-map-marker"></i>
                                 <div class="address1">
-                                    <p>Lorem ipsum dolor</p>
-                                    <p>TL 19034-88974</p>
+                                    <p>Sincelejo – Colombia </p>
+                                    <p><?php echo $manageData['address']; ?></p>
                                 </div>
                                 <div class="clearfix"> </div>
                             </div>
                             <div class="col-md-4 address-grid ">
                                 <i class="glyphicon glyphicon-phone"></i>
                                 <div class="address1">
-                                    <p>+885699655</p>
+                                    <p>Tel: <?php echo $manageData['phone_fixed']; ?>
+
+</p>  <p>Cel. :<?php echo $manageData['phone_mobile']; ?>  <br>Whatsapp: +57 <?php echo $manageData['whatsapp']; ?></p> 
                                 </div>
                                 <div class="clearfix"> </div>
                             </div>
                             <div class="col-md-4 address-grid ">
                                 <i class="glyphicon glyphicon-envelope"></i>
                                 <div class="address1">
-                                    <p><a href="mailto:@example.com"> @example.com</a></p>
+                                    <p><a href="<?php echo $manageData['email']?>"><?php echo $manageData['email']?></a></p>
                                 </div>
                                 <div class="clearfix"> </div>
                             </div>
@@ -108,10 +114,11 @@
             </div>
         </div>
         <!--//content-->
-        <!--map-->
-        <div class="map">
+        <!--map--9.30579,-75.40023>
+        <!--<div class="map">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3279847.2716062404!2d145.46948275!3d-36.60289065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad4314b7e18954f%3A0x5a4efce2be829534!2sVictoria%2C+Australia!5e0!3m2!1sen!2sin!4v1443674224626" width="100%" height="" frameborder="0" style="border:0" allowfullscreen></iframe>
-        </div>
+        </div>-->
+        <div class="map"><iframe width="100%" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=es&amp;q=Florister%C3%ADa%20Capullos+(CAPULLOS)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe></div>
         <!--//map-->
         <?php require_once('layout/footer.php'); ?>
     </body>

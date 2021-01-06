@@ -51,7 +51,7 @@ if ($_POST['tranferBanco']!="PAYPAL" && $_POST['tranferBanco']!="EPAYCO") {
             <div class="container">
                 <ol class="breadcrumb breadcrumb1 animated wow slideInLeft animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: slideInLeft;">
                     <li><a href="cart.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Carrito</a></li>
-                    <li class="active">Confirmacion de productos a comprar</li>
+                    <li class="active">Confirmación de productos a comprar.</li>
                 </ol>
             </div>
         </div>
@@ -61,10 +61,11 @@ if ($_POST['tranferBanco']!="PAYPAL" && $_POST['tranferBanco']!="EPAYCO") {
             ?>
             <div class="container">
                 <div class="check-out">
-                    <h2>Confirmacion de productos a comprar</h2>
+                    <h2>Confirmación de productos a comprar.</h2>
                     <table >
                         <tr>
-                            <th>Nombre/Descripcion</th>	
+                            <th>Nombre/Descripción</th>	
+                            <th>Cantidad</th>	
                             <th>Precio</th>		
                             <th>Sub Total</th>
                             
@@ -76,7 +77,7 @@ if ($_POST['tranferBanco']!="PAYPAL" && $_POST['tranferBanco']!="EPAYCO") {
                            
                             $arreglocarritoCapullos = $_SESSION['carritoCapullos'];
                             for ($i = 0; $i < count($arreglocarritoCapullos); $i++) {
-                             
+                                if($arreglocarritoCapullos[$i]['Precio']!=0){
                                 $total = $total + ($arreglocarritoCapullos[$i]['Precio'] * $arreglocarritoCapullos[$i]['Cantidad']);
                                 $nombre=$nombre." ".  $arreglocarritoCapullos[$i]['Nombre'];
                                 ?>
@@ -91,6 +92,7 @@ if ($_POST['tranferBanco']!="PAYPAL" && $_POST['tranferBanco']!="EPAYCO") {
 
                                     </div>
                                     <div class="clearfix"> </div> </form></td>
+                                    <td> <?php echo $arreglocarritoCapullos[$i]['Cantidad']; ?></td>
 
                                 <td>$COP <?php echo numberCOP($arreglocarritoCapullos[$i]['Precio']); ?></td>
                                 <td class="cant<?php echo $arreglocarritoCapullos[$i]['Id']; ?>">
@@ -98,14 +100,15 @@ if ($_POST['tranferBanco']!="PAYPAL" && $_POST['tranferBanco']!="EPAYCO") {
                                    
                             </tr>
 
-                        <?php } ?>
+                        <?php  } } ?>
                         <td> <h2>Total: $COP <?php echo numberCOP($total); ?></h2></td>
+                        
                         <th></th>		
                         <th></th>
-                        <th></th>
+                       
                      
                         <td><?php if($_POST['tranferBanco']=="EPAYCO"){?>
-                            <h4>Precione el boton para continuar con el pago.</h4>
+                            <h4>Presione el botón para continuar con el pago.</h4>
                             <h2>   
                               <form  method="POST">
                               <input type="hidden" name="id_user"  id="id_user" class="form-control"  value=" <?php echo $_POST['id_user'];?>">
@@ -150,8 +153,9 @@ if ($_POST['tranferBanco']!="PAYPAL" && $_POST['tranferBanco']!="EPAYCO") {
              data-epayco-extra8='".$_POST['phoneE']."'  
              data-epayco-extra9='".$_POST['notaE']."'  
              data-epayco-extra10='".$_POST['id_user']."'  
-     
-            data-epayco-response='http://localhost/capullos/response_transaction.php'
+             data-epayco-button='https://multimedia.epayco.co/epayco-landing/btns/epayco_pago_seguro_gray.png'
+
+            data-epayco-response='http://localhost/capullos/responseTransaction.php'
         </script>
         <script src='' async defer></script>"
         ?>
@@ -163,7 +167,7 @@ if ($_POST['tranferBanco']!="PAYPAL" && $_POST['tranferBanco']!="EPAYCO") {
                            <?php }?>
 </td>
                     </table>
-                       <a class="acount-btn" href="javascript:history.back()"> Ir Atras</a>
+                       <a class="acount-btn" href="javascript:history.back()"> Ir atrás </a>
                     <div class="clearfix"> </div>
                 <?php
                 } else {

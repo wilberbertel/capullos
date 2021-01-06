@@ -30,19 +30,17 @@ $occasions = allOccasions();
                                 ?></div>
                             <img src="Assets/images/cart.png" alt=""/></h3>
                     </a>
-                    <p><a href="cart.php" >Ver carritoCapullos</a></p>
+                    <p><a href="cart.php" >Ver carrito</a></p>
 
                 </div>
             </div>
             <div class="col-sm-2 number animated wow fadeInRight" data-wow-delay=".5s">
                 <div class="btn-whatsapp">
-                    <a href="https://api.whatsapp.com/send?phone=3226163368" target="_blank">
-                        <img src="Assets/images/whatsapp.png" alt="">
+                    <a href="https://api.whatsapp.com/send?phone=+573226163368" target="_blank">
+                        <img src="Assets/images/whatsapp (1).png" alt="">
                     </a>
-                    <a href="https://api.whatsapp.com/send?phone=3226163368" target="_blank">
-                        3226163368
-                    </a>
-                    <p>Whatsapp</p>
+                    
+                  
                 </div>
 
             </div>
@@ -97,36 +95,36 @@ $occasions = allOccasions();
     </li>-->
 
                             <li class="dropdown mega-dropdown active">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categorias<span class="caret"></span></a>				
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categorías<span class="caret"></span></a>				
                                 <div class="dropdown-menu mega-dropdown-menu">
 
                                     <!-- Tab panes -->
 
                                     <ul class="nav-list list">
                                         <?php foreach ($categories as $categorias) : ?>
-                                            <li><a href="products_category.php?name=<?php echo $categorias['name'] ?>"><?php echo $categorias['name']; ?></a></li>
+                                            <li><a href="productsCategory.php?name=<?php echo $categorias['name'] ?>"><?php echo $categorias['name']; ?></a></li>
                                         <?php endforeach; ?>	
                                     </ul>            
                                 </div>				
                             </li>
                             <li class="dropdown mega-dropdown active">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ocaciones<span class="caret"></span></a>				
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ocasión<span class="caret"></span></a>				
                                 <div class="dropdown-menu mega-dropdown-menu">
 
                                     <!-- Tab panes -->
 
                                     <ul class="nav-list list">
                                         <?php foreach ($occasions as $ocaciones) : ?>
-                                            <li><a href="products_occasions.php?name=<?php echo $ocaciones['name_ocaciones'] ?>"><?php echo $ocaciones['name_ocaciones']; ?></a></li>
+                                            <li><a href="productsOccasions.php?name=<?php echo $ocaciones['name_ocaciones'] ?>"><?php echo $ocaciones['name_ocaciones']; ?></a><br></li>
                                         <?php endforeach; ?>	
                                     </ul>            
                                 </div>				
                             </li>
                             <li><a href="products.php">Productos</a></li>
                             <?php if (!$session->isUserLoggedIn(true)) : ?>
-                                <?php echo "<li><a href='account.php'>Sign In</a></li>" ?>
+                                <?php echo "<li><a href='account.php'>Iniciar sesión</a></li>" ?>
                             <?php endif; ?>
-                            <li class="last"><a href="contact.php">Contactos</a></li>
+                            <li class="last"><a href="contact.php">Contáctanos</a></li>
                             <?php if ($session->isUserLoggedIn(true)) : ?>
 
                                 <li class="dropdown mega-dropdown active">
@@ -139,8 +137,10 @@ $occasions = allOccasions();
                                                 <div class="tab-pane active" id="men">
                                                     <ul class="nav-list list-inline">
                                                         <li><a href="profile.php"><img src="Assets/images/users.png" class="img-responsive" alt=""/>Perfil</a></li>
-                                                        <li><a href="shopping_history.php"><img src="Assets/images/browsing.png" class="img-responsive" alt=""/>Historial de compras</a></li>
-                                                <!--	<li><a href="women.html"><img src="Assets/images/member.png" class="img-responsive" alt=""/>Config Cuenta</a></li>-->
+                                                        <li><a href="shoppingHistory.php"><img src="Assets/images/browsing.png" class="img-responsive" alt=""/>Historial de compras</a></li>
+                                                       <?php if ($user['type'] == "SUPER" || $user['type'] == "ADMINISTRADOR"){?>
+                                                        <li><a href="admin/dashboard.php"><img src="Assets/images/member.png" class="img-responsive" alt=""/>Administrar Tienda</a></li>
+                                                        <?php }?>
                                                         <li><a href="logout.php"><img src="Assets/images/log-out.png" class="img-responsive" alt=""/>Salir</a></li>
                                                     </ul>
                                                 </div>
@@ -178,6 +178,7 @@ $occasions = allOccasions();
                     </div>				
                 </div>				
             </div>
+            
             <script>
                 $(document).ready(function () {
                     $('.popup-with-zoom-anim').magnificPopup({

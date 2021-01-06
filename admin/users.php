@@ -102,11 +102,11 @@ $i = 1;
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
-                        <input title="Nombre" type="text" name="nombres" placeholder="nombre" id="nombres" class="form-control" required>
+                        <input title="Nombre" type="text"  onkeyup="javascript:this.value=this.value.toUpperCase();" name="nombres" placeholder="Nombres" id="nombres" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="descripcion">Apellidos</label>
-                        <input title="Apellidos" rows="4" cols="50" name="apellidos" placeholder="Apellidos" id="apellidos" class="form-control" required>
+                        <input title="Apellidos" rows="4" cols="50" onkeyup="javascript:this.value=this.value.toUpperCase();" name="apellidos" placeholder="Apellidos" id="apellidos" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="descripcion">Correo electronico</label>

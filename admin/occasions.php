@@ -114,7 +114,7 @@ $i = 1;
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
-                        <input type="text" name="nombre" placeholder="nombre" id="nombre" class="form-control" required>
+                        <input type="text" name="nombre" onkeyup="javascript:this.value=this.value.toUpperCase();" placeholder="Nombre" id="nombre" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="categoria">Categoria</label>

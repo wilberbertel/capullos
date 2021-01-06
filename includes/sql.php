@@ -53,6 +53,12 @@ function find_by_sql($sql) {
 
 function allCategories() {
     global $db;
+    $sql = " SELECT * FROM category  WHERE status = 'ACTIVE' ORDER BY  id_category DESC";
+    return find_by_sql($sql);
+}
+
+function allCategoriesAdmin() {
+    global $db;
     $sql = " SELECT * FROM category  ORDER BY  id_category DESC";
     return find_by_sql($sql);
 }
@@ -125,10 +131,9 @@ p.namep,
     p.price,
     c.name,
     p.status,
-    p.offer,
     o.name_ocaciones
 FROM product p INNER JOIN category c ON p.category=c.id_category 
-INNER JOIN occasions o  ON o.id_ocaciones = p.occasions order by id_product DESC limit " . $limite;
+INNER JOIN occasions o  ON o.id_ocaciones = p.occasions  WHERE p.status = 'ACTIVE' order by id_product DESC limit " . $limite;
     return find_by_sql($sql);
 }
 
@@ -142,13 +147,30 @@ p.namep,
     p.price,
     c.name,
     p.status,
-    p.offer,
     o.name_ocaciones
 FROM product p INNER JOIN category c ON p.category=c.id_category 
-INNER JOIN occasions o  ON o.id_ocaciones = p.occasions  order by id_product DESC";
+INNER JOIN occasions o  ON o.id_ocaciones = p.occasions WHERE additions ='NO' order by id_product DESC";
     return find_by_sql($sql);
 }
+function allAditionsAdmin() {
+    global $db;
 
+    $sql = "SELECT * FROM product   where additions = 'SI'  order by id_product DESC";
+    return find_by_sql($sql);
+}
+function  productByAdditions(){
+    global $db;
+
+    $sql = "SELECT * FROM product   where additions = 'SI'  order by id_product DESC";
+    return find_by_sql($sql);
+}
+function  searchProductByAdditions($id){
+    global $db;
+
+    $sql = "SELECT * FROM product   where additions = 'SI' AND id_product = '".$id."'  order by id_product DESC";
+    $result = $db->query($sql);
+    return ($db->fetch_assoc($result));
+}
 function allProducts2($limite1, $limite2) {
     global $db;
 
@@ -169,10 +191,9 @@ p.namep,
     p.price,
     c.name,
     p.status,
-    p.offer,
     o.name_ocaciones
 FROM product p INNER JOIN category c ON p.category=c.id_category 
-INNER JOIN occasions o  ON o.id_ocaciones = p.occasions order by id_product DESC limit " . $limite1 . "," . $limite2;
+INNER JOIN occasions o  ON o.id_ocaciones = p.occasions  WHERE p.status = 'ACTIVE' order by id_product DESC limit " . $limite1 . "," . $limite2;
     return find_by_sql($sql);
 }
 
@@ -185,7 +206,6 @@ p.namep,
     p.price,
     c.name,
     p.status,
-    p.offer,
     p.secondary_sentences,
     o.name_ocaciones
 FROM product p INNER JOIN category c ON p.category=c.id_category 
@@ -193,7 +213,111 @@ INNER JOIN occasions o  ON o.id_ocaciones = p.occasions WHERE  id_product =" . $
     $result = $db->query($sql);
     return ($db->fetch_assoc($result));
 }
-
+function searchProductCarrito($id_product) {
+    global $db;
+    $sql = "SELECT *
+FROM product where  id_product =" . $id_product;
+    $result = $db->query($sql);
+    return ($db->fetch_assoc($result));
+}
+function historyShopping($id_user) {
+    global $db;
+    $sql = "SELECT  p.id_product,
+    p.namep,
+        p.image_product,
+        p.description,
+        p.price,
+         p.secondary_sentences,
+        s.id_shipping,
+        s.note,
+        s.country,
+        s.state,
+        s.city,
+        s.address1,
+        s.address2,
+        s.names,
+        s.phone,
+        s.request_status,
+        s.from,
+        s.for,
+        s.message,
+        o.date,
+        o.quantity,
+        o.subtotal,
+        o.amount,
+        o.order_code,
+        o.status,
+        o.payment_method 
+        FROM product p INNER JOIN orders o  on p.id_product  = o.id_product INNER JOIN  shipping s  on s.id_orders = o.id_orders AND s.id_user =" . $id_user." ORDER BY s.id_orders DESC";
+     return find_by_sql($sql);
+}
+function historyShoppingPending() {
+    global $db;
+    $sql = "SELECT  p.id_product,
+    p.namep,
+        p.image_product,
+        p.description,
+        p.price,
+       
+        p.additions,
+         p.secondary_sentences,
+        s.id_shipping,
+        s.note,
+        s.country,
+        s.state,
+        s.city,
+        s.address1,
+        s.address2,
+        s.names,
+        s.phone,
+        s.request_status,
+        s.from,
+        s.for,
+        s.message,
+        o.date,
+        o.quantity,
+        o.subtotal,
+        o.amount,
+        o.order_code,
+        o.status,
+        o.payment_method ,
+        o.bank
+        FROM product p INNER JOIN orders o  on p.id_product  = o.id_product INNER JOIN  shipping s  on s.id_orders = o.id_orders AND  s.request_status = 'PENDIENTE' order by s.id_shipping  DESC";
+     return find_by_sql($sql);
+}
+function historyShoppingCompleted() {
+    global $db;
+    $sql = "SELECT  p.id_product,
+    p.namep,
+        p.image_product,
+        p.description,
+        p.price,
+         p.secondary_sentences,
+         p.additions,
+        s.id_shipping,
+        s.note,
+        s.country,
+        s.state,
+        s.city,
+        s.address1,
+        s.address2,
+        s.names,
+        s.phone,
+        s.request_status,
+        s.from,
+        s.for,
+        s.message,
+        o.date,
+        o.quantity,
+        o.subtotal,
+        o.amount,
+        o.order_code,
+        o.status,
+        o.payment_method ,
+        o.bank
+        FROM product p INNER JOIN orders o  on p.id_product  = o.id_product INNER JOIN  shipping s  on s.id_orders = o.id_orders AND  s.request_status = 'COMPLETADO'";
+     return find_by_sql($sql);
+}
 function countProducts() {
     global $db;
     // $sql  = " SELECT  * FROM product INNER JOIN category  WHERE product.category = category.id;";
@@ -202,6 +326,30 @@ function countProducts() {
     return ($db->fetch_assoc($result));
 }
 
+function countSoldProducts() {
+    global $db;
+    // $sql  = " SELECT  * FROM product INNER JOIN category  WHERE product.category = category.id;";
+    $sql = "SELECT COUNT(*) as total FROM sold_products;";
+    $result = $db->query($sql);
+    return ($db->fetch_assoc($result));
+}
+
+function countShippingStatus($dato2) {
+    global $db;
+    // $sql  = " SELECT  * FROM product INNER JOIN category  WHERE product.category = category.id;";
+    $sql = "SELECT COUNT(*) as total  FROM shipping where request_status = '$dato2'";
+    $result = $db->query($sql);
+    return ($db->fetch_assoc($result));
+}
+
+
+function totalSoldProducts() {
+    global $db;
+    // $sql  = " SELECT  * FROM product INNER JOIN category  WHERE product.category = category.id;";
+    $sql = "SELECT SUM(total)  as total FROM sold_products";
+    $result = $db->query($sql);
+    return ($db->fetch_assoc($result));
+}
 function countUsersClientes() {
     global $db;
     // $sql  = " SELECT  * FROM product INNER JOIN category  WHERE product.category = category.id;";
@@ -213,6 +361,43 @@ function countUsersClientes() {
 function users($id) {
     global $db;
     $sql = " SELECT * FROM users  WHERE  id_users = '$id'";
+    $result = $db->query($sql);
+    return ($db->fetch_assoc($result));
+}
+function gainMonth($mes) {
+    global $db;
+    $año = getYear();
+    $sql = " SELECT * FROM sold_products s INNER JOIN product p  on p.id_product  = s.id_product WHERE mes = '$mes' and año= '$año' order by s.id_soldProduct DESC";
+    return find_by_sql($sql);
+}
+
+function gainMonthYear($mes,$año) {
+    global $db;
+    $sql = " SELECT * FROM sold_products s INNER JOIN product p  on p.id_product  = s.id_product WHERE mes = '$mes' AND año='$año'";
+    return find_by_sql($sql);
+}
+
+function gainYear($año) {
+    global $db;
+    $sql = " SELECT * FROM sold_products s INNER JOIN product p  on p.id_product  = s.id_product WHERE año='$año'";
+    return find_by_sql($sql);
+}
+function gainProduct($product) {
+    global $db;
+    $sql = "SELECT * FROM sold_products s INNER JOIN product p  on p.id_product  = s.id_product WHERE s.id_product=".$product;
+    return find_by_sql($sql);
+}
+function gainMonths($mes) {
+    global $db;
+    $año = getYear();
+    $sql = "SELECT mes, sum(total) as total FROM sold_products  WHERE mes = '$mes' and año = '".$año."'";
+    $result = $db->query($sql);
+    return ($db->fetch_assoc($result));
+}
+
+function manageData(){
+    global $db;
+    $sql = "SELECT * FROM company_configuration";
     $result = $db->query($sql);
     return ($db->fetch_assoc($result));
 }
@@ -229,11 +414,25 @@ function usersEmail($email) {
     $result = $db->query($sql);
     return ($db->fetch_assoc($result));
 }
+function allEmail($email) {
+    global $db;
+    $sql = "SELECT id_users, name, surname FROM  users WHERE email = '$email'";
+    $result = $db->query($sql);
+    return ($db->fetch_assoc($result));
+}
 
 function buttonProductOrderDesc($limite) {
     global $db;
     $sql = "SELECT * FROM product   order by id_product DESC limit " . $limite;
     return find_by_sql($sql);
+}
+
+function generaTokenPass($user_id){
+    global $db;
+    $token = generateToken();
+    $db->query("UPDATE users SET token_password = '" . $token . "', password_request = '1' WHERE id_users ='".$user_id."'");
+
+    return $token;
 }
 
 function allOccasionsByCategory() {
@@ -246,7 +445,7 @@ function allOccasionsByCategory() {
 
 function allOccasions() {
     global $db;
-    $sql = "SELECT * FROM occasions";
+    $sql = "SELECT * FROM occasions  WHERE status = 'ACTIVE'";
     return find_by_sql($sql);
 }
 
@@ -265,7 +464,7 @@ p.namep,
     p.price,
     c.name,
     p.status,
-    p.offer,
+
     o.name_ocaciones
 FROM product p INNER JOIN category c ON p.category=c.id_category 
 INNER JOIN occasions o  ON o.id_ocaciones = p.occasions
@@ -275,7 +474,7 @@ p.namep  LIKE '%" . $busqueda . "%' OR
     p.price LIKE '%" . $busqueda . "%' OR
     c.name LIKE '%" . $busqueda . "%' OR
     p.status LIKE '%" . $busqueda . "%' OR
-    p.offer LIKE '%" . $busqueda . "%' OR
+ 
     o.name_ocaciones LIKE '%" . $busqueda . "%' OR
 c.name LIKE '%" . $busqueda . "%'  
  order by id_product DESC";
@@ -292,7 +491,6 @@ p.namep,
     p.price,
     c.name,
     p.status,
-    p.offer,
     o.name_ocaciones
 FROM product p INNER JOIN category c ON p.category=c.id_category 
 INNER JOIN occasions o  ON o.id_ocaciones = p.occasions 
@@ -305,6 +503,8 @@ WHERE
     return ($result);
 }
 
+
+
 function productForOccassions($name) {
     global $db;
     $sql = "SELECT p.id_product,
@@ -314,7 +514,6 @@ p.namep,
     p.price,
     c.name,
     p.status,
-    p.offer,
     o.name_ocaciones
 FROM product p INNER JOIN category c ON p.category=c.id_category 
 INNER JOIN occasions o  ON o.id_ocaciones = p.occasions 
@@ -334,7 +533,6 @@ p.namep,
     p.price,
     c.name,
     p.status,
-    p.offer,
     o.name_ocaciones
 FROM product p INNER JOIN category c ON p.category=c.id_category 
 INNER JOIN occasions o  ON o.id_ocaciones = p.occasions 
@@ -364,6 +562,18 @@ function existProduct($id) {
     $sql = "SELECT count(*) as total FROM  product WHERE id_product = '$id'";
     $result = $db->query($sql);
     return ($db->fetch_assoc($result));
+}
+function verificaTokenPass($user_id, $token){ 
+    global $db;
+    $sql = "SELECT count(*) as total  FROM users where id_users = '$user_id' AND token_password ='$token' AND password_request=1 ";
+    $result = $db->query($sql);
+    $num = $db->fetch_assoc($result);
+    if($num['total']>=1){
+        return true;
+    }else{
+        return false;
+    }
+     
 }
 
 function authenticate($email = '', $password = '') {

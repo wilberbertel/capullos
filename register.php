@@ -328,9 +328,9 @@ include "includes/load.php";
                         <div class="col-md-6 register-bottom-grid">
 
                             <div class="mation">
-                                <span>Password</span>
+                                <span>contraseña</span>
                                 <input required type="password" name="password">
-                                <span>Confirmacion de Password</span>
+                                <span>confirmar  contraseña</span>
                                 <input  required type="password" name="passwordConfi">
                             </div>
                         </div>

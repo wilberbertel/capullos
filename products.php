@@ -1,6 +1,6 @@
 <?php
 require_once("includes/load.php");
-
+$totalProducts = countProducts();
 $ultimos = allProducts(5);
 $categories = allCategories();
 $occasions = allOccasionsByCategory();
@@ -58,7 +58,7 @@ $occasions = allOccasionsByCategory();
 
             <div class="container">
                 <?php echo display_msg($msg); ?>
-                <h2>Todos los productos</h2>
+                <h2>Todos los productos (<?php echo $totalProducts['total'];  ?>)</h2>
                 <div class="col-md-9">
                     <?php
                     $limite = 12; //productos por pagina
@@ -77,9 +77,9 @@ $occasions = allOccasionsByCategory();
                     foreach ($resultado as $productos) :
                         ?>
 
-                        <div class="col-md-3  animated wow fadeInLeft" data-wow-delay=".5s">
+                        <div class="col-md-4">
                             <div class="col-md1 simpleCart_shelfItem">		
-                                <img class="img-responsive" src="uploads/product/<?php echo $productos['image_product']; ?>" alt="" />
+                                <img class="img-responsive" style="height: 250px; width: 100%; display: block;" src="uploads/product/<?php echo $productos['image_product']; ?>" alt="" />
                                 <h3><?php echo $productos['namep']; ?></a></h3>
                                 <div class="price">
                                     <form action="single.php" method="post">
@@ -107,57 +107,24 @@ $occasions = allOccasionsByCategory();
                 <div class="col-md-3 product-bottom">
                     <!--categories-->
                     <div class=" rsidebar span_1_of_left">
-                        <h3 class="cate">Categorias</h3>
+                        <h3 class="cate">Categorías</h3>
                         <?php foreach ($categories as $categorias) : ?>
                             <ul class="menu-drop">
-                                <li class="item1"><a href="#"><?php echo $categorias['name'] ?> </a>
-
-                                    <ul class="cute">
-                                        <?php
-                                        foreach ($occasions as $occasiones) :
-                                            if ($occasiones['category'] == $categorias['id_category']) {
-                                                ?>
-                                                <li class="subitem1"><a href="products_occasions.php?name=<?php echo $occasiones['name_ocaciones'] ?>"><?php echo $occasiones['name_ocaciones'] ?></a></li>
-                                                <?php
-                                            }
-                                        endforeach;
-                                        ?>								
-                                    </ul>
-                                </li>
+                                <li class="item1"><a href="productsCategory.php?name=<?php echo $categorias['name'] ?>"><?php echo $categorias['name'] ?> </a>  </li>
                             </ul>
-<?php endforeach; ?>
+                            <?php endforeach; ?>
                     </div>
-                    <!--initiate accordion-->
-                    <script type="text/javascript">
-                        $(function () {
-                            var menu_ul = $('.menu-drop > li > ul'),
-                                    menu_a = $('.menu-drop > li > a');
-                            menu_ul.hide();
-                            menu_a.click(function (e) {
-                                e.preventDefault();
-                                if (!$(this).hasClass('active')) {
-                                    menu_a.removeClass('active');
-                                    menu_ul.filter(':visible').slideUp('normal');
-                                    $(this).addClass('active').next().stop(true, true).slideDown('normal');
-                                } else {
-                                    $(this).removeClass('active');
-                                    $(this).next().stop(true, true).slideUp('normal');
-                                }
-                            });
-
-                        });
-                    </script>
-
+             
 
                     <div class="product-bottom">
-                        <h3 class="cate">Ultimos Productos</h3>
+                        <h3 class="cate">Últimos productos</h3>
 <?php foreach ($ultimos as $productos) : ?>
                             <form action="single.php" method="post">
                                 <input type="hidden" name="id_product"  id="id_product" class="form-control"  value="<?php echo $productos['id_product']; ?>">
 
                                 <div class="product-go">
                                     <div class=" fashion-grid">
-                                        <button type="submit"  class=""><img class="img-responsive " src="uploads/product/<?php echo $productos['image_product']; ?>" alt=""></a>	
+                                        <button type="submit"  style="border: none; outline: none;" class=""><img class="img-responsive " src="uploads/product/<?php echo $productos['image_product']; ?>" alt=""></a>	
                                             </div>
                                             </form>
                                             <div class=" fashion-grid1">

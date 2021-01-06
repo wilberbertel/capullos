@@ -6,7 +6,7 @@ require_once("layoutAdmin/header_admin.php");
 if (!$session->isUserLoggedIn(true) || validatePermition($user['type']) == 0 || validateStatus($user['status']) == 0) {
     redirect('../index.php', false);
 }
-$categories = allCategories('category');
+$categories = allCategoriesAdmin('category');
 $i = 0;
 allCountry();
 $states = allState();
@@ -114,7 +114,7 @@ $states = allState();
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
-                        <input type="text" name="nombre" placeholder="nombre" id="nombre" class="form-control" required>
+                        <input type="text" name="nombre" onkeyup="javascript:this.value=this.value.toUpperCase();" placeholder="Nombre" id="nombre" class="form-control" required>
                     </div>
 
                     <div class="form-group">

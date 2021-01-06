@@ -9,8 +9,6 @@ if (!$session->isUserLoggedIn(true) || validatePermition($user['type']) == 0 || 
 $categories = allCategories();
 $occasions = allOccasionss();
 $products = allProductsAdmin();
-
-
 $i = 1;
 ?>
 <main class="app-content">
@@ -47,7 +45,7 @@ $i = 1;
             </div>
         </div>
     </div>
-<?php echo display_msg($msg); ?>
+    <?php echo display_msg($msg); ?>
     <div class="row">
         <div class="col-md-12">
             <div class="tile">
@@ -64,7 +62,6 @@ $i = 1;
                                     <th>Categoria</th>
                                     <th>Ocacion</th>
                                     <th>Status</th>
-                                    <th>Oferta</th>
                                     <th>Ver</th>
                                       <th>Editar</th>
                                       <th>Eliminar</th>
@@ -87,7 +84,6 @@ $i = 1;
                                                 <span class="badge badge-danger"><i class="fa fa-exclamation-triangle"></i>INACTIVE</span> 
                                                  <?php } ?>
                                         </td>
-                                        <td > <?php echo $productos['offer']; ?></td>
                                         <td align="center">    
                                             <button  title="Ver" class="btn btn-info btn-small btnVer" 
                                                      data-id="<?php echo $productos['id_product']; ?>"
@@ -98,7 +94,6 @@ $i = 1;
                                                      data-ocaciones="<?php echo $productos['name_ocaciones']; ?>"
                                                      data-status="<?php echo $productos['status']; ?>"
                                                      data-precio="<?php echo $productos['price']; ?>"
-                                                     data-oferta="<?php echo $productos['offer']; ?>"                          
                                                      data-toggle="modal" data-target="#modalVer" >
                                                 <i class="fa fa-eye" ></i> </button>                    
                                         </td>
@@ -112,7 +107,6 @@ $i = 1;
          data-ocacion="<?php echo $productos['name_ocaciones']; ?>"
          data-status="<?php echo $productos['status']; ?>"
          data-precio="<?php echo $productos['price']; ?>"
-         data-oferta="<?php echo $productos['offer']; ?>" 
          data-toggle="modal" data-target="#modalEditar">
     <i class="fa fa-pencil-square-o"></i> </button>
                    
@@ -128,7 +122,6 @@ $i = 1;
          data-ocacion="<?php echo $productos['name_ocaciones']; ?>"
          data-status="<?php echo $productos['status']; ?>"
          data-precio="<?php echo $productos['price']; ?>"
-         data-oferta="<?php echo $productos['offer']; ?>"  
          data-toggle="modal" data-target="#modalEliminar">
     <i class="fa fa-trash" ></i> </button>                      
 
@@ -159,11 +152,11 @@ $i = 1;
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
-                        <input title="Nombre" type="text" name="nombre" placeholder="nombre" id="nombre" class="form-control" required>
+                        <input title="Nombre" type="text" onkeyup="javascript:this.value=this.value.toUpperCase();" name="nombre" placeholder="Nombre" id="nombre" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="descripcion">Descripcion</label>
-                        <textarea title="Descripcion" rows="4" cols="50" name="descripcion" placeholder="descripcion" id="descripcion" class="form-control" required></textarea>
+                        <textarea title="Descripcion" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="4" cols="50" name="descripcion" placeholder="Descripcion" id="descripcion" class="form-control" required></textarea>
                     </div>
 
                     <div class="form-group">
@@ -184,7 +177,7 @@ $i = 1;
                             <label class="sr-only" for="exampleInputAmount">Precio (sin puntos ni coma)</label>
                             <div class="input-group">
                                 <div class="input-group-prepend"><span class="input-group-text">$</span></div>
-                                <input title="Precio" type="number" min="0" name="precio" placeholder="precio" id="precio" class="form-control" required>
+                                <input title="Precio" type="number" min="0" name="precio" placeholder="100.000" id="precio" class="form-control" required>
 
                             </div>
                         </div>
@@ -197,7 +190,7 @@ $i = 1;
                                 <select title="Categoria" name="categoria" id="categoria" class="form-control" required>  
                                     <?php foreach ($categories as $categorias) : ?> 
                                         <option value="<?php echo $categorias['id_category']; ?>" ><?php echo $categorias['name']; ?></option>'   
-<?php endforeach; ?>
+                    <?php endforeach; ?>
                                 </select> 
                             </div>
                             <div class="col-3">                  
@@ -225,38 +218,21 @@ $i = 1;
                     <div class="form-group">
                         <label >Ocaciones Segundarias</label>
                         <div class="tile">                          
-                            <div class="tile-title-w-btn"> 
+                            <div class=""> 
                             <?php foreach ($occasions as $ocaciones) : ?> 
                                         <label><input type="checkbox" name="ocaciones[]" value="<?php echo $ocaciones['name_ocaciones']; ?>"><?php echo $ocaciones['name_ocaciones']; ?></label>
-                                        &ensp;
+                                        <!--&ensp;-->
                     <?php endforeach; ?> 
                             </div>
                         </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="oferta">Oferta</label>
-                                <div class="row">
-                                    <div class="col-9">      
-                                        <select title="Oferta" name="oferta" id="oferta" class="form-control" required>   
-                                            <option value="ON" >Si</option> 
-                                            <option value="OFF" >NO</option> 
-                                        </select> 
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 ml-auto"> 
+                    </div>                  
                             <div class="form-group">
                                 <label for="status">Status</label>
                                 <select title="Status" name="status" id="status" class="form-control" required>    
                                     <option value="ACTIVE" >Active</option>
                                     <option value="INACTIVE" >Inactive</option>
                                 </select> 
-                            </div> 
-                        </div>
+                            
                     </div>   
                 </div>
                 <div class="modal-footer">
@@ -283,11 +259,11 @@ $i = 1;
                     <input type="hidden" id="idEdit" name="idEdit">
                     <div class="form-group">
                         <label  for="nombre">Nombre</label>
-                        <input title="Nombre" type="text" name="nombreEdit" placeholder="nombre" id="nombreEdit" class="form-control" required>
+                        <input title="Nombre" type="text" name="nombreEdit"  onkeyup="javascript:this.value=this.value.toUpperCase();" placeholder="Nombre" id="nombreEdit" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="descripcion">Descripcion</label>
-                        <textarea title="Descripcion" rows="4" cols="50" name="descripcionEdit" placeholder="descripcion" id="descripcionEdit" class="form-control" required></textarea>
+                        <textarea title="Descripcion" rows="4" cols="50" name="descripcionEdit" onkeyup="javascript:this.value=this.value.toUpperCase();" placeholder="Descripcion" id="descripcionEdit" class="form-control" required></textarea>
                     </div>          
                     <div class="form-group">
                         <label for="imagen">Imagen</label>
@@ -321,11 +297,11 @@ $i = 1;
                                 <select title="Categoria" name="categoriaEdit" id="categoriaEdit" class="form-control" required>  
                                     <?php foreach ($categories as $categorias) : ?> 
                                         <option value="<?php echo $categorias['id_category']; ?>" ><?php echo $categorias['name']; ?></option>'   
-<?php endforeach; ?>
+                    <?php endforeach; ?>
                                 </select> 
                             </div>
                             <div class="col-3">                  
-                                <a href="#" class="btn btn-primary  btn-small active col-12" role="button" aria-pressed="true">Ir a categorias</a>
+                                <a href="categories.php" class="btn btn-primary  btn-small active col-12" role="button" aria-pressed="true">Ir a categorias</a>
                             </div>
                         </div>
                     </div>
@@ -335,52 +311,25 @@ $i = 1;
                             <div class="col-9">
                                 <select title="Ocaciones" name="ocacionesEdit" id="ocacionesEdit" class="form-control" required>  
                                     <?php foreach ($occasions as $ocaciones) : ?> 
-                                        <option value="<?php echo $ocaciones['id_ocaciones']; ?>" ><?php echo $ocaciones['name_ocaciones']; ?></option>'   
-<?php endforeach; ?>
+                                        <option value="<?php echo $ocaciones['id_ocaciones']; ?>" ><?php echo $ocaciones['name_ocaciones']; ?></option>
+                                     <?php endforeach; ?>
                                 </select> 
                             </div>
                             <div class="col-3">                  
-                                <a href="#" class="btn btn-primary  btn-small active col-12" role="button" aria-pressed="true">Ir a categorias</a>
+                                <a href="occasions.php" class="btn btn-primary  btn-small active col-12" role="button" aria-pressed="true">Ir a ocaciones</a>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="oferta">Oferta</label>
-                                <div class="row">
-                                    <div class="col-9">
-
-                                        <select title="Oferta" name="ofertaEdit" id="ofertaEdit" class="form-control" required>   
-                                            <option value="ON" >Si</option> 
-                                            <option value="OFF" >NO</option> 
-                                        </select> 
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 ml-auto"> 
+                  
                             <div class="form-group">
                                 <label for="">Status</label>
                                 <select title="Status" name="statusEdit" id="status" class="form-control" required>    
                                     <option value="ACTIVE" >Active</option>
                                     <option value="INACTIVE" >Inactive</option>
                                 </select> 
-                            </div> 
-                        </div>
+                            
                     </div>  
-                    <div class="form-group">
-                        <label for="oferta">Oferta</label>
-                        <div class="row">
-                            <div class="col-9">
-
-                                <select title="Oferta" name="ofertaEdit" id="ofertaEdit" class="form-control" required>   
-                                    <option value="ON" >Si</option> 
-                                    <option value="OFF" >NO</option> 
-                                </select> 
-                            </div>
-                        </div>
-                    </div>
+                   
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -418,8 +367,7 @@ $i = 1;
                             <div class="card-body">
                                 <p  id="descripcionVer" class="card-text"></p><h6 class="card-link"  id="ocacionVer"></h6>
                             </div>
-                            <div  id="statusVer" class="card-footer text-muted"></div>
-                            <div  id="ofertaVer" class="card-footer text-muted"></div>
+                            <div  id="statusVer" class="card-footer text-muted"></div>                        
                         </div>
                     </div>
                 </div>
@@ -488,7 +436,7 @@ $i = 1;
                                 <p  id="descripcionDelete" class="card-text"></p><h6 class="card-link"  id="ocacionesaDelete"></h6>
                             </div>
                             <div  id="statusDelete" class="card-footer text-muted"></div>
-                            <div  id="ofertaDelete" class="card-footer text-muted"></div>
+                          
                         </div>
                     </div>
                 </div>
@@ -504,8 +452,6 @@ $i = 1;
 
 
 <?php
-//footerAdmin($data);
-
 require_once("layoutAdmin/footer_admin.php")
 ?>
 <script>
@@ -570,13 +516,13 @@ require_once("layoutAdmin/footer_admin.php")
             var ocaciones = $(this).data('ocaciones');
             var status = $(this).data('status');
             var precio = $(this).data('precio');
-            var oferta = $(this).data('oferta');
+          
             $("#nombreDelete").text(nombre);
             $("#descripcionDelete").text("Decripcion: " + descripcion);
             $("#categoriaDelete").text(categoria);
             $("#ocacionDelete").text("Ocacion: " + ocaciones);
             $("#statusDelete").text("Status: " + status);
-            $("#ofertaDelete").text("Oferta: " + oferta);
+           
             $("#precioDelete").text("$ " + precio);
 
             document.getElementById("imgSalidaDelete").src = "../uploads/product/" + imagen;
@@ -608,6 +554,7 @@ require_once("layoutAdmin/footer_admin.php")
             var descripcion = $(this).data('descripcion');
             var imagen = $(this).data('imagen');
             var categoria = $(this).data('categoria');
+            var ocacion = $(this).data('ocacion');
             var status = $(this).data('status');
             var precio = $(this).data('precio');
             $("#nombreEdit").val(nombre);
@@ -616,6 +563,7 @@ require_once("layoutAdmin/footer_admin.php")
             $("#statusEdit").text(status);
             $("#precioEdit").val(precio);
             $("#idEdit").val(idEditar);
+            $("#ocacionesEdit").append(ocacion);
             document.getElementById("imgEdit").src = "../uploads/product/" + imagen;
             document.getElementById("imgEditar").src = "../uploads/product/" + imagen;
             $("#idEditarImg").val(idEditar);
@@ -633,14 +581,14 @@ require_once("layoutAdmin/footer_admin.php")
             var ocaciones = $(this).data('ocaciones');
             var status = $(this).data('status');
             var precio = $(this).data('precio');
-            var oferta = $(this).data('oferta');
+        
             $("#nombreVer").text(nombre);
             $("#nombreVer1").text(nombre);
             $("#descripcionVer").text("Decripcion: " + descripcion);
             $("#categoriaVer").text(categoria);
             $("#ocacionVer").text("Ocacion: " + ocaciones);
             $("#statusVer").text("Status:" + status);
-            $("#ofertaVer").text("Oferta:" + oferta);
+     
             $("#precioVer").text("$ " + precio);
             document.getElementById("imgSalida").src = "../uploads/product/" + imagen;
             $("#idVer").val(idVer);
