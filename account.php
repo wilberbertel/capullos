@@ -27,15 +27,26 @@ require_once("includes/load.php");
         <!-- slide -->
         <script src="Assets/js/responsiveslides.min.js"></script>
         <script>
-     $(function () {
-         $("#slider").responsiveSlides({
-             auto: true,
-             speed: 500,
-             namespace: "callbacks",
-             pager: true,
-         });
-     });
-        </script>
+  function mostrarContrasena(){
+      var tipo = document.getElementById("password");
+      if(tipo.type == "password"){
+          tipo.type = "text";
+      }else{
+          tipo.type = "password";
+      }
+  }
+</script>
+<script>
+$(document).ready(function () {
+  $('#mostrar_contrasena').click(function () {
+    if ($('#mostrar_contrasena').is(':checked')) {
+      $('#password').attr('type', 'text');
+    } else {
+      $('#password').attr('type', 'password');
+    }
+  });
+});
+</script>
     </head>
     <body>
         <?php
@@ -62,7 +73,10 @@ require_once("includes/load.php");
                             <input type="text" name="email" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" required> 
 
                             <span>Contraseña</span>
-                            <input type="password" name="password" required> 
+                            <input type="password" id = "password" name="password" required> 
+                            <div style="margin-top:5px;">           
+          <input style="margin-left:20px;" type="checkbox" id="mostrar_contrasena" value="" title="clic para mostrar contraseña"/>       
+          Mostrar Contraseña </div>
                             <div class="word-in">
                                 <a class="forgot" href="resetPassword.php">¿Olvidó su contraseña?</a>
                                 <input type="submit" value="Ingresar">
@@ -78,7 +92,7 @@ require_once("includes/load.php");
                 </div>
             </div>
         </div>
-
+  
 
         <?php require_once('layout/footer.php'); ?>
 

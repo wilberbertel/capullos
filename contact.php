@@ -5,7 +5,7 @@ $manageData = manageData();
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Contacto || Capullos floristeria</title>
+        <title>Contacto :: Capullos floristeria</title>
         <link rel="shortcut icon" href="Assets/images/favicon.ico">
         <link href="Assets/css/bootstrap-3.1.1.min.css" rel='stylesheet' type='text/css' />
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

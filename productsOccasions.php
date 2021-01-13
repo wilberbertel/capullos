@@ -19,7 +19,7 @@ if ($existeOcacion['total'] < 1) {
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Ocacion: <?php echo $_GET['name'] ?> :: Capullos</title>
+        <title>Ocacion :: Capullos</title>
         <link href="Assets/css/bootstrap-3.1.1.min.css" rel='stylesheet' type='text/css' />
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="Assets/js/jquery.min.js"></script>
@@ -76,7 +76,7 @@ if ($existeOcacion['total'] < 1) {
 
                         <div class="col-md-4">
                             <div class="col-md1 simpleCart_shelfItem">		
-                                <img class="img-responsive"  style="height: 250px; width: 100%; display: block;" src="uploads/product/<?php echo $productos['image_product']; ?>" alt="" />
+                                <img class="img-responsive"  style="height: 350px; width: 90%; display: block;" src="uploads/product/<?php echo $productos['image_product']; ?>" alt="" />
                                 <h3><?php echo $productos['namep']; ?></a></h3>
                                 <div class="price">
                                     <form action="single.php" method="post">

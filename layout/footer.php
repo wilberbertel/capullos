@@ -9,9 +9,9 @@ $manageData = manageData();
         <div class="footer-top">
             <div class="col-md-6 top-footer animated wow fadeInLeft" data-wow-delay=".5s">
                 <h3>Síganos en: </h3>
-                <a href="single.html"><img src="Assets/images/whatsapp16px.png"/></a>
-                <a href="single.html"><img src="Assets/images/instagram64px.png"/></a>
-                <a href="single.html"><img src="Assets/images/facebook64px.png"/></a>
+                <a href="https://api.whatsapp.com/send?phone=+573226163368"><img src="Assets/images/whatsapp16px.png"/></a>
+                <a href="https://www.instagram.com/capullosfloristeria/"><img src="Assets/images/instagram64px.png"/></a>
+                <a href="https://www.facebook.com/Capullos-Floristeria-1650902468254844"><img src="Assets/images/facebook64px.png"/></a>
             </div>
             <div class="col-md-6 top-footer1 animated wow fadeInRight" data-wow-delay=".5s">
             <!--	<h3><img src="Assets/images/medios-de-pago-1024x42.png"/></h3>

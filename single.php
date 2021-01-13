@@ -23,7 +23,7 @@ if (isset($_POST['id_product']) /* && $_POST['id_product']!="" */) {
 <!DOCTYPE html>
 <html>
     <head>
-        <title><?php echo $product['namep'] ?> | Capullos</title>
+        <title><?php echo $product['namep'] ?> :: Capullos</title>
         <link href="Assets/css/bootstrap-3.1.1.min.css" rel='stylesheet' type='text/css' />
         <link rel="shortcut icon" href="Assets/images/favicon.ico">
 

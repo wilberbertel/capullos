@@ -264,13 +264,17 @@ $states = allStateActive();
 
                             <div class="col-md-4 login-left">
                                 <h4>MÉTODO DE PAGO</h4>
+                                
                                 <br>
                                 <table >
                                     <tr>	
-                                        <th> <input type="radio" id="tranferBancoEpayco" name="tranferBanco"  value="EPAYCO" >                                    
-                                        <label for="tranferBanco1">TRANSFERENCIA BANCARIA DIRECTA </label>                                                                                                                            
+                                        <th> <input  type="radio" id="tranferBancoEpayco" name="tranferBanco"  checked value="EPAYCO" >                                    
+                                        <label   title = "ePayco es una compañía dedicada a procesar pagos en línea"   for="tranferBanco1">TRANSFERENCIA BANCARIA DIRECTA </label>                                                                                                                            
                                          Pague con Giros en Efecty o Super Giros, Wester Union / Transferencia en Bancolombia, DaviPlata, Nequi o BBVA.	
-                                         </th>	 
+                                         <img class="img-responsive"  style="height: 100px; width: 110%; display: block;" src="Assets/images/epayco_pago_seguro.png" alt="" />
+             
+                                         </th>
+            
                                           </tr>  
                                                                      
                                     <tr>	

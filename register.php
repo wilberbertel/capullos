@@ -4,7 +4,7 @@ include "includes/load.php";
 <!DOCTYPE html>
 <html>
     <head>
-        <title> Registrar | Capullos</title>
+        <title> Registrar :: Capullos</title>
         <link href="Assets/css/bootstrap-3.1.1.min.css" rel='stylesheet' type='text/css' />
         <link rel="shortcut icon" href="Assets/images/favicon.ico">
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -38,6 +38,17 @@ include "includes/load.php";
          });
      });
         </script>
+          <script>
+     function verificarPassword() {
+          var inputName = document.querySelector("#password").value;
+          if (inputName.length >= 8) {
+               console.log("Muy bien"); // Puedes colocar un alert() o nada.
+	  }
+	  else {
+	       alert("Debes escribir mas de 8 caracteres");
+	  }
+     }
+</script>
     </head>
     <body>
         <?php
@@ -329,7 +340,7 @@ include "includes/load.php";
 
                             <div class="mation">
                                 <span>contraseña</span>
-                                <input required type="password" name="password">
+                                <input required type="password" id = "password" name="password">
                                 <span>confirmar  contraseña</span>
                                 <input  required type="password" name="passwordConfi">
                             </div>
@@ -339,7 +350,7 @@ include "includes/load.php";
 
 
 
-                        <input type="submit" value="Registrarme">
+                        <input type="submit" onclick="verificarPassword()" value="Registrarme">
                         <div class="clearfix"> </div>
                     </form>
                 </div>
@@ -349,5 +360,6 @@ include "includes/load.php";
         <?php require_once('layout/footer.php'); ?>
     
     </body>
+  
 </html>
 

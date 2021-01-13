@@ -214,10 +214,10 @@ function enviarEmail($email, $nombre, $asunto, $cuerpo){
     $mail->Host = 'smtp.gmail.com'; //Modificar
     $mail->Port = 587; //Modificar
     
-    $mail->Username = 'adrianandres1998@gmail.com'; //Modificar
-    $mail->Password = 'Colombia1234@'; //Modificar
+    $mail->Username = 'ventaflores.ecomerce@gmail.com'; //Modificar
+    $mail->Password = 'capullosfloristeria'; //Modificar
     
-    $mail->setFrom('adrianandres1998@gmail.com', 'Adrian Atencia Caly'); //Modificar
+    $mail->setFrom('ventaflores.ecomerce@gmail.com', 'Floristeria Capullos'); //Modificar
     $mail->addAddress($email, $nombre);
     
     $mail->Subject = $asunto;

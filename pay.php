@@ -126,12 +126,13 @@ if ($_POST['tranferBanco']!="PAYPAL" && $_POST['tranferBanco']!="EPAYCO") {
                               <input type="hidden" name="phoneE"  id="phoneE" class="form-control"  value=" <?php echo $_POST['phoneE'];?>">
                               <input type="hidden" name="notaE"  id="notaE" class="form-control"  value=" <?php echo $_POST['notaE'];?>">
     <?php
-      $PUBLIC_KEY= 'fd7567e4f978144ee5f88f01c410e5f4';
+      $PUBLIC_KEY= '640a5d2c00e66441cc139c071e23f983';
 
-     $PRIVATE_KEY='34de3f0ff2fbf69cd227c9ca05657c3b';
+     $PRIVATE_KEY='56b59064715c0c415b9255b8a7e48dde';
     
       echo "
         <script
+        
             src='https://checkout.epayco.co/checkout.js'
             class='epayco-button'
             data-epayco-key='$PUBLIC_KEY'

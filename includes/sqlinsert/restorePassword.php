@@ -50,7 +50,7 @@ if (!empty($_POST)) {
             unset($_SESSION['user_id']);
             exit;
         }else{
-            $session->msg('d', "Error al enviar el correo.".$email);
+            $session->msg('d', "Error al enviar el correo. ".$email);
             redirect('../../resetPassword.php', false);
         }
     }

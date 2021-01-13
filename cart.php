@@ -204,7 +204,7 @@ if (isset($_SESSION['carritoCapullos'])) {
                             <div class="col-md-2 col-md2">
 
                                 <div class="col-md1 simpleCart_shelfItem">
-                                    <img class="img-responsive" src="uploads/product/<?php echo $additions['image_product']; ?>" alt="" />						
+                                    <img class="img-responsive"   src="uploads/product/<?php echo $additions['image_product']; ?>" alt="" />						
                                     <h3><?php echo $additions['namep']; ?></h3>
                                     <form action="singleAdditions.php" method="post">
                                         <input type="hidden" name="id_product"  id="id_product" class="form-control"  value="<?php echo$additions['id_product']; ?>">

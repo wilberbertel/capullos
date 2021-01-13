@@ -44,8 +44,29 @@ $states = allState();
                 </div>
             </div>
         </div>
-<?php echo display_msg($msg); ?>
+        </div>
+        <div class="row">
+        <div class="col-md-12">
+            <div class="tile">
+
+                <div class="content-header">
+                    <div class="container-fluid">
+                        <div class="row mb-2">
+                            <div class="col-sm-12  text-center"">
+                            <h1 class="m-0 text-dark">Busqueda de categoria</h1> <br>
+                            <input  class="form-control form-control-lg"  type="text" id="search" placeholder="Escribe una  para buscar..." />
+
+                            </div><!-- /.col -->
+                     
+                        </div><!-- /.row -->
+                    </div><!-- /.container-fluid -->
+                </div>
+            </div>
+        </div>
     </div>
+<?php echo display_msg($msg); ?>
+   
+  
     <div class="row">
         <div class="col-md-12">
             <div class="tile">
@@ -211,7 +232,14 @@ $states = allState();
 
 require_once("layoutAdmin/footer_admin.php")
 ?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.quicksearch/2.2.1/jquery.quicksearch.js"></script>
+
 <script>
+$(function () {
+
+$('#search').quicksearch('table tbody tr');								
+});
     //Eliminar
     $(document).ready(function () {
         var idEliminar = -1;

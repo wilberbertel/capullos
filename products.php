@@ -79,7 +79,7 @@ $occasions = allOccasionsByCategory();
 
                         <div class="col-md-4">
                             <div class="col-md1 simpleCart_shelfItem">		
-                                <img class="img-responsive" style="height: 250px; width: 100%; display: block;" src="uploads/product/<?php echo $productos['image_product']; ?>" alt="" />
+                                <img class="img-responsive" style="height: 350px; width: 90%; display: block;" src="uploads/product/<?php echo $productos['image_product']; ?>" alt="" />
                                 <h3><?php echo $productos['namep']; ?></a></h3>
                                 <div class="price">
                                     <form action="single.php" method="post">
