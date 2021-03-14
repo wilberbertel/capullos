@@ -4,6 +4,7 @@ $user = current_user();
 $arreglo;
 $tipo = page_require_tipo($user['type']);
 $additions = productByAdditions();
+
 if (isset($_SESSION['carritoCapullos'])) {
     if (isset($_POST['id_product'])) {
         $arreglo = $_SESSION['carritoCapullos'];
@@ -36,7 +37,6 @@ if (isset($_SESSION['carritoCapullos'])) {
             $para = $_POST['para'];
             $precio = $res['price'];
             $imagen = $res['image_product'];
-
             $arregloNuevo = array(
                 'Id' => $_POST['id_product'],
                 'Nombre' => $nombre,
@@ -87,8 +87,6 @@ if (isset($_SESSION['carritoCapullos'])) {
         header("Location: cart.php");
     }
 }
-
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -116,14 +114,14 @@ if (isset($_SESSION['carritoCapullos'])) {
         <!-- slide -->
         <script src="Assets/js/responsiveslides.min.js"></script>
         <script>
-     $(function () {
-         $("#slider").responsiveSlides({
-             auto: true,
-             speed: 500,
-             namespace: "callbacks",
-             pager: true,
-         });
-     });
+            $(function () {
+                $("#slider").responsiveSlides({
+                    auto: true,
+                    speed: 500,
+                    namespace: "callbacks",
+                    pager: true,
+                });
+            });
         </script>
     </head>
     <body>
@@ -139,6 +137,7 @@ if (isset($_SESSION['carritoCapullos'])) {
             </div>
         </div>
         <!---->
+
         <?php
         if (isset($_SESSION['carritoCapullos'])) {
             ?>
@@ -156,53 +155,44 @@ if (isset($_SESSION['carritoCapullos'])) {
                         <tr>
                             <?php
                             $total = 0;
-
                             $arreglocarritoCapullos = $_SESSION['carritoCapullos'];
-                         
                             for ($i = 0; $i < count($arreglocarritoCapullos); $i++) {
-                                if($arreglocarritoCapullos[$i]['Precio']!=0){
-                                $total = $total + ($arreglocarritoCapullos[$i]['Precio'] * $arreglocarritoCapullos[$i]['Cantidad']);
-                                ?>
-                                <td class="ring-in"> 
-                                <form action="single.php" method="post">
-                                <input type="hidden" name="id_product"  id="id_product" class="form-control"  value="<?php echo $arreglocarritoCapullos[$i]['Id']; ?>">
-
-                                <button type="submit"   style="padding: 0;border: none; background: none;"class="">  <a  class="at-in"><img src="uploads/product/<?php echo $arreglocarritoCapullos[$i]['Imagen']; ?>" class="img-responsive" alt=""></a>
-                                    <div class="sed">
-                                    <h5><?php echo $arreglocarritoCapullos[$i]['Nombre']; ?></h5>
-                                        <p>(<?php echo $arreglocarritoCapullos[$i]['Decripcion']; ?>) </p></button>
-
-                                    </div>
-                                    <div class="clearfix"> </div> </form></td>
+                                if ($arreglocarritoCapullos[$i]['Precio'] != 0) {
+                                    $total = $total + ($arreglocarritoCapullos[$i]['Precio'] * $arreglocarritoCapullos[$i]['Cantidad']);?>
+                                    <td class="ring-in"> 
+                                        <form action="single.php" method="post">
+                                            <input type="hidden" name="id_product"  id="id_product" class="form-control"  value="<?php echo $arreglocarritoCapullos[$i]['Id']; ?>">
+                                            <button type="submit"   style="padding: 0;border: none; background: none;"class=""> 
+                                             <a  class="at-in"><img src="uploads/product/<?php echo $arreglocarritoCapullos[$i]['Imagen']; ?>" class="img-responsive" alt=""></a>
+                                                <div class="sed">
+                                                    <h5><?php echo $arreglocarritoCapullos[$i]['Nombre']; ?></h5>
+                                                    <p>(<?php echo $arreglocarritoCapullos[$i]['Decripcion']; ?>) </p></button>
+                                            </div>
+                                            <div class="clearfix"> </div> </form></td>
                                     <td> <?php echo $arreglocarritoCapullos[$i]['Cantidad']; ?></td>
-
-                                <td>$COP <?php echo numberCOP($arreglocarritoCapullos[$i]['Precio']); ?></td>
-                                <td class="cant<?php echo $arreglocarritoCapullos[$i]['Id']; ?>">
-                                    $COP <?php echo numberCOP($arreglocarritoCapullos[$i]['Precio'] * $arreglocarritoCapullos[$i]['Cantidad']); ?></td>
-                                <td><a href="#" class="to-buy btnEliminar" data-id="<?php echo $arreglocarritoCapullos[$i]['Id']; ?>">X</a></td>
-                            </tr>
-
-                        <?php }else{
-                            
-                        } } ?>
-                        <th></th>		
-                        <th></th>
-                        <th></th>
-                        <td><h2>Total: $COP <?php echo numberCOP($total); ?></h2></td>
+                                    <td>$COP <?php echo numberCOP($arreglocarritoCapullos[$i]['Precio']); ?></td>
+                                    <td class="cant<?php echo $arreglocarritoCapullos[$i]['Id']; ?>">
+                                        $COP <?php echo numberCOP($arreglocarritoCapullos[$i]['Precio'] * $arreglocarritoCapullos[$i]['Cantidad']); ?></td>
+                                    <td><a href="#" class="to-buy btnEliminar" data-id="<?php echo $arreglocarritoCapullos[$i]['Id']; ?>">X</a></td>
+                                </tr>
+                                <?php }  } ?>
+                        		
+                    
+                        
                     </table>
+
+
                     <div style="margin: 0 auto;
-   width: 200px;">
-                    <a href="billing.php" class="button buttonVerDetalles">Proceder con la compra $<?php echo numberCOP($total); ?></a>
+                         width: 200px;">
+                        <a href="billing.php" class="button buttonVerDetalles">Proceder con la compra $<?php echo numberCOP($total); ?></a>
                     </div>
                     <div class="clearfix"> </div>
                     <br>
                     <h3 class="cate">Adiciones</h3>
                     <div class="content-top2">
-                     <br>
-<?php foreach ($additions as $additions) : ?>
-
+                        <br>
+                        <?php foreach ($additions as $additions) : ?>
                             <div class="col-md-2 col-md2">
-
                                 <div class="col-md1 simpleCart_shelfItem">
                                     <img class="img-responsive"   src="uploads/product/<?php echo $additions['image_product']; ?>" alt="" />						
                                     <h3><?php echo $additions['namep']; ?></h3>
@@ -215,52 +205,46 @@ if (isset($_SESSION['carritoCapullos'])) {
                                         </div>
                                     </form>
                                 </div>
-
                             </div>	
-
-<?php endforeach; ?>
-
-
+                        <?php endforeach; ?>
                         <div class="clearfix"> </div>
                     </div>		
                 </div>
                 <?php
-                } else {
-                    echo "<div class='container'>
-    <div class='check-out'>
-      <h2>Aun no hay productos en el carrito</h2>
-      <a class='to-buy' href='products.php'>Ir a ver productos</a>
-      </div>
-      </div>";
-                }
-                ?>
-                
-            </div>
-         
+            } else {
+                echo "<div class='container'>
+                        <div class='check-out'>
+                             <h2>Aun no hay productos en el carrito</h2>
+                            <a class='to-buy' href='products.php'>Ir a ver productos</a>
+                        </div>
+                     </div>";
+            }
+            ?>
         </div>
- 
+    </div>
 
-<?php require_once('layout/footer.php'); ?>
-        <script>
-            $(document).ready(function () {
-                $(".btnEliminar").click(function (event) {
-                    event.preventDefault();
-                    var id = $(this).data('id');
-                    var boton = $(this);
 
-                    $.ajax({
-                        method: 'POST',
-                        url: 'eliminarCarrito.php',
-                        data: {
-                            id: id
-                        }
-                    }).done(function (respuesta) {
-                        boton.parent('td').parent('tr').remove();
-                        location.reload();
-                    });
+    <?php require_once('layout/footer.php'); ?>
+    <script>
+        $(document).ready(function () {
+            $(".btnEliminar").click(function (event) {
+                event.preventDefault();
+                var id = $(this).data('id');
+                var boton = $(this);
+
+                $.ajax({
+                    method: 'POST',
+                    url: 'eliminarCarrito.php',
+                    data: {
+                        id: id
+                    }
+                }).done(function (respuesta) {
+                    boton.parent('td').parent('tr').remove();
+                    location.reload();
                 });
-
             });
-        </script>
-    </body>
+
+        });
+    </script>
+</body>
 </html>

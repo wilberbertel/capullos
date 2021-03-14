@@ -2,9 +2,15 @@
 require_once("../includes/load.php");
 require_once("layoutAdmin/header_admin.php");
 $user = current_user();
-if (!$session->isUserLoggedIn(true) || validatePermition($user['type']) == 0 || validateStatus($user['status']) == 0) {
-    redirect('../index.php', false);
+if (!$session->isUserLoggedIn(true) && validatePermition($user['type']) == 0 && validateStatus($user['status']) == 0) {
+    //$session->msg('d', "Usuario no permitido");
+    //redirect('../index.php', false);
+    echo'<script type="text/javascript">
+    alert("Usuario no permitido");
+    window.location.href="../index.php";
+    </script>';
 }
+
 $totalProducts = countProducts();
 $totalUsersClientes = countUsersClientes();
 $totalProductosVendidos = countSoldProducts();
@@ -76,7 +82,7 @@ $ganaciasMes= gainMonth(getMonth());
             </div>
         </div>
     </div>
-    <div class="col-md-12" id="container"></div>
+    <div class="col-md-12 " id="container"></div>
 <br>
     <div class="row">
         <div class="col-md-12">

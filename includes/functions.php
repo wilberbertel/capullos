@@ -90,12 +90,18 @@ function read_date($str) {
     else
         return null;
 }
+function limiteFecha(){
+    $fecha_actual = date("Y-m-d");
+    $fechaLimite = date("Y-m-d",strtotime($fecha_actual."+ 1 days")); 
 
+    return    $fechaLimite;
+
+}
 /* -------------------------------------------------------------- */
 /* Function for  Readable Make date time
   /*-------------------------------------------------------------- */
 
-  function get_date() {
+function get_date() {
     return strftime("%Y-%m-%d", time());
 }
 
@@ -106,10 +112,10 @@ function make_date() {
 function getMonth() {
     return strftime("%m", time());
 }
+
 function getYear() {
     return strftime("%Y", time());
 }
-
 
 /* -------------------------------------------------------------- */
 /* Function for  Readable date time
@@ -143,104 +149,101 @@ function numberCOP($número) {
     return number_format($número);
 }
 
-function generateToken()
-{
-    $gen = md5(uniqid(mt_rand(), false));	
+function generateToken() {
+    $gen = md5(uniqid(mt_rand(), false));
     return $gen;
 }
 
-function validaPassword($var1, $var2)
-	{
-		if (strcmp($var1, $var2) !== 0){
-			return false;
-			} else {
-			return true;
-		}
+function validaPassword($var1, $var2) {
+    if (strcmp($var1, $var2) !== 0) {
+        return false;
+    } else {
+        return true;
     }
-    
-function converterMonth($mes){
+}
+
+function converterMonth($mes) {
     $resultado = "";
 
-if($mes=="01"){
-$resultado = "ENEREO";
-}
-if($mes=="02"){
-    $resultado = "FEBRERO";
+    if ($mes == "01") {
+        $resultado = "ENERO";
     }
-    if($mes=="03"){
+    if ($mes == "02") {
+        $resultado = "FEBRERO";
+    }
+    if ($mes == "03") {
         $resultado = "MARZO";
-        }
-        if($mes=="04"){
-            $resultado = "ABRIL";
-            }
-            if($mes=="05"){
-                $resultado = "MAYO";
-                }
-                if($mes=="06"){
-                    $resultado = "JUNIO";
-                    }
-                    if($mes=="07"){
-                        $resultado = "JULIO";
-                        }
-                        if($mes=="08"){
-                            $resultado = "AGOSTO";
-                            }
-                            if($mes=="09"){
-                                $resultado = "SEPTIEMBRE";
-                                }
-                                if($mes=="10"){
-                                    $resultado = "OCTUBRE";
-                                    }
-                                    if($mes=="11"){
-                                        $resultado = "NOVIEMBRE";
-                                        }
-                                        if($mes=="12"){
-                                            $resultado = "DICIEMBRE";
-                                            }
+    }
+    if ($mes == "04") {
+        $resultado = "ABRIL";
+    }
+    if ($mes == "05") {
+        $resultado = "MAYO";
+    }
+    if ($mes == "06") {
+        $resultado = "JUNIO";
+    }
+    if ($mes == "07") {
+        $resultado = "JULIO";
+    }
+    if ($mes == "08") {
+        $resultado = "AGOSTO";
+    }
+    if ($mes == "09") {
+        $resultado = "SEPTIEMBRE";
+    }
+    if ($mes == "10") {
+        $resultado = "OCTUBRE";
+    }
+    if ($mes == "11") {
+        $resultado = "NOVIEMBRE";
+    }
+    if ($mes == "12") {
+        $resultado = "DICIEMBRE";
+    }
 
 
     return $resultado;
-
 }
 
-function enviarEmail($email, $nombre, $asunto, $cuerpo){
-		
+function enviarEmail($email, $nombre, $asunto, $cuerpo) {
+
     require_once 'PHPMailer/PHPMailerAutoload.php';
-    
+
     $mail = new PHPMailer();
     $mail->isSMTP();
     $mail->SMTPAuth = true;
     $mail->SMTPSecure = 'tls'; //Modificar
     $mail->Host = 'smtp.gmail.com'; //Modificar
     $mail->Port = 587; //Modificar
-    
+
     $mail->Username = 'ventaflores.ecomerce@gmail.com'; //Modificar
     $mail->Password = 'capullosfloristeria'; //Modificar
-    
+
     $mail->setFrom('ventaflores.ecomerce@gmail.com', 'Floristeria Capullos'); //Modificar
     $mail->addAddress($email, $nombre);
-    
+
     $mail->Subject = $asunto;
-    $mail->Body    = $cuerpo;
+    $mail->Body = $cuerpo;
     $mail->IsHTML(true);
-    
+
     if ($mail->send()) {
         return true;
         echo "<script type='text/javascript'>
-    console.log(".$mail->ErrorInfo.");
+    console.log(" . $mail->ErrorInfo . ");
    
      </script>";
-    }else{
-    return false;
-    echo "<script type='text/javascript'>
-   console.log(".$mail->ErrorInfo.");
+    } else {
+        return false;
+        echo "<script type='text/javascript'>
+   console.log(" . $mail->ErrorInfo . ");
   
     </script>";
     }
 }
 
 function validatePermition($tipo) {
-    //1 -> no igal
+    //1 -> no igual
     //o ->1 si
     $acceso = 1;
     if (strcmp($tipo, "SUPER") !== 0) {

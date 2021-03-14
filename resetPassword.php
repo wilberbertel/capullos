@@ -27,14 +27,14 @@ require_once("includes/load.php");
         <!-- slide -->
         <script src="Assets/js/responsiveslides.min.js"></script>
         <script>
-     $(function () {
-         $("#slider").responsiveSlides({
-             auto: true,
-             speed: 500,
-             namespace: "callbacks",
-             pager: true,
-         });
-     });
+            $(function () {
+                $("#slider").responsiveSlides({
+                    auto: true,
+                    speed: 500,
+                    namespace: "callbacks",
+                    pager: true,
+                });
+            });
         </script>
     </head>
     <body>
@@ -56,10 +56,10 @@ require_once("includes/load.php");
                 <?php echo display_msg($msg); ?>
                 <div class="account_grid">
                     <div class="col-md-12 login-right">
-                    <div class="col-md-12 login-left">
-                        <h4>Al restaurar la contraseña</h4>
-                        <p>Se enviara un mensaje al correo electronico asociado para hacer el respectivo cambio de contraseña</p>
-                    </div>
+                        <div class="col-md-12 login-left">
+                            <h4>Al restaurar la contraseña</h4>
+                            <p>Se enviara un mensaje al correo electronico asociado para hacer el respectivo cambio de contraseña</p>
+                        </div>
                         <form action="includes/sqlinsert/restorePassword.php" method="post">
                             <span>Dirección de correo electrónico</span>
                             <input type="text" name="email" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" required> 
@@ -68,7 +68,7 @@ require_once("includes/load.php");
                             </div>
                         </form>
                     </div>	
-                   
+
                     <div class="clearfix"> </div>
                 </div>
             </div>

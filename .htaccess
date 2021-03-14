@@ -1,1 +1,11 @@
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^([a-z]+)\/?$ $1.php [NC]
 
+ErrorDocument 404 /capullos/errores/404.html
+ErrorDocument 500 /capullos/errores/500.html
+ErrorDocument 503 /capullos/errores/503.html
+
+</IfModule>

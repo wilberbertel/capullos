@@ -31,14 +31,14 @@ $occasions = allOccasionsByCategory();
         <!-- slide -->
         <script src="Assets/js/responsiveslides.min.js"></script>
         <script>
-     $(function () {
-         $("#slider").responsiveSlides({
-             auto: true,
-             speed: 500,
-             namespace: "callbacks",
-             pager: true,
-         });
-     });
+            $(function () {
+                $("#slider").responsiveSlides({
+                    auto: true,
+                    speed: 500,
+                    namespace: "callbacks",
+                    pager: true,
+                });
+            });
         </script>
     </head>
     <body>
@@ -55,40 +55,30 @@ $occasions = allOccasionsByCategory();
         </div>
         <!--content-->
         <div class="products">
-
             <div class="container">
                 <?php echo display_msg($msg); ?>
-                <h2>Todos los productos (<?php echo $totalProducts['total'];  ?>)</h2>
+                <h2>Todos los productos (<?php echo $totalProducts['total']; ?>)</h2>
                 <div class="col-md-9">
                     <?php
                     $limite = 12; //productos por pagina
                     $totalQuery = countProducts();
                     $totalBotones = round($totalQuery['total'] / $limite);
-
                     if (isset($_GET['limite']) && is_numeric($_GET['limite'])) {
-
                         $resultado = allProducts2($_GET['limite'], $limite);
                     } else {
                         $resultado = allProducts($limite);
                     }
-
-
-
-                    foreach ($resultado as $productos) :
-                        ?>
-
+                    foreach ($resultado as $productos) :?>
                         <div class="col-md-4">
                             <div class="col-md1 simpleCart_shelfItem">		
-                                <img class="img-responsive" style="height: 350px; width: 90%; display: block;" src="uploads/product/<?php echo $productos['image_product']; ?>" alt="" />
+                                <img class="img-responsive" style="height: 320px; width: 90%; display: block;"
+                                 src="uploads/product/<?php echo $productos['image_product']; ?>" alt="" />
                                 <h3><?php echo $productos['namep']; ?></a></h3>
                                 <div class="price">
                                     <form action="single.php" method="post">
-                                        <input type="hidden" name="id_product"  id="id_product" class="form-control"  value="<?php echo $productos['id_product']; ?>">
-
-                                        <h5 class="item_price">$COP <?php echo numberCOP($productos['price']); ?></h5>
-                                        <!--<a  style="cursor:pointer;" type="submit" class="enviar"  data-id="<?php echo $productos['id_product']; ?>"
-                                        
-                                        >Ver detalles</a>-->
+                                        <input type="hidden" name="id_product"  id="id_product" class="form-control"  
+                                        value="<?php echo $productos['id_product']; ?>">
+                                        <h5 class="item_price">$COP <?php echo numberCOP($productos['price']); ?></h5>                       
                                         <button type="submit"  class="button buttonVerDetalles">Ver Detalles</button> 
                                         <div class="clearfix"> </div>
                                     </form>
@@ -96,11 +86,7 @@ $occasions = allOccasionsByCategory();
                             </div>
                             <br>
                         </div>	
-
-                    <?php endforeach;
-                    ?>
-
-
+                    <?php endforeach;?>
                 </div>
 
 
@@ -112,13 +98,13 @@ $occasions = allOccasionsByCategory();
                             <ul class="menu-drop">
                                 <li class="item1"><a href="productsCategory.php?name=<?php echo $categorias['name'] ?>"><?php echo $categorias['name'] ?> </a>  </li>
                             </ul>
-                            <?php endforeach; ?>
+                        <?php endforeach; ?>
                     </div>
-             
+
 
                     <div class="product-bottom">
                         <h3 class="cate">Últimos productos</h3>
-<?php foreach ($ultimos as $productos) : ?>
+                        <?php foreach ($ultimos as $productos) : ?>
                             <form action="single.php" method="post">
                                 <input type="hidden" name="id_product"  id="id_product" class="form-control"  value="<?php echo $productos['id_product']; ?>">
 
@@ -134,7 +120,7 @@ $occasions = allOccasionsByCategory();
                                             </div>	
                                             <div class="clearfix"> </div>
                                     </div>
-<?php endforeach; ?>
+                                <?php endforeach; ?>
                             </div>						
                     </div>
                 </div>

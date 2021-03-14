@@ -37,9 +37,7 @@ $i = 1;
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalAdd">
                                     <i class="fa fa-plus"></i> Insertar Producto
                                 </button>
-
-
-                            </div><!-- /.col -->
+                           </div><!-- /.col -->
 
                         </div><!-- /.row -->
                     </div><!-- /.container-fluid -->
@@ -55,7 +53,7 @@ $i = 1;
                     <div class="container-fluid">
                         <div class="row mb-2">
                             <div class="col-sm-12  text-center"">
-                            <h1 class="m-0 text-dark">Busqueda de producto</h1> <br>
+                            <h1 class="m-0 text-dark">Búsqueda de producto </h1> <br>
                             <input  class="form-control form-control-lg"  type="text" id="search" placeholder="Escribe para buscar..." />
 
                             </div><!-- /.col -->

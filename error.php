@@ -29,14 +29,14 @@ require_once("includes/load.php");
         <!-- slide -->
         <script src="Assets/js/responsiveslides.min.js"></script>
         <script>
-     $(function () {
-         $("#slider").responsiveSlides({
-             auto: true,
-             speed: 500,
-             namespace: "callbacks",
-             pager: true,
-         });
-     });
+            $(function () {
+                $("#slider").responsiveSlides({
+                    auto: true,
+                    speed: 500,
+                    namespace: "callbacks",
+                    pager: true,
+                });
+            });
         </script>
 
     </head>

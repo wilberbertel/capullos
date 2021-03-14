@@ -1,12 +1,12 @@
 <?php
 require_once("includes/load.php");
-if(empty($_GET['user_id']) || empty($_GET['token'])){
+if (empty($_GET['user_id']) || empty($_GET['token'])) {
     header('Location : index.php');
 }
 $user_id = $_GET['user_id'];
 $token = $_GET['token'];
 
-if(!verificaTokenPass($user_id,$token)){
+if (!verificaTokenPass($user_id, $token)) {
     echo "<script type='text/javascript'>
     alert('Error en la verificacion de datos.');
     window.location.href='index.php';
@@ -40,14 +40,14 @@ if(!verificaTokenPass($user_id,$token)){
         <!-- slide -->
         <script src="Assets/js/responsiveslides.min.js"></script>
         <script>
-     $(function () {
-         $("#slider").responsiveSlides({
-             auto: true,
-             speed: 500,
-             namespace: "callbacks",
-             pager: true,
-         });
-     });
+            $(function () {
+                $("#slider").responsiveSlides({
+                    auto: true,
+                    speed: 500,
+                    namespace: "callbacks",
+                    pager: true,
+                });
+            });
         </script>
     </head>
     <body>
@@ -69,12 +69,12 @@ if(!verificaTokenPass($user_id,$token)){
                 <?php echo display_msg($msg); ?>
                 <div class="account_grid">
                     <div class="col-md-12 login-right">
-                    
+
                         <form action="includes/sqlinsert/updatePassword.php" method="post">
-                        <input type="hidden" id="user_id" name="user_id" value ="<?php echo $user_id; ?>" />
-							
-							<input type="hidden" id="token" name="token" value ="<?php echo $token; ?>" />
-							
+                            <input type="hidden" id="user_id" name="user_id" value ="<?php echo $user_id; ?>" />
+
+                            <input type="hidden" id="token" name="token" value ="<?php echo $token; ?>" />
+
                             <span>Contraseña</span>
                             <input type="password" name="password"  required> 
                             <span>Confirmar Contraseña</span>
@@ -84,7 +84,7 @@ if(!verificaTokenPass($user_id,$token)){
                             </div>
                         </form>
                     </div>	
-                   
+
                     <div class="clearfix"> </div>
                 </div>
             </div>

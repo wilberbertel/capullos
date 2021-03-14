@@ -17,7 +17,7 @@ $producto = searchProduct($_POST['producto']);
       <div class="app-title">
         <div>
           <h1><i class="fa fa-file-text-o"></i> Reporte de ventas por producto</h1>
-          <p><?php echo converterMonth(getMonth());?></p>
+          <p><?php //echo converterMonth(getMonth());?></p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
@@ -48,7 +48,7 @@ $producto = searchProduct($_POST['producto']);
                </div><!-- /.col -->
                <div class="col-sm-12 text-right">
                                 <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#ModalAddCategoria">
-                                    <i class="fa fa-search"></i> buscar
+                                    <i class="fa fa-search"></i> Buscar
                                 </button>
                             </div><!-- /.col -->
                            </div><!-- /.col -->
@@ -66,11 +66,11 @@ $producto = searchProduct($_POST['producto']);
               
         if(sizeof($ganaciasProducto)<=0){
             echo " <div class='col-6'>
-            <h2 class='page-header'>No se encontraron registros</h2>
+            <h2 class='page-header'>No se encontraron registros para el producto '".$_POST['producto']."'</h2>
             
           </div>";
-          exit;
-          }
+          
+          }else{
         
 
         ?>
@@ -140,7 +140,7 @@ $producto = searchProduct($_POST['producto']);
           </div>
         </div>
       </div>
-      <?php } ?>
+      <?php } } ?>
     </main>
 
 

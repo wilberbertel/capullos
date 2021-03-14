@@ -7,7 +7,7 @@ if (isset($_POST['id_product']) /* && $_POST['id_product']!="" */) {
     $categories = allCategories();
     $occasions = allOccasionsByCategory();
     $occasionsByoccasions = productByOccassions('MAMA');
-$additions = productByAdditions();
+    $additions = productByAdditions();
     $existeProducto = existProduct($_POST['id_product']);
     if ($existeProducto['total'] < 1 || !is_numeric($_POST['id_product'])) {
         $session->msg('d', "No se encontro el producto 1");
@@ -47,11 +47,11 @@ $additions = productByAdditions();
         <script src="Assets/js/simpleCart.min.js"></script>
         <!-- slide -->
         <script src="Assets/js/responsiveslides.min.js"></script>
-     
+
     </head>
     <body>
         <!--header-->
-<?php require_once('layout/header.php'); ?>
+        <?php require_once('layout/header.php'); ?>
         <div class="breadcrumbs">
             <div class="container">
                 <ol class="breadcrumb breadcrumb1 animated wow slideInLeft animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: slideInLeft;">
@@ -86,7 +86,7 @@ $additions = productByAdditions();
                             <h2><?php echo $product['namep']; ?></h2>
                             <p><?php echo $product['description']; ?></p>
 
-                        
+
                             <label  class="add-to item_price">$COP <?php echo numberCOP($product['price']); ?> </label>
 
                             <a  style="cursor:pointer;" data-toggle="modal" data-target="#modalAbandonedCart" class="cart">Añadir al carrito</a>
@@ -132,11 +132,11 @@ $additions = productByAdditions();
                                                             <p><?php echo $product['description']; ?></p>
                                                             <div class="star-on">
                                                                 <div class="available">
-                                                                
-                                                                <input type="hidden" name="id_product"  id="id_product" class="form-control"  value="<?php echo $product['id_product']; ?>">          
-                                                                <input type="hidden" name="de"  id="de" class="form-control"  value="">          
-                                                                <input type="hidden" name="mensaje"  id="mensaje" class="form-control"  value="">          
-                                                                <input type="hidden" name="para"  id="para" class="form-control"  value=">">          
+
+                                                                    <input type="hidden" name="id_product"  id="id_product" class="form-control"  value="<?php echo $product['id_product']; ?>">          
+                                                                    <input type="hidden" name="de"  id="de" class="form-control"  value="">          
+                                                                    <input type="hidden" name="mensaje"  id="mensaje" class="form-control"  value="">          
+                                                                    <input type="hidden" name="para"  id="para" class="form-control"  value=">">          
 
 
                                                                 </div>
@@ -168,7 +168,7 @@ $additions = productByAdditions();
 
 
                     <div class="content-top1">
-<?php foreach ($occasionsByoccasions as $occasionsByoccasions) : ?>
+                        <?php foreach ($occasionsByoccasions as $occasionsByoccasions) : ?>
 
                             <div class="col-md-4 col-md4">
 
@@ -188,7 +188,7 @@ $additions = productByAdditions();
 
                             </div>	
 
-<?php endforeach; ?>
+                        <?php endforeach; ?>
 
 
                         <div class="clearfix"> </div>
@@ -203,7 +203,7 @@ $additions = productByAdditions();
                             <ul class="menu-drop">
                                 <li class="item1"><a href="productsCategory.php?name=<?php echo $categorias['name'] ?>"><?php echo $categorias['name'] ?> </a>  </li>
                             </ul>
-                            <?php endforeach; ?>
+                        <?php endforeach; ?>
                     </div>
 
                     <div class="product-bottom">
@@ -241,42 +241,42 @@ $additions = productByAdditions();
             <!-- start menu -->
             <script type="text/javascript" src="Assets/js/memenu.js"></script>
             <script>$(document).ready(function () {
-                                                        $(".memenu").memenu();
-                                                    });</script>
+                    $(".memenu").memenu();
+                });</script>
             <script src="Assets/js/simpleCart.min.js"></script>
-      
+
             <!-- FlexSlider -->
             <script defer src="Assets/js/jquery.flexslider.js"></script>
             <link rel="stylesheet" href="Assets/css/flexslider.css" type="text/css" media="screen" />
 
             <script>
-            // Can also be used with $(document).ready()
-                                                                $(window).load(function () {
-                                                                    $('.flexslider').flexslider({
-                                                                        animation: "slide",
-                                                                        controlNav: "thumbnails"
-                                                                    });
-                                                                });
+                // Can also be used with $(document).ready()
+                $(window).load(function () {
+                    $('.flexslider').flexslider({
+                        animation: "slide",
+                        controlNav: "thumbnails"
+                    });
+                });
             </script>
             <!---pop-up-box---->
             <link href="Assets/css/popuo-box.css" rel="stylesheet" type="text/css" media="all"/>
             <script src="Assets/js/jquery.magnific-popup.js" type="text/javascript"></script>
             <!---//pop-up-box---->
             <script>
-                       $(document).ready(function () {
-                           $('.popup-with-zoom-anim').magnificPopup({
-                               type: 'inline',
-                               fixedContentPos: false,
-                               fixedBgPos: true,
-                               overflowY: 'auto',
-                               closeBtnInside: true,
-                               preloader: false,
-                               midClick: true,
-                               removalDelay: 300,
-                               mainClass: 'my-mfp-zoom-in'
-                           });
+                $(document).ready(function () {
+                    $('.popup-with-zoom-anim').magnificPopup({
+                        type: 'inline',
+                        fixedContentPos: false,
+                        fixedBgPos: true,
+                        overflowY: 'auto',
+                        closeBtnInside: true,
+                        preloader: false,
+                        midClick: true,
+                        removalDelay: 300,
+                        mainClass: 'my-mfp-zoom-in'
+                    });
 
-                       });
+                });
 
             </script>	
     </body>

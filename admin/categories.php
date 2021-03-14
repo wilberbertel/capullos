@@ -15,12 +15,12 @@ $states = allState();
 <main class="app-content">
     <div class="app-title">
         <div>
-            <h1><i class="fa fa-th-list"></i>Tabla de categorias</h1>
+            <h1><i class="fa fa-th-list"></i>Tabla de categorías</h1>
         </div>
         <ul class="app-breadcrumb breadcrumb side">
             <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
             <li class="breadcrumb-item active"><a href="dashboard.php">Dashboard</a></li>
-            <li class="breadcrumb-item">Tabla de categorias</li>
+            <li class="breadcrumb-item">Tabla de categorías</li>
         </ul>
     </div>
 
@@ -32,11 +32,11 @@ $states = allState();
                     <div class="container-fluid">
                         <div class="row mb-2">
                             <div class="col-sm-6">
-                                <h1 class="m-0 text-dark">Lista de categorias</h1>
+                                <h1 class="m-0 text-dark">Lista de categorías</h1>
                             </div><!-- /.col -->
                             <div class="col-sm-6 text-right">
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalAddCategoria">
-                                    <i class="fa fa-plus"></i> Insertar nueva Categoria
+                                    <i class="fa fa-plus"></i> Insertar nueva categoría
                                 </button>
                             </div><!-- /.col -->
                         </div><!-- /.row -->
@@ -53,7 +53,7 @@ $states = allState();
                     <div class="container-fluid">
                         <div class="row mb-2">
                             <div class="col-sm-12  text-center"">
-                            <h1 class="m-0 text-dark">Busqueda de categoria</h1> <br>
+                            <h1 class="m-0 text-dark">Búsqueda de categoría</h1> <br>
                             <input  class="form-control form-control-lg"  type="text" id="search" placeholder="Escribe una  para buscar..." />
 
                             </div><!-- /.col -->
@@ -127,7 +127,7 @@ $states = allState();
         <div class="modal-content">
             <form action="../includes/sqlinsert/add_category.php" method="POST" enctype="multipart/form-data">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="ModalAddCategoriaTitle">Insertar categoria</h5>
+                    <h5 class="modal-title" id="ModalAddCategoriaTitle">Insertar categoría</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -162,7 +162,7 @@ $states = allState();
         <div class="modal-content">
             <form action="../includes/sqlinsert/update_category.php" method="POST" enctype="multipart/form-data">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalEditar">Editar categoria</h5>
+                    <h5 class="modal-title" id="modalEditar">Editar categoría</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -183,7 +183,7 @@ $states = allState();
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <button type="submit" class="btn btn-primary">Actualizar datos</button>
                 </div>
             </form>
         </div>
@@ -196,7 +196,7 @@ $states = allState();
         <div class="modal-content">
 
             <div class="modal-header">
-                <h5 class="modal-title" id="modalEliminarLabel">Eliminar Producto</h5>
+                <h5 class="modal-title" id="modalEliminarLabel">Eliminar categoría</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -204,7 +204,7 @@ $states = allState();
             <div class="modal-body">
 
                 <div class="bs-component" style="margin-bottom: 3em;">
-                    <h3>¿Desea eliminar esta categoria <button class="btn btn-secondary" type="button" title="" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Tenga en cuenta que al eliminar esta categoria se eliminaran todos los productos asociados a esta." data-original-title="A tener en cuenta">?</button>
+                    <h3>¿Desea eliminar esta categoría<button class="btn btn-secondary" type="button" title="" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Tenga en cuenta que al eliminar esta categoria se eliminaran todos los productos asociados a esta." data-original-title="A tener en cuenta">?</button>
                 </div></h3>
 
                 <input type="hidden" id="idDelete" name="idDelete">

@@ -31,14 +31,14 @@ $states = allStateActive();
         <!-- slide -->
         <script src="Assets/js/responsiveslides.min.js"></script>
         <script>
-     $(function () {
-         $("#slider").responsiveSlides({
-             auto: true,
-             speed: 500,
-             namespace: "callbacks",
-             pager: true,
-         });
-     });
+            $(function () {
+                $("#slider").responsiveSlides({
+                    auto: true,
+                    speed: 500,
+                    namespace: "callbacks",
+                    pager: true,
+                });
+            });
         </script>
     </head>
     <body>
@@ -87,41 +87,41 @@ $states = allStateActive();
                                 <h4><hr>.</h4>
                                 <hr>
                                 <b>
-                                <h4>DATOS DEL ENVIO</h4>
-                                <div class="col-md-12">	
-                                    <span>NOMBRES * </span>
-                                <input type="text" name="namesE" required> 
+                                    <h4>DATOS DEL ENVIO</h4>
+                                    <div class="col-md-12">	
+                                        <span>NOMBRES * </span>
+                                        <input type="text" name="namesE" required> 
 
 
-                                <span>APELLIDOS *</span>
-                                <input type="text" name="lastNamesE" required> 
+                                        <span>APELLIDOS *</span>
+                                        <input type="text" name="lastNamesE" required> 
 
-                                <span>Pais *</span>
-                                    <select  style="width:310px;" title="Pais" name="countryE" id="countryE" class="form-control" disabled>   
-                                        <option value="COL" >Colombia</option> 
-                                    </select> 
-                                    <span>REGIÓN / PROVINCIA *</span>
-                                    <select  style="width:310px;" name="stateE" id="stateE" class="form-control"   required>
-                                    <option value="" >SELECCIONE UN DEPARTAMENTO</option>
-                                        <?php foreach ($states as $state): ?>
-                                            <option value="<?php echo $state['id']; ?>"><?php echo $state['name_state']; ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                    <span>LOCALIDAD / CIUDAD *</span>
-                                    <select  style="width:310px;" id="cityE" class="form-control" name="cityE" required>
-                                        <option value="">-- SELECCIONE --</option>
-                                    </select>
-                                    <span>Dirrecion  *</span>
-                                <input type="text" name="addressE1" required> 	
-                                <span>Dirrecion 2 (OPCIONAL)</span>
-                                <input type="text" name="addressE2" > 	
-                                <span>TELÉFONO *</span>
-                                <input type="text" name="phoneE"   pattern="[0-9]{10}" required> 	
-                                </div>
-                                <div class="col-md-12">	
-                                <span>NOTAS DEL PEDIDO (OPCIONAL)</span>
-                                <textarea  style="width:310px;" id="notaE" name="notaE" rows="4" cols="50" ></textarea>
-                                </div>
+                                        <span>Pais *</span>
+                                        <select  style="width:310px;" title="Pais" name="countryE" id="countryE" class="form-control" disabled>   
+                                            <option value="COL" >Colombia</option> 
+                                        </select> 
+                                        <span>REGIÓN / PROVINCIA *</span>
+                                        <select  style="width:310px;" name="stateE" id="stateE" class="form-control"   required>
+                                            <option value="" >SELECCIONE UN DEPARTAMENTO</option>
+                                            <?php foreach ($states as $state): ?>
+                                                <option value="<?php echo $state['id']; ?>"><?php echo $state['name_state']; ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                        <span>LOCALIDAD / CIUDAD *</span>
+                                        <select  style="width:310px;" id="cityE" class="form-control" name="cityE" required>
+                                            <option value="">-- SELECCIONE --</option>
+                                        </select>
+                                        <span>Dirrecion  *</span>
+                                        <input type="text" name="addressE1" required> 	
+                                        <span>Dirrecion 2 (OPCIONAL)</span>
+                                        <input type="text" name="addressE2" > 	
+                                        <span>TELÉFONO *</span>
+                                        <input type="text" name="phoneE"   pattern="[0-9]{10}" required> 	
+                                    </div>
+                                    <div class="col-md-12">	
+                                        <span>NOTAS DEL PEDIDO (OPCIONAL)</span>
+                                        <textarea  style="width:310px;" id="notaE" name="notaE" rows="4" cols="50" ></textarea>
+                                    </div>
                             </div>	
                         <?php } else { ?>
                             <div class="account_grid">
@@ -152,37 +152,37 @@ $states = allStateActive();
                                     <br>
                                     <h4>DATOS DE ENVIO</h4>
                                     <div class="col-md-12">	
-                                    <span>NOMBRES * </span>
-                                <input type="text" name="namesE" required> 
-                                <span>APELLIDOS *</span>
-                                <input type="text" name="lastNamesE" required> 
+                                        <span>NOMBRES * </span>
+                                        <input type="text" name="namesE" required> 
+                                        <span>APELLIDOS *</span>
+                                        <input type="text" name="lastNamesE" required> 
 
-                                <span>Pais *</span>
-                                    <select  style="width:310px;" title="Pais" name="countryE" id="countryE" class="form-control" disabled>   
-                                        <option value="COL" >Colombia</option> 
-                                    </select> 
-                                    <span>REGIÓN / PROVINCIA *</span>
-                                    <select  style="width:310px;" name="stateE" id="stateE" class="form-control"   required>
-                                    <option value="" >SELECCIONE UN DEPARTAMENTO</option>
-                                        <?php foreach ($states as $state): ?>
-                                            <option value="<?php echo $state['id']; ?>"><?php echo $state['name_state']; ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                    <span>LOCALIDAD / CIUDAD *</span>
-                                    <select  style="width:310px;" id="cityE" class="form-control" name="cityE" required>
-                                        <option value="">-- SELECCIONE --</option>
-                                    </select>
-                                    <span>Dirrecion  *</span>
-                                <input type="text" name="addressE1" required> 	
-                                <span>Dirrecion 2 (OPCIONAL)</span>
-                                <input type="text" name="addressE2" > 	
-                                <span>TELÉFONO *</span>
-                                <input type="text" name="phoneE"   pattern="[0-9]{10}" required> 	
-                                </div>
-                                <div class="col-md-12">	
-                                <span>NOTAS DEL PEDIDO (OPCIONAL)</span>
-                                <textarea  style="width:310px;" id="notaE" name="notaE" rows="4" cols="50" ></textarea>
-                                </div>
+                                        <span>Pais *</span>
+                                        <select  style="width:310px;" title="Pais" name="countryE" id="countryE" class="form-control" disabled>   
+                                            <option value="COL" >Colombia</option> 
+                                        </select> 
+                                        <span>REGIÓN / PROVINCIA *</span>
+                                        <select  style="width:310px;" name="stateE" id="stateE" class="form-control"   required>
+                                            <option value="" >SELECCIONE UN DEPARTAMENTO</option>
+                                            <?php foreach ($states as $state): ?>
+                                                <option value="<?php echo $state['id']; ?>"><?php echo $state['name_state']; ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                        <span>LOCALIDAD / CIUDAD *</span>
+                                        <select  style="width:310px;" id="cityE" class="form-control" name="cityE" required>
+                                            <option value="">-- SELECCIONE --</option>
+                                        </select>
+                                        <span>Dirrecion  *</span>
+                                        <input type="text" name="addressE1" required> 	
+                                        <span>Dirrecion 2 (OPCIONAL)</span>
+                                        <input type="text" name="addressE2" > 	
+                                        <span>TELÉFONO *</span>
+                                        <input type="text" name="phoneE"   pattern="[0-9]{10}" required> 	
+                                    </div>
+                                    <div class="col-md-12">	
+                                        <span>NOTAS DEL PEDIDO (OPCIONAL)</span>
+                                        <textarea  style="width:310px;" id="notaE" name="notaE" rows="4" cols="50" ></textarea>
+                                    </div>
                                 </div>	
 
                             <?php } ?>
@@ -196,42 +196,67 @@ $states = allStateActive();
                                     $total = 0;
                                     $arrayidProduct = Array();
                                     $arreglocarritoCapullos = $_SESSION['carritoCapullos'];
-                                    $_SESSION['carritoCapullosCopia'] =       $arreglocarritoCapullos;
-                                    for ($i = 0; $i < count($arreglocarritoCapullos); $i++)  {
-                                      
-                                        if($arreglocarritoCapullos[$i]['Precio']!=0){
-                                        $total = $total + ($arreglocarritoCapullos[$i]['Precio'] * $arreglocarritoCapullos[$i]['Cantidad']);
-                                        ?>
-                                        <table style=" border: 1px solid #ddd;">
+                                    $_SESSION['carritoCapullosCopia'] = $arreglocarritoCapullos;
+                                    for ($i = 0; $i < count($arreglocarritoCapullos); $i++) {
 
-                                            <tr>
-                                                <th>Producto</th>	
-                                                <th>Sub Total</th>
-                                                <th>Eliminar</th>
-                                            </tr>
-                                            <tr>
-                                                <td class="ring-in"><?php echo $arreglocarritoCapullos[$i]['Nombre']; ?><img style="width:70px; height:70px;" src="uploads/product/<?php echo $arreglocarritoCapullos[$i]['Imagen']; ?>" class="img-responsive" alt=""></a>
-                                                    <div class="clearfix"> </div></td>
+                                        if ($arreglocarritoCapullos[$i]['Precio'] != 0) {
+                                            $total = $total + ($arreglocarritoCapullos[$i]['Precio'] * $arreglocarritoCapullos[$i]['Cantidad']);
+                                            ?>
+                                            <table style=" border: 1px solid #ddd;">
 
-                                                <td class="cant<?php echo $arreglocarritoCapullos[$i]['Id']; ?>">$COP <?php echo numberCOP($arreglocarritoCapullos[$i]['Precio'] * $arreglocarritoCapullos[$i]['Cantidad']); ?></td>
-                                                <td><a href="#" class="to-buy btnEliminar" data-id="<?php echo $arreglocarritoCapullos[$i]['Id']; ?>">X</a></td>
-                                            </tr>	
-                                            <tr>
-                                                <th>DE: </th>		
-                                                <th>MENSAJE: </th>
-                                                <th>PARA:</th>
-                                               
-                                            </tr>
-                                            <tr>
-                                                <td><?php echo $arreglocarritoCapullos[$i]['De']; ?></td>
-                                                <td><?php echo $arreglocarritoCapullos[$i]['Mensaje']; ?></td>
-                                                <td><?php echo $arreglocarritoCapullos[$i]['Para']; ?></td>
-                                               
+                                                <tr>
+                                                    <th>Producto</th>	
+                                                    <th>Sub Total</th>
+                                                    <th>Eliminar</th>
+                                                </tr>
+                                                <tr>
+                                                    <td class="ring-in"><?php echo $arreglocarritoCapullos[$i]['Nombre']; ?><img style="width:70px; height:70px;" src="uploads/product/<?php echo $arreglocarritoCapullos[$i]['Imagen']; ?>" class="img-responsive" alt=""></a>
+                                                        <div class="clearfix"> </div></td>
 
-                                            </tr>			  
-                                        </table>
+                                                    <td class="cant<?php echo $arreglocarritoCapullos[$i]['Id']; ?>">$COP <?php echo numberCOP($arreglocarritoCapullos[$i]['Precio'] * $arreglocarritoCapullos[$i]['Cantidad']); ?></td>
+                                                    <td><a href="#" class="to-buy btnEliminar" data-id="<?php echo $arreglocarritoCapullos[$i]['Id']; ?>">X</a></td>
+                                                </tr>	
+                                                <tr>
+                                                    <th>DE: </th>		
+                                                    <th>MENSAJE: </th>
+                                                    <th>PARA:</th>
 
-                                    <?php  }} ?>
+                                                </tr>
+                                                <tr>
+                                                    <td><?php echo $arreglocarritoCapullos[$i]['De']; ?></td>
+                                                    <td><?php echo $arreglocarritoCapullos[$i]['Mensaje']; ?></td>
+                                                    <td><?php echo $arreglocarritoCapullos[$i]['Para']; ?></td>
+
+
+                                                </tr>			  
+                                            </table>
+                                      <!--   <h4>Fecha y hora de envio</h4>
+
+
+
+                                            <table style=" border: 1px solid #ddd;">
+                                                <tr>
+                                                    <th><span>Fecha: </span> </th>		
+                                                    <th> </th>
+                                                    <th><span> <input style ="  width: 100%;
+                                                                      padding: 2px 20px;
+                                                                      margin: 8px 0;
+                                                                      box-sizing: border-box;" type="date" id="start" name="trip-start"
+                                                                      value="<?php //echo get_date();?>"
+                                                                      min="<?php e//cho get_date();?>" max="<?php //echo limiteFecha();?>" required></span></th>
+                                                </tr>
+                                                <tr>
+                                                    <th><span>Hora: </span> </th>		
+                                                    <th> </th>
+                                                    <th><span><input type="time" style ="  width: 100%;
+                                                                     padding: 2px 20px;
+                                                                     margin: 8px 0;
+                                                                     box-sizing: border-box;" name="horaarribo" min="12:00" max="18:00" required  > </span></th>
+                                                </tr>
+
+                                            </table>-->
+                                        <?php }
+                                    } ?>
                                     <table style=" border: 1px solid #ddd;">
                                         <tr>
                                             <th><span>Sub total: </span> </th>		
@@ -251,7 +276,7 @@ $states = allStateActive();
                                     </table>
 
 
-                                <?php
+                                    <?php
                                 } else {
                                     echo "   
                                 <h2>Aun no hay productos en el carrito</h2>
@@ -264,118 +289,118 @@ $states = allStateActive();
 
                             <div class="col-md-4 login-left">
                                 <h4>MÉTODO DE PAGO</h4>
-                                
+
                                 <br>
                                 <table >
                                     <tr>	
                                         <th> <input  type="radio" id="tranferBancoEpayco" name="tranferBanco"  checked value="EPAYCO" >                                    
-                                        <label   title = "ePayco es una compañía dedicada a procesar pagos en línea"   for="tranferBanco1">TRANSFERENCIA BANCARIA DIRECTA </label>                                                                                                                            
-                                         Pague con Giros en Efecty o Super Giros, Wester Union / Transferencia en Bancolombia, DaviPlata, Nequi o BBVA.	
-                                         <img class="img-responsive"  style="height: 100px; width: 110%; display: block;" src="Assets/images/epayco_pago_seguro.png" alt="" />
-             
-                                         </th>
-            
-                                          </tr>  
-                                                                     
+                                            <label   title = "ePayco es una compañía dedicada a procesar pagos en línea"   for="tranferBanco1">TRANSFERENCIA BANCARIA DIRECTA </label>                                                                                                                            
+                                            Pague con PSE, Giros en Efecty o Super Giros, Wester Union / Transferencia en Bancolombia, DaviPlata, Nequi o BBVA, PAYPAL.	
+                                            <img class="img-responsive"  style="height: 100px; width: 110%; display: block;" src="Assets/images/epayco_pago_seguro.png" alt="" />
+
+                                        </th>
+
+                                    </tr>  
+
                                     <tr>	
-                                    <th> <input type="radio" id="tranferBancoPaypal" name="tranferBanco" disabled value="PAYPAL" >                                    
-                                  <label for="tranferBanco2">CUENTA PAYPAL </label>                                                                                                                   
-                                         </th>		 
+                                        <th> <input type="radio" id="tranferBancoPaypal" name="tranferBanco" disabled value="PAYPAL" >                                    
+                                            <label for="tranferBanco2">CUENTA PAYPAL </label>                                                                                                                   
+                                        </th>		 
                                     </tr>
                                 </table>  
-             
+
                                 <button type="submit" class="button buttonVerDetalles"><i class="glyphicon glyphicon-credit-card"> PAGAR</i></button>                                                        
+                            </div>
+
                         </div>
-
+                        </form>
                     </div>
-            </form>
-        </div>
 
-        <!--MODAL INICIAR SESSION-->
-        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <div class="contact-form">
-                            <div class="contact">
-                                <h3>Iniciar sesion</h3>			
-                                <div class="contact-bottom">
-                                    <div class="col-md-12 ">
-                                        <div class="col-md-12 login-right">
-                                            <form action="auth2billign.php" method="post">
+                    <!--MODAL INICIAR SESSION-->
+                    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <div class="contact-form">
+                                        <div class="contact">
+                                            <h3>Iniciar sesion</h3>			
+                                            <div class="contact-bottom">
+                                                <div class="col-md-12 ">
+                                                    <div class="col-md-12 login-right">
+                                                        <form action="auth2billign.php" method="post">
 
-                                                <span>Dirección de correo electrónico</span>
-                                                <input type="text" name="email" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" required> 
+                                                            <span>Dirección de correo electrónico</span>
+                                                            <input type="text" name="email" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" required> 
 
-                                                <span>Password</span>
-                                                <input type="password" name="password" required> 
-                                                <div class="word-in">
-                                                    <a class="forgot" href="#">¿Olvidó su contraseña?</a>
-                                                    <input type="submit" value="Ingresar">
+                                                            <span>Password</span>
+                                                            <input type="password" name="password" required> 
+                                                            <div class="word-in">
+                                                                <a class="forgot" href="#">¿Olvidó su contraseña?</a>
+                                                                <input type="submit" value="Ingresar">
+                                                            </div>
+                                                        </form>
+                                                    </div>
                                                 </div>
-                                            </form>
+
+                                                <div class="clearfix"> </div>
+                                            </div>
+
                                         </div>
                                     </div>
-
-                                    <div class="clearfix"> </div>
                                 </div>
-
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>		
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>		
-                    </div>
-                </div>
-            </div>
-        </div>
 
 
 <?php require_once('layout/footer.php'); ?>
-        <script>
-            $(document).ready(function () {
-                $("#stateE").change(function () {
-                    $.get("includes/sqlinsert/get_cities.php", "stateE=" + $("#stateE").val(), function (data) {
-                        $("#cityE").html(data);
-                        console.log(data);
-                    });
-                });
-                $(".btnEliminar").click(function (event) {
-                    event.preventDefault();
-                    var id = $(this).data('id');
-                    var boton = $(this);
+                    <script>
+                        $(document).ready(function () {
+                            $("#stateE").change(function () {
+                                $.get("includes/sqlinsert/get_cities.php", "stateE=" + $("#stateE").val(), function (data) {
+                                    $("#cityE").html(data);
+                                    console.log(data);
+                                });
+                            });
+                            $(".btnEliminar").click(function (event) {
+                                event.preventDefault();
+                                var id = $(this).data('id');
+                                var boton = $(this);
 
-                    $.ajax({
-                        method: 'POST',
-                        url: 'eliminarCarrito.php',
-                        data: {
-                            id: id
-                        }
-                    }).done(function (respuesta) {
-                        boton.parent('td').parent('tr').remove();
-                        location.reload();
-                    });
-                });
+                                $.ajax({
+                                    method: 'POST',
+                                    url: 'eliminarCarrito.php',
+                                    data: {
+                                        id: id
+                                    }
+                                }).done(function (respuesta) {
+                                    boton.parent('td').parent('tr').remove();
+                                    location.reload();
+                                });
+                            });
 
-            });
+                        });
 
-         /*   var checkbox = document.getElementById('tranferBancoPaypal');
-checkbox.addEventListener( 'change', function() {
-    if(this.checked) {
-       alert('checkbox esta paypal');
-    }
-});
-
-var checkbox2 = document.getElementById('tranferBancoEpayco');
-checkbox2.addEventListener( 'change', function() {
-    if(this.checked) {
-       alert('checkbox epayco');
-    }
-
-});*/
-        </script>
- <!--initiate accordion-->
- <script type="text/javascript">
+                        /*   var checkbox = document.getElementById('tranferBancoPaypal');
+                         checkbox.addEventListener( 'change', function() {
+                         if(this.checked) {
+                         alert('checkbox esta paypal');
+                         }
+                         });
+             
+                         var checkbox2 = document.getElementById('tranferBancoEpayco');
+                         checkbox2.addEventListener( 'change', function() {
+                         if(this.checked) {
+                         alert('checkbox epayco');
+                         }
+             
+                         });*/
+                    </script>
+                    <!--initiate accordion-->
+                    <script type="text/javascript">
                         $(function () {
                             var menu_ul = $('.menu-drop > li > ul'),
                                     menu_a = $('.menu-drop > li > a');
@@ -394,6 +419,6 @@ checkbox2.addEventListener( 'change', function() {
 
                         });
                     </script>
-              
-    </body>
-</html>
+
+                    </body>
+                    </html>

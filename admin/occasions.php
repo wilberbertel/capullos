@@ -14,12 +14,12 @@ $i = 1;
 <main class="app-content">
     <div class="app-title">
         <div>
-            <h1><i class="fa fa-th-list"></i>Tabla de ocaciones</h1>
+            <h1><i class="fa fa-th-list"></i>Tabla de ocasiones</h1>
         </div>
         <ul class="app-breadcrumb breadcrumb side">
             <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
             <li class="breadcrumb-item active"><a href="dashboard.php">Dashboard</a></li>
-            <li class="breadcrumb-item">Tabla de ocaciones</li>
+            <li class="breadcrumb-item">Tabla de ocasiones</li>
         </ul>
     </div>
 
@@ -31,11 +31,11 @@ $i = 1;
                     <div class="container-fluid">
                         <div class="row mb-2">
                             <div class="col-sm-6">
-                                <h1 class="m-0 text-dark">Lista de ocaciones</h1>
+                                <h1 class="m-0 text-dark">Lista de ocasiones</h1>
                             </div><!-- /.col -->
                             <div class="col-sm-6 text-right">
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalAddCategoria">
-                                    <i class="fa fa-plus"></i> Insertar nueva ocacion
+                                    <i class="fa fa-plus"></i> Insertar nueva ocasión
                                 </button>
                             </div><!-- /.col -->
                         </div><!-- /.row -->
@@ -52,7 +52,7 @@ $i = 1;
                     <div class="container-fluid">
                         <div class="row mb-2">
                             <div class="col-sm-12  text-center"">
-                            <h1 class="m-0 text-dark">Busqueda de ocacion</h1> <br>
+                            <h1 class="m-0 text-dark">Busqueda de ocasiones</h1> <br>
                             <input  class="form-control form-control-lg"  type="text" id="search" placeholder="Escribe una  para buscar..." />
 
                             </div><!-- /.col -->
@@ -126,7 +126,7 @@ $i = 1;
         <div class="modal-content">
             <form action="../includes/sqlinsert/add_occasions.php" method="POST" enctype="multipart/form-data">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="ModalAddCategoriaTitle">Insertar categoria</h5>
+                    <h5 class="modal-title" id="ModalAddCategoriaTitle">Insertar ocasión</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -137,7 +137,7 @@ $i = 1;
                         <input type="text" name="nombre" onkeyup="javascript:this.value=this.value.toUpperCase();" placeholder="Nombre" id="nombre" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label for="categoria">Categoria</label>
+                        <label for="categoria">categoría</label>
                         <div class="row">
                             <div class="col-9">
                                 <select title="Categoria" name="categoria" id="categoria" class="form-control" required>  
@@ -175,7 +175,7 @@ $i = 1;
         <div class="modal-content">
             <form action="../includes/sqlinsert/update_occasions.php" method="POST" enctype="multipart/form-data">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalEditar">Editar ocacion</h5>
+                    <h5 class="modal-title" id="modalEditar">Editar ocasion</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -187,7 +187,7 @@ $i = 1;
                         <input type="text" name="nombreEdit" placeholder="nombre" id="nombreEdit" class="form-control" required>
                     </div>  
                     <div class="form-group">
-                        <label for="categoria">Categoria</label>
+                        <label for="categoria">categoría</label>
                         <div class="row">
                             <div class="col-9">
                                 <select title="Categoria" name="categoriaEdit" id="categoriaEdit" class="form-control" required>  
@@ -197,7 +197,7 @@ $i = 1;
                                 </select> 
                             </div>
                             <div class="col-3">                  
-                                <a href="categories.php" class="btn btn-primary  btn-small active col-12" role="button" aria-pressed="true">Ir a Categorias</a>
+                                <a href="categories.php" class="btn btn-primary  btn-small active col-12" role="button" aria-pressed="true">Ir a categorías</a>
                             </div>
                         </div>
                     </div>   
@@ -211,7 +211,7 @@ $i = 1;
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <button type="submit" class="btn btn-primary">Actualizar datos</button>
                 </div>
             </form>
         </div>
@@ -224,7 +224,7 @@ $i = 1;
         <div class="modal-content">
 
             <div class="modal-header">
-                <h5 class="modal-title" id="modalEliminarLabel">Eliminar ocacion</h5>
+                <h5 class="modal-title" id="modalEliminarLabel">Eliminar ocasione</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -232,7 +232,7 @@ $i = 1;
             <div class="modal-body">
 
                 <div class="bs-component" style="margin-bottom: 3em;">
-                    <h3>¿Desea eliminar esta ocacion <button class="btn btn-secondary" type="button" title="" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Tenga en cuenta que al eliminar esta categoria se eliminaran todos los productos asociados a esta." data-original-title="A tener en cuenta">?</button>
+                    <h3>¿Desea eliminar esta ocasión <button class="btn btn-secondary" type="button" title="" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Tenga en cuenta que al eliminar esta categoria se eliminaran todos los productos asociados a esta." data-original-title="A tener en cuenta">?</button>
                 </div></h3>
 
                 <input type="hidden" id="idDelete" name="idDelete">

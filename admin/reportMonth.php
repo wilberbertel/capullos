@@ -13,7 +13,7 @@ $manageData = manageData();
       <div class="app-title">
         <div>
           <h1><i class="fa fa-file-text-o"></i> Reporte de ventas por mes</h1>
-          <p><?php echo converterMonth(getMonth());?></p>
+          <p><?php echo "Mes actual: ". converterMonth(getMonth());?></p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
@@ -65,7 +65,7 @@ $manageData = manageData();
                            </div><!-- /.col -->
                             <div class="col-sm-12 text-right">
                                 <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#ModalAddCategoria">
-                                    <i class="fa fa-search"></i> buscar
+                                    <i class="fa fa-search"></i> Buscar
                                 </button>
                             </div><!-- /.col -->
 
@@ -84,8 +84,8 @@ $manageData = manageData();
             <h2 class='page-header'>No se encontraron registros</h2>
             
           </div>";
-          exit;
-          }
+          
+          }else{
         ?>
       <div class="row" id="seleccion"  >
         <div class="col-md-12" id="seleccion">
@@ -153,7 +153,7 @@ $manageData = manageData();
           </div>
         </div>
       </div>
-      <?php } ?>
+      <?php } }?>
     </main>
 
 

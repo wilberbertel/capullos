@@ -42,14 +42,14 @@ if ($existeCategory['total'] < 1) {
         <!-- slide -->
         <script src="Assets/js/responsiveslides.min.js"></script>
         <script>
-     $(function () {
-         $("#slider").responsiveSlides({
-             auto: true,
-             speed: 500,
-             namespace: "callbacks",
-             pager: true,
-         });
-     });
+            $(function () {
+                $("#slider").responsiveSlides({
+                    auto: true,
+                    speed: 500,
+                    namespace: "callbacks",
+                    pager: true,
+                });
+            });
         </script>
     </head>
     <body>
@@ -76,7 +76,7 @@ if ($existeCategory['total'] < 1) {
 
                         <div class="col-md-4">
                             <div class="col-md1 simpleCart_shelfItem">		
-                                <img class="img-responsive" style="height: 350px; width: 90%; display: block;" src="uploads/product/<?php echo $productos['image_product']; ?>" alt="" />
+                                <img class="img-responsive" style="height: 320px; width: 90%; display: block;" src="uploads/product/<?php echo $productos['image_product']; ?>" alt="" />
                                 <h3><?php echo $productos['namep']; ?></a></h3>
                                 <div class="price">
                                     <form action="single.php" method="post">
@@ -93,7 +93,7 @@ if ($existeCategory['total'] < 1) {
                             </div>
                             <br>
                         </div>	
-                    <?php
+                        <?php
                     endforeach;
                     if ($cont == 0) {
                         echo '<h2>No hay productos  de esta categoría</h2>';
@@ -112,14 +112,14 @@ if ($existeCategory['total'] < 1) {
                             <ul class="menu-drop">
                                 <li class="item1"><a href="productsCategory.php?name=<?php echo $categorias['name'] ?>"><?php echo $categorias['name'] ?> </a>  </li>
                             </ul>
-                            <?php endforeach; ?>
+                        <?php endforeach; ?>
                     </div>
-             
+
 
 
                     <div class="product-bottom">
                         <h3 class="cate">Últimos productos</h3>
-<?php foreach ($ultimos as $productos) : ?>
+                        <?php foreach ($ultimos as $productos) : ?>
                             <form action="single.php" method="post">
                                 <input type="hidden" name="id_product"  id="id_product" class="form-control"  value="<?php echo $productos['id_product']; ?>">
 
@@ -135,7 +135,7 @@ if ($existeCategory['total'] < 1) {
                                             </div>	
                                             <div class="clearfix"> </div>
                                     </div>
-<?php endforeach; ?>
+                                <?php endforeach; ?>
                             </div>						
                     </div>
                 </div>

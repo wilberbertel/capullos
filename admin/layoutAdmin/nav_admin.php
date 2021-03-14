@@ -30,20 +30,20 @@ if (!$session->isUserLoggedIn(true) || validatePermition($user['type']) == 0 || 
                 </ul>
             </li>
 
-            <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-list-alt" aria-hidden="true"></i><span class="app-menu__label"> Categorias / Ocaciones </span><i class="treeview-indicator fa fa-angle-right"></i></a>
+            <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-list-alt" aria-hidden="true"></i><span class="app-menu__label"> Categorías / Ocasiones </span><i class="treeview-indicator fa fa-angle-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a class="treeview-item" href="categories.php"><i class="icon fa fa-circle-o"></i>Configurar Categorias</a></li>
-                    <li><a class="treeview-item" href="occasions.php"><i class="icon fa fa-circle-o"></i>Configurar Ocaciones</a></li>
+                    <li><a class="treeview-item" href="categories.php"><i class="icon fa fa-circle-o"></i>Configurar categorías</a></li>
+                    <li><a class="treeview-item" href="occasions.php"><i class="icon fa fa-circle-o"></i>Configurar ocasiones</a></li>                
                 </ul>
             </li>
 
             <?php
             if ($user['type'] == "SUPER") {
                 ?>
-                <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-users" aria-hidden="true"></i><span class="app-menu__label"> Configurar usuarios </span><i class="treeview-indicator fa fa-angle-right"></i></a>
+                <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-users" aria-hidden="true"></i><span class="app-menu__label"> Configurar usuarios (Admin) </span><i class="treeview-indicator fa fa-angle-right"></i></a>
                     <ul class="treeview-menu">
                         <li><a class="treeview-item" href="users.php"><i class="icon fa fa-circle-o"></i> Usuarios</a></li>
-                        <li><a class="treeview-item" href="config_users.php"><i class="icon fa fa-circle-o"></i> Configurar usuarios</a></li>
+                        <li><a class="treeview-item" href="config_users.php"><i class="icon fa fa-circle-o"></i> Administrar usuarios</a></li>
                     </ul>
                 </li>
             <?php } ?>

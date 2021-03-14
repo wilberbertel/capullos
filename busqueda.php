@@ -33,20 +33,20 @@ if (!isset($_POST['busqueda'])) {
         <!-- slide -->
         <script src="Assets/js/responsiveslides.min.js"></script>
         <script>
-     $(function () {
-         $("#slider").responsiveSlides({
-             auto: false,
-             speed: 500,
-             namespace: "callbacks",
-             pager: true,
-         });
-     });
+            $(function () {
+                $("#slider").responsiveSlides({
+                    auto: false,
+                    speed: 500,
+                    namespace: "callbacks",
+                    pager: true,
+                });
+            });
         </script>
         <!-- animation-effect -->
         <link href="Assets/css/animate.min.css" rel="stylesheet"> 
         <script src="Assets/js/wow.min.js"></script>
         <script>
-        new WOW().init();
+            new WOW().init();
         </script>
         <!-- //animation-effect -->
     </head>

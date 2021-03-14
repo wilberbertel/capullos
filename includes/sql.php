@@ -68,18 +68,21 @@ function allCountry() {
     $sql = " SELECT * FROM country ";
     return find_by_sql($sql);
 }
+
 function lastOrders() {
     global $db;
     $sql = "SELECT * from orders ORDER by  id_orders DESC LIMIT 1";
     $result = $db->query($sql);
     return ($db->fetch_assoc($result));
 }
+
 function lastSoldProduct() {
     global $db;
     $sql = "SELECT * from sold_products ORDER by  id_soldProduct DESC LIMIT 1";
     $result = $db->query($sql);
     return ($db->fetch_assoc($result));
 }
+
 function allCity() {
     global $db;
     $sql = " SELECT * FROM city ";
@@ -91,6 +94,7 @@ function allState() {
     $sql = " SELECT * FROM state ";
     return find_by_sql($sql);
 }
+
 function allStateActive() {
     global $db;
     $sql = " SELECT * FROM state WHERE status = 'ACTIVE' ";
@@ -123,17 +127,17 @@ INNER JOIN city cc  ON s.id = cc.state_id  ; ";
 
 function allProducts($limite) {
     global $db;
-
     $sql = "SELECT p.id_product,
-p.namep,
+    p.namep,
     p.image_product,
     p.description,
     p.price,
     c.name,
     p.status,
     o.name_ocaciones
-FROM product p INNER JOIN category c ON p.category=c.id_category 
-INNER JOIN occasions o  ON o.id_ocaciones = p.occasions  WHERE p.status = 'ACTIVE' order by id_product DESC limit " . $limite;
+    FROM product p INNER JOIN category c ON p.category=c.id_category 
+    INNER JOIN occasions o  ON o.id_ocaciones = p.occasions  WHERE p.status = 'ACTIVE' 
+    order by id_product DESC limit " . $limite;
     return find_by_sql($sql);
 }
 
@@ -152,25 +156,29 @@ FROM product p INNER JOIN category c ON p.category=c.id_category
 INNER JOIN occasions o  ON o.id_ocaciones = p.occasions WHERE additions ='NO' order by id_product DESC";
     return find_by_sql($sql);
 }
+
 function allAditionsAdmin() {
     global $db;
 
     $sql = "SELECT * FROM product   where additions = 'SI'  order by id_product DESC";
     return find_by_sql($sql);
 }
-function  productByAdditions(){
+
+function productByAdditions() {
     global $db;
 
     $sql = "SELECT * FROM product   where additions = 'SI'  order by id_product DESC";
     return find_by_sql($sql);
 }
-function  searchProductByAdditions($id){
+
+function searchProductByAdditions($id) {
     global $db;
 
-    $sql = "SELECT * FROM product   where additions = 'SI' AND id_product = '".$id."'  order by id_product DESC";
+    $sql = "SELECT * FROM product   where additions = 'SI' AND id_product = '" . $id . "'  order by id_product DESC";
     $result = $db->query($sql);
     return ($db->fetch_assoc($result));
 }
+
 function allProducts2($limite1, $limite2) {
     global $db;
 
@@ -197,29 +205,31 @@ INNER JOIN occasions o  ON o.id_ocaciones = p.occasions  WHERE p.status = 'ACTIV
     return find_by_sql($sql);
 }
 
-function searchProduct($id_product) {
-    global $db;
-    $sql = "SELECT p.id_product,
-p.namep,
-    p.image_product,
-    p.description,
-    p.price,
-    c.name,
-    p.status,
-    p.secondary_sentences,
-    o.name_ocaciones
-FROM product p INNER JOIN category c ON p.category=c.id_category 
-INNER JOIN occasions o  ON o.id_ocaciones = p.occasions WHERE  id_product =" . $id_product;
-    $result = $db->query($sql);
-    return ($db->fetch_assoc($result));
-}
-function searchProductCarrito($id_product) {
-    global $db;
-    $sql = "SELECT *
-FROM product where  id_product =" . $id_product;
-    $result = $db->query($sql);
-    return ($db->fetch_assoc($result));
-}
+        function searchProduct($id_product) {
+            global $db;
+            $sql = "SELECT p.id_product,
+            p.namep,
+            p.image_product,
+            p.description,
+            p.price,
+            c.name,
+            p.status,
+            p.secondary_sentences,
+            o.name_ocaciones
+            FROM product p INNER JOIN category c ON p.category=c.id_category 
+            INNER JOIN occasions o  ON o.id_ocaciones = p.occasions WHERE  id_product =" . $id_product;
+            $result = $db->query($sql);
+            return ($db->fetch_assoc($result));
+        }
+
+    function searchProductCarrito($id_product) {
+        global $db;
+        $sql = "SELECT *
+        FROM product where  id_product =" . $id_product;
+        $result = $db->query($sql);
+        return ($db->fetch_assoc($result));
+    }
+
 function historyShopping($id_user) {
     global $db;
     $sql = "SELECT  p.id_product,
@@ -248,9 +258,10 @@ function historyShopping($id_user) {
         o.order_code,
         o.status,
         o.payment_method 
-        FROM product p INNER JOIN orders o  on p.id_product  = o.id_product INNER JOIN  shipping s  on s.id_orders = o.id_orders AND s.id_user =" . $id_user." ORDER BY s.id_orders DESC";
-     return find_by_sql($sql);
+        FROM product p INNER JOIN orders o  on p.id_product  = o.id_product INNER JOIN  shipping s  on s.id_orders = o.id_orders AND s.id_user =" . $id_user . " ORDER BY s.id_orders DESC";
+    return find_by_sql($sql);
 }
+
 function historyShoppingPending() {
     global $db;
     $sql = "SELECT  p.id_product,
@@ -283,8 +294,9 @@ function historyShoppingPending() {
         o.payment_method ,
         o.bank
         FROM product p INNER JOIN orders o  on p.id_product  = o.id_product INNER JOIN  shipping s  on s.id_orders = o.id_orders AND  s.request_status = 'PENDIENTE' order by s.id_shipping  DESC";
-     return find_by_sql($sql);
+    return find_by_sql($sql);
 }
+
 function historyShoppingCompleted() {
     global $db;
     $sql = "SELECT  p.id_product,
@@ -303,6 +315,7 @@ function historyShoppingCompleted() {
         s.address2,
         s.names,
         s.phone,
+        s.date_complete,
         s.request_status,
         s.from,
         s.for,
@@ -316,8 +329,9 @@ function historyShoppingCompleted() {
         o.payment_method ,
         o.bank
         FROM product p INNER JOIN orders o  on p.id_product  = o.id_product INNER JOIN  shipping s  on s.id_orders = o.id_orders AND  s.request_status = 'COMPLETADO'";
-     return find_by_sql($sql);
+    return find_by_sql($sql);
 }
+
 function countProducts() {
     global $db;
     // $sql  = " SELECT  * FROM product INNER JOIN category  WHERE product.category = category.id;";
@@ -342,7 +356,6 @@ function countShippingStatus($dato2) {
     return ($db->fetch_assoc($result));
 }
 
-
 function totalSoldProducts() {
     global $db;
     // $sql  = " SELECT  * FROM product INNER JOIN category  WHERE product.category = category.id;";
@@ -350,6 +363,7 @@ function totalSoldProducts() {
     $result = $db->query($sql);
     return ($db->fetch_assoc($result));
 }
+
 function countUsersClientes() {
     global $db;
     // $sql  = " SELECT  * FROM product INNER JOIN category  WHERE product.category = category.id;";
@@ -364,6 +378,7 @@ function users($id) {
     $result = $db->query($sql);
     return ($db->fetch_assoc($result));
 }
+
 function gainMonth($mes) {
     global $db;
     $año = getYear();
@@ -371,7 +386,7 @@ function gainMonth($mes) {
     return find_by_sql($sql);
 }
 
-function gainMonthYear($mes,$año) {
+function gainMonthYear($mes, $año) {
     global $db;
     $sql = " SELECT * FROM sold_products s INNER JOIN product p  on p.id_product  = s.id_product WHERE mes = '$mes' AND año='$año'";
     return find_by_sql($sql);
@@ -382,20 +397,22 @@ function gainYear($año) {
     $sql = " SELECT * FROM sold_products s INNER JOIN product p  on p.id_product  = s.id_product WHERE año='$año'";
     return find_by_sql($sql);
 }
+
 function gainProduct($product) {
     global $db;
-    $sql = "SELECT * FROM sold_products s INNER JOIN product p  on p.id_product  = s.id_product WHERE s.id_product=".$product;
+    $sql = "SELECT * FROM sold_products s INNER JOIN product p  on p.id_product  = s.id_product WHERE s.id_product=" . $product;
     return find_by_sql($sql);
 }
+
 function gainMonths($mes) {
     global $db;
     $año = getYear();
-    $sql = "SELECT mes, sum(total) as total FROM sold_products  WHERE mes = '$mes' and año = '".$año."'";
+    $sql = "SELECT mes, sum(total) as total FROM sold_products  WHERE mes = '$mes' and año = '" . $año . "'";
     $result = $db->query($sql);
     return ($db->fetch_assoc($result));
 }
 
-function manageData(){
+function manageData() {
     global $db;
     $sql = "SELECT * FROM company_configuration";
     $result = $db->query($sql);
@@ -414,6 +431,7 @@ function usersEmail($email) {
     $result = $db->query($sql);
     return ($db->fetch_assoc($result));
 }
+
 function allEmail($email) {
     global $db;
     $sql = "SELECT id_users, name, surname FROM  users WHERE email = '$email'";
@@ -427,10 +445,10 @@ function buttonProductOrderDesc($limite) {
     return find_by_sql($sql);
 }
 
-function generaTokenPass($user_id){
+function generaTokenPass($user_id) {
     global $db;
     $token = generateToken();
-    $db->query("UPDATE users SET token_password = '" . $token . "', password_request = '1' WHERE id_users ='".$user_id."'");
+    $db->query("UPDATE users SET token_password = '" . $token . "', password_request = '1' WHERE id_users ='" . $user_id . "'");
 
     return $token;
 }
@@ -455,6 +473,7 @@ function stateSearch($id) {
     $result = $db->query($sql);
     return ($db->fetch_assoc($result));
 }
+
 function allProductsSearch($busqueda) {
     global $db;
     $sql = "SELECT p.id_product,
@@ -502,8 +521,6 @@ WHERE
     $result = $db->query($sql);
     return ($result);
 }
-
-
 
 function productForOccassions($name) {
     global $db;
@@ -563,35 +580,34 @@ function existProduct($id) {
     $result = $db->query($sql);
     return ($db->fetch_assoc($result));
 }
-function verificaTokenPass($user_id, $token){ 
+
+function verificaTokenPass($user_id, $token) {
     global $db;
     $sql = "SELECT count(*) as total  FROM users where id_users = '$user_id' AND token_password ='$token' AND password_request=1 ";
     $result = $db->query($sql);
     $num = $db->fetch_assoc($result);
-    if($num['total']>=1){
+    if ($num['total'] >= 1) {
         return true;
-    }else{
+    } else {
         return false;
     }
-     
 }
 
-function authenticate($email = '', $password = '') {
-    global $db;
-    $email = $db->escape($email);
-    $password = $db->escape($password);
-    // $sql  = sprintf("SELECT id,username,password,user_level FROM users WHERE username ='%s' LIMIT 1", $username);
-    $sql = sprintf("SELECT id_users,password FROM users WHERE email ='" . $email . "' LIMIT 1");
-    $result = $db->query($sql);
-    if ($db->num_rows($result)) {
-        $user = $db->fetch_assoc($result);
-        $password_request = sha1($password);
-        if ($password_request === $user['password']) {
-            return $user['id_users'];
+    function authenticate($email = '', $password = '') {
+        global $db;
+        $email = $db->escape($email);
+        $password = $db->escape($password);
+        $sql = sprintf("SELECT id_users,password FROM users WHERE email ='" . $email . "' LIMIT 1");
+        $result = $db->query($sql);
+        if ($db->num_rows($result)) {
+            $user = $db->fetch_assoc($result);
+            $password_request = sha1($password);
+            if ($password_request === $user['password']) {
+                return $user['id_users'];
+            }
         }
+        return false;
     }
-    return false;
-}
 
 function updateLastLogIn($user_id) {
     global $db;

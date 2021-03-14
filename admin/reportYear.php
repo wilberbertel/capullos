@@ -13,7 +13,7 @@ $manageData = manageData();
       <div class="app-title">
         <div>
           <h1><i class="fa fa-file-text-o"></i> Reporte de ventas por año</h1>
-          <p><?php echo converterMonth(getMonth());?></p>
+          <p><?php echo "Año actual: ".getYear();?></p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
@@ -45,7 +45,7 @@ $manageData = manageData();
                </div><!-- /.col -->
                <div class="col-sm-12 text-right">
                                 <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#ModalAddCategoria">
-                                    <i class="fa fa-search"></i> buscar
+                                    <i class="fa fa-search"></i> Buscar
                                 </button>
                             </div><!-- /.col -->
                            </div><!-- /.col -->
@@ -58,16 +58,16 @@ $manageData = manageData();
             </div>
         
       
-      <?php if(isset($_POST['año']) ){
+      <?php if(isset($_POST['año']) ) {
         $ganaciasAño= gainYear($_POST['año']); 
               
         if(sizeof($ganaciasAño)<=0){
             echo " <div class='col-6'>
-            <h2 class='page-header'>No se encontraron registros</h2>
+            <h2 class='page-header'>No se encontraron registros para el año '".$_POST['año']."'</h2>
             
           </div>";
-          exit;
-          }
+          
+          }else{
         ?>
       <div class="row" id="seleccion">
         <div class="col-md-12" id="seleccion">
@@ -125,7 +125,7 @@ $manageData = manageData();
               </div>
               <div class="row d-print-none mt-2">
               <div class="col-12 text-right">
-              <h3 class="text-center">Total de ganancias: <?php echo "(".$_POST['año'] .")"." : $ ".  numberCOP($total);?></h3>
+              <h3 class="text-center">Total de ganancias: <?php echo "( AÑO ".$_POST['año'] .")"." : $ ".  numberCOP($total);?></h3>
 
               <a class="btn btn-primary" href="javascript:imprSelec('seleccion');" ><i class="fa fa-print"></i> Imprimir</a></div>
               </div>
@@ -133,7 +133,7 @@ $manageData = manageData();
           </div>
         </div>
       </div>
-      <?php } ?>
+      <?php } }?>
     </main>
 
 

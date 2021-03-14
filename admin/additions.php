@@ -53,7 +53,7 @@ $i = 1;
                     <div class="container-fluid">
                         <div class="row mb-2">
                             <div class="col-sm-12  text-center"">
-                            <h1 class="m-0 text-dark">Busqueda de adiciones</h1> <br>
+                            <h1 class="m-0 text-dark">Búsqueda de adición </h1> <br>
                             <input  class="form-control form-control-lg"  type="text" id="search" placeholder="Escribe para buscar..." />
 
                             </div><!-- /.col -->
@@ -163,7 +163,7 @@ $i = 1;
             <form action="../includes/sqlinsert/add_additions.php" method="POST" enctype="multipart/form-data">
                 <!--Header-->
                 <div class="modal-header  bg-primary">
-                    <h4 class="title text-white"><i class="fa fa-shopping-basket"></i> Agregar nuevo producto!</h4>
+                    <h4 class="title text-white"><i class="fa fa-shopping-basket"></i> Agregar nueva adición!</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span></button>
                 </div>
@@ -226,7 +226,7 @@ $i = 1;
         <div class="modal-content">
             <form action="../includes/sqlinsert/update_additions.php" method="POST" enctype="multipart/form-data">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalEditar">Editar producto</h5>
+                    <h5 class="modal-title" id="modalEditar">Editar Adición</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -307,7 +307,7 @@ $i = 1;
         <div class="modal-content">
 
             <div class="modal-header">
-                <h5 class="modal-title" id="modalVer">Producto</h5>
+                <h5 class="modal-title" id="modalVer">Adición</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -378,7 +378,7 @@ $i = 1;
         <div class="modal-content">
 
             <div class="modal-header">
-                <h5 class="modal-title" id="modalEliminarLabel">¿Desea eliminar el producto?</h5>
+                <h5 class="modal-title" id="modalEliminarLabel">¿Desea eliminar esta adición ?</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

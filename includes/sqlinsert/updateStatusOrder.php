@@ -6,7 +6,8 @@ include "../load.php";
 if (isset($_POST['idEdit']) && isset($_POST['statusEdit']) ) {
     if($_POST['statusEdit']!="PENDIENTE"){
         $db->query("update shipping set 
-        request_status='" . $_POST['statusEdit'] . "'
+        request_status='" . $_POST['statusEdit'] . "',
+        date_complete = '".get_date()."'
     
          where id_shipping='" . $_POST['idEdit'] . "'");
 

@@ -10,11 +10,11 @@ $occasions = allOccasions();
     <div class="header-top">
         <div class="container">
             <div class="col-sm-4 logo animated wow fadeInLeft" data-wow-delay=".5s">
-                <h1><a href="index.php">Floristeria <span>Capullos</span></a></h1>	
+                <h1><a href="index">Floristeria <span>Capullos</span></a></h1>	
             </div>
             <div class="col-sm-4 world animated wow fadeInRight" data-wow-delay=".5s">
                 <div class="cart box_1">
-                    <a href="cart.php">
+                    <a href="cart">
                         <h3> <div class="total">
                                 <?php
                                 $total = 0;
@@ -30,7 +30,7 @@ $occasions = allOccasions();
                                 ?></div>
                             <img src="Assets/images/cart.png" alt=""/></h3>
                     </a>
-                    <p><a href="cart.php" >Ver carrito</a></p>
+                    <p><a href="cart" >Ver carrito</a></p>
 
                 </div>
             </div>
@@ -69,7 +69,7 @@ $occasions = allOccasions();
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
                         <ul class="nav navbar-nav nav_1">
-                            <li><a href="index.php">Home</a></li>
+                            <li><a href="index">Home</a></li>
                             <!--<li class="dropdown mega-dropdown active">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categorias<span class="caret"></span></a>				
                                     <div class="dropdown-menu mega-dropdown-menu">
@@ -120,11 +120,11 @@ $occasions = allOccasions();
                                     </ul>            
                                 </div>				
                             </li>
-                            <li><a href="products.php">Productos</a></li>
+                            <li><a href="products">Productos</a></li>
                             <?php if (!$session->isUserLoggedIn(true)) : ?>
-                                <?php echo "<li><a href='account.php'>Iniciar sesión</a></li>" ?>
+                                <?php echo "<li><a href='account'>Iniciar sesión</a></li>" ?>
                             <?php endif; ?>
-                            <li class="last"><a href="contact.php">Contáctanos</a></li>
+                            <li class="last"><a href="contact">Contáctanos</a></li>
                             <?php if ($session->isUserLoggedIn(true)) : ?>
 
                                 <li class="dropdown mega-dropdown active">
@@ -136,12 +136,12 @@ $occasions = allOccasions();
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="men">
                                                     <ul class="nav-list list-inline">
-                                                        <li><a href="profile.php"><img src="Assets/images/users.png" class="img-responsive" alt=""/>Perfil</a></li>
-                                                        <li><a href="shoppingHistory.php"><img src="Assets/images/browsing.png" class="img-responsive" alt=""/>Historial de compras</a></li>
+                                                        <li><a href="profile"><img src="Assets/images/users.png" class="img-responsive" alt=""/>Perfil</a></li>
+                                                        <li><a href="shoppingHistory"><img src="Assets/images/browsing.png" class="img-responsive" alt=""/>Historial de compras</a></li>
                                                        <?php if ($user['type'] == "SUPER" || $user['type'] == "ADMINISTRADOR"){?>
                                                         <li><a href="admin/dashboard.php"><img src="Assets/images/member.png" class="img-responsive" alt=""/>Administrar Tienda</a></li>
                                                         <?php }?>
-                                                        <li><a href="logout.php"><img src="Assets/images/log-out.png" class="img-responsive" alt=""/>Salir</a></li>
+                                                        <li><a href="includes/logout.php"><img src="Assets/images/log-out.png" class="img-responsive" alt=""/>Salir</a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -168,7 +168,7 @@ $occasions = allOccasions();
             <div id="small-dialog" class="mfp-hide">
                 <div class="search-top">
                     <div class="login">
-                        <form  action="busqueda.php" method="POST">
+                        <form  action="busqueda" method="POST">
                             <input type="submit" value="">
                             <input type="text" name="busqueda" value="Escriba algo..." onfocus="this.value = '';" onblur="if (this.value == '') {
                                                                             this.value = '';

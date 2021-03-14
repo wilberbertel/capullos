@@ -46,12 +46,12 @@ if (isset($_POST['id_product']) /* && $_POST['id_product']!="" */) {
         <script src="Assets/js/simpleCart.min.js"></script>
         <!-- slide -->
         <script src="Assets/js/responsiveslides.min.js"></script>
-   
+
 
     </head>
     <body>
         <!--header-->
-<?php require_once('layout/header.php'); ?>
+        <?php require_once('layout/header.php'); ?>
         <div class="breadcrumbs">
             <div class="container">
                 <ol class="breadcrumb breadcrumb1 animated wow slideInLeft animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: slideInLeft;">
@@ -85,8 +85,6 @@ if (isset($_POST['id_product']) /* && $_POST['id_product']!="" */) {
                         <div class="single-para simpleCart_shelfItem">
                             <h2><?php echo $product['namep']; ?></h2>
                             <p><?php echo $product['description']; ?></p>
-                         
-                  
                             <div class="star-on">
                                 <ul>
                                     <li><a href="#"><i class="glyphicon glyphicon-star"> </i></a></li>
@@ -95,30 +93,26 @@ if (isset($_POST['id_product']) /* && $_POST['id_product']!="" */) {
                                     <li><a href="#"><i class="glyphicon glyphicon-star"> </i></a></li>
                                     <li><a href="#"><i class="glyphicon glyphicon-star"> </i></a></li>
                                 </ul>
-                               
                                 <div class="review">
-                                    <h4><a href="productsOccasions.php?name=<?php echo $product['name_ocaciones'] ?>">Ocacion: <?php echo $product['name_ocaciones']; ?></a></h4>
-                                   
-                                   								
-									<!--<a href="#">  <?php //echo $product['secondary_sentences'] ?></a>-->
-                                    <p><?php echo $product['secondary_sentences']; ?></p>
-                              
-                                
-								
+                                    <h4><a href="productsOccasions.php?name=<?php echo $product['name_ocaciones'] ?>">
+                                    Ocasión: <?php echo $product['name_ocaciones']; ?></a></h4>
+                                    <p></p>
+                                    <textarea title="Ocasiónes segundarias" rows="6" cols="70"  placeholder="" id="mensaje" disabled class="inputext" style="resize: none; border: none;"><?php echo $product['secondary_sentences']; ?></textarea>
+
                                 </div>
-                               
-                                <div class="clearfix"><br> </div>
-                                <div class="clearfix"><br> </div>
-                                <div class="clearfix"><br> </div>
-                                <div class="clearfix"><br> </div>
                                 
+                                <div class="clearfix"><br> </div>
+                                <div class="clearfix"><br> </div>
+                                <div class="clearfix"><br> </div>
+                                <div class="clearfix"><br> </div>
                             </div>
-
                             <label  class="add-to item_price">$COP <?php echo numberCOP($product['price']); ?> </label>
-
                             <a  style="cursor:pointer;" data-toggle="modal" data-target="#modalAbandonedCart" class="cart">Añadir al carrito</a>
                         </div>
                     </div>
+
+
+
                     <div class="clearfix"> </div>
                     <!-- Modal: modalAbandonedCart-->
                     <div class="modal fade right" id="modalAbandonedCart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -196,7 +190,7 @@ if (isset($_POST['id_product']) /* && $_POST['id_product']!="" */) {
 
 
                     <div class="content-top1">
-<?php foreach ($occasionsByoccasions as $occasionsByoccasions) : ?>
+                        <?php foreach ($occasionsByoccasions as $occasionsByoccasions) : ?>
 
                             <div class="col-md-4 col-md4">
 
@@ -216,7 +210,7 @@ if (isset($_POST['id_product']) /* && $_POST['id_product']!="" */) {
 
                             </div>	
 
-<?php endforeach; ?>
+                        <?php endforeach; ?>
 
 
                         <div class="clearfix"> </div>
@@ -231,7 +225,7 @@ if (isset($_POST['id_product']) /* && $_POST['id_product']!="" */) {
                             <ul class="menu-drop">
                                 <li class="item1"><a href="productsCategory.php?name=<?php echo $categorias['name'] ?>"><?php echo $categorias['name'] ?> </a>  </li>
                             </ul>
-                            <?php endforeach; ?>
+                        <?php endforeach; ?>
                     </div>
 
                     <div class="product-bottom">
@@ -255,13 +249,9 @@ if (isset($_POST['id_product']) /* && $_POST['id_product']!="" */) {
                                 <?php endforeach; ?>
                             </div>
                     </div>
-
                     <div class="clearfix"> </div>
                 </div>
             </div>
-
-
-
             <!--footer-->
             <?php require_once('layout/footer.php'); ?>
             <script src="Assets/js/jquery.min.js"></script>
@@ -269,42 +259,42 @@ if (isset($_POST['id_product']) /* && $_POST['id_product']!="" */) {
             <!-- start menu -->
             <script type="text/javascript" src="Assets/js/memenu.js"></script>
             <script>$(document).ready(function () {
-                                                        $(".memenu").memenu();
-                                                    });</script>
+                    $(".memenu").memenu();
+                });</script>
             <script src="Assets/js/simpleCart.min.js"></script>
-          
+
             <!-- FlexSlider -->
             <script defer src="Assets/js/jquery.flexslider.js"></script>
             <link rel="stylesheet" href="Assets/css/flexslider.css" type="text/css" media="screen" />
 
             <script>
-            // Can also be used with $(document).ready()
-                                                                $(window).load(function () {
-                                                                    $('.flexslider').flexslider({
-                                                                        animation: "slide",
-                                                                        controlNav: "thumbnails"
-                                                                    });
-                                                                });
+                // Can also be used with $(document).ready()
+                $(window).load(function () {
+                    $('.flexslider').flexslider({
+                        animation: "slide",
+                        controlNav: "thumbnails"
+                    });
+                });
             </script>
             <!---pop-up-box---->
             <link href="Assets/css/popuo-box.css" rel="stylesheet" type="text/css" media="all"/>
             <script src="Assets/js/jquery.magnific-popup.js" type="text/javascript"></script>
             <!---//pop-up-box---->
             <script>
-                       $(document).ready(function () {
-                           $('.popup-with-zoom-anim').magnificPopup({
-                               type: 'inline',
-                               fixedContentPos: false,
-                               fixedBgPos: true,
-                               overflowY: 'auto',
-                               closeBtnInside: true,
-                               preloader: false,
-                               midClick: true,
-                               removalDelay: 300,
-                               mainClass: 'my-mfp-zoom-in'
-                           });
+                $(document).ready(function () {
+                    $('.popup-with-zoom-anim').magnificPopup({
+                        type: 'inline',
+                        fixedContentPos: false,
+                        fixedBgPos: true,
+                        overflowY: 'auto',
+                        closeBtnInside: true,
+                        preloader: false,
+                        midClick: true,
+                        removalDelay: 300,
+                        mainClass: 'my-mfp-zoom-in'
+                    });
 
-                       });
+                });
 
             </script>	
     </body>

@@ -31,7 +31,7 @@ $i = 1;
                     <div class="container-fluid">
                         <div class="row mb-2">
                             <div class="col-sm-12  text-center"">
-                            <h1 class="m-0 text-dark">Busqueda de pedidos pendientes</h1> <br>
+                            <h1 class="m-0 text-dark">Búsqueda de pedidos pendientes</h1> <br>
                             <input  class="form-control form-control-lg"  type="text" id="search" placeholder="Escribe una  para buscar..." />
 
                             </div><!-- /.col -->
@@ -204,7 +204,7 @@ $i = 1;
                                 <h5 id="nombreDestinatarioVer" namer="nombreDestinatarioVer"  class="card-title"></h5>
                             </div>
                             <div class="card-body">
-                            <h6  id="deVer" name ="deVer" title="DE: "class="card-subtitle text-muted">s </h6><br>
+                            <h6  id="deVer" name ="deVer" title="DE: "class="card-subtitle text-muted"> </h6><br>
                                 <p  id="mensajeVer" class="card-text"></p><h6 class="card-link"  id="paraVer"></h6>
                             </div>
                             <div class="card-body">
@@ -335,8 +335,8 @@ $('#search').quicksearch('table tbody tr');
             $("#nombreDestinatarioVer").text("Nombre del destinatario:  "+nombreDestinatario);
             $("#deVer").text("De: "+de);
             $("#nombreVer1").text(nombre);
-            $("#mensajeVer").text("Mensaje: " + mensaje);
-            $("#paraVer").text("Para: " + para);
+            $("#mensajeVer").text("Mensaje: " + para);
+            $("#paraVer").text("Para: " + mensaje);
             $("#notaVer").text("Nota: " + nota);
             $("#paisVer").text("Pais: " + pais);
             $("#departamentoVer").text("Departamento: " + departamento);

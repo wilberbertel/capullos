@@ -23,32 +23,33 @@ include "includes/load.php";
         <!-- start menu -->
         <script src="Assets/js/bootstrap.min.js"></script>
         <script src="Assets/js/simpleCart.min.js"></script>
-        
+
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
         <!-- slide -->
         <script src="Assets/js/responsiveslides.min.js"></script>
         <script>
-     $(function () {
-         $("#slider").responsiveSlides({
-             auto: true,
-             speed: 500,
-             namespace: "callbacks",
-             pager: true,
-         });
-     });
+            $(function () {
+                $("#slider").responsiveSlides({
+                    auto: true,
+                    speed: 500,
+                    namespace: "callbacks",
+                    pager: true,
+                });
+            });
         </script>
-          <script>
-     function verificarPassword() {
-          var inputName = document.querySelector("#password").value;
-          if (inputName.length >= 8) {
-               console.log("Muy bien"); // Puedes colocar un alert() o nada.
-	  }
-	  else {
-	       alert("Debes escribir mas de 8 caracteres");
-	  }
-     }
-</script>
+        <script>
+            function verificarPassword() {
+                var inputName = document.querySelector("#password").value;
+                if (inputName.length >= 8) {
+                    console.log("Muy bien"); // Puedes colocar un alert() o nada.
+                }
+                else {
+                    alert("Debes escribir mas de 8 caracteres");
+                }
+            }
+        </script>
+   
     </head>
     <body>
         <?php
@@ -58,10 +59,12 @@ include "includes/load.php";
             <div class="container">
                 <ol class="breadcrumb breadcrumb1 animated wow slideInLeft animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: slideInLeft;">
                     <li><a href="index.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+                    <li class="active">Iniciar sesión</li>
                     <li class="active">Registro</li>
                 </ol>
             </div>
         </div>
+
         <div class="container">
             <div class=" ">
                 <h2>Registrarme</h2>
@@ -72,19 +75,17 @@ include "includes/load.php";
                             <div class="mation">
                                 <span>Nombres</span>
                                 <input  required title= "Nombres" placeholder="Ejemplo: Adrian Andres" type="text" name="firstname" required > 
-
                                 <span>Apellidos</span>
                                 <input  required title= "Apellidos" placeholder="Ejemplo: Atencia Caly" type="text" name="lastname"> 
-
                                 <span>Correo electronico</span>
                                 <input  required title= "Correo" placeholder="Ejemplo: correoelectronico@gmail.com" type="text" name="email"> 
-
                                 <span>Confirmacion  de correo electronico</span>
-                                <input   required title= "Confirmacion de correo" placeholder="Ejemplo: correoelectronico@gmail.com" type="text" name="emailConfi"> 
+                                <input required title= "Confirmacion de correo" placeholder="Ejemplo: correoelectronico@gmail.com" type="text" name="emailConfi"> 
                                 <span>Pais</span>
+                                
                                 <select title="Pais" name="country" id="country" class="form-control" required>   
-                                <option value="Elegir" id="AF">Elegir un pais</option>
-                                <option value="Colombia" id="CO">Colombia</option>
+                                    <option value="Elegir" id="AF">Elegir un pais</option>
+                                    <option value="Colombia" id="CO">Colombia</option>
                                     <option value="Afganistán" id="AF">Afganistán</option>
                                     <option value="Albania" id="AL">Albania</option>
                                     <option value="Alemania" id="DE">Alemania</option>
@@ -322,44 +323,37 @@ include "includes/load.php";
                                     <option value="Yemen" id="YE">Yemen</option>
                                     <option value="Zambia" id="ZM">Zambia</option>
                                     <option value="Zimbabue" id="ZW">Zimbabue</option>
-                                    </select>
-                           
-
+                                </select>
+                                <br>
                                 <span>Telefono / Celular</span>
                                 <input required title= "Celular" placeholder="Ejemplo: 3107809210" type="text" name="phone"> 
-
                             </div>
-
                             <div class="clearfix"> </div>
                             <a class="news-letter" href="#">
                                 <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>Sign Up</label>
                             </a>
                         </div>
-
                         <div class="col-md-6 register-bottom-grid">
-
                             <div class="mation">
-                                <span>contraseña</span>
+                                <span>Contraseña</span>
                                 <input required type="password" id = "password" name="password">
-                                <span>confirmar  contraseña</span>
-                                <input  required type="password" name="passwordConfi">
+                                <span>Confirmar contraseña</span>
+                                <input  required type="password"  id = "passwordConfi" name="passwordConfi">
                             </div>
+                            
                         </div>
                         <div class="clearfix"> </div>
-
-
-
-
                         <input type="submit" onclick="verificarPassword()" value="Registrarme">
                         <div class="clearfix"> </div>
+                        <br>
                     </form>
                 </div>
             </div>
         </div>
 
         <?php require_once('layout/footer.php'); ?>
-    
+
     </body>
-  
+    
 </html>
 

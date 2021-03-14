@@ -57,8 +57,10 @@ ventimp.document.head.appendChild(css);
                     <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"> <?php echo $user['name']; ?> </i></a>
                         <ul class="dropdown-menu settings-menu dropdown-menu-right">
                             <li><a class="dropdown-item" href="profile.php"><i class="fa fa-user fa-lg"></i> Pefil</a></li>
-                            <li><a class="dropdown-item" href="opcion.php"><i class=" fa fa-cog fa-lg"></i> Cambiar clave</a></li>
-                            <li><a class="dropdown-item" href="../logout.php"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
+                            <li><a class="dropdown-item" href="opcion.php"><i class="fa fa-cog fa-lg"></i> Cambiar clave</a></li>
+                            <li><a class="dropdown-item" href="../index.php"><i class="fa fa-shopping-bag"></i> Ir a la tienda</a></li>
+
+                            <li><a class="dropdown-item" href="../includes/logout.php"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
                         </ul>
                     </li>
                 </ul>

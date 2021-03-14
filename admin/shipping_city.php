@@ -39,13 +39,13 @@ $all = allShippingCity();
                         <form method="post" action="../includes/sqlinsert/add_shippingCity.php?opt=country">
                             <div class="form-group">
                                 <label for="name1">Nombre</label>
-                                <input type="text" class="form-control" id="name1" name="name" placeholder="Nombre Pais" required>
+                                <input type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" id="name1" name="name" placeholder="Nombre Pais" required>
                             </div>
                             <button type="submit" class="btn btn-primary">Agregar Pais</button>
                         </form>
                     </div>
                     <div class="col-md-4">
-                        <h3>Nuevo Estado</h3>
+                        <h3>Nuevo Departamento</h3>
                         <form method="post" action="../includes/sqlinsert/add_shippingCity.php?opt=state">
                             <div class="form-group">
                                 <label for="name1">Pais</label>
@@ -59,7 +59,7 @@ $all = allShippingCity();
 
                             <div class="form-group">
                                 <label for="name1">Nombre</label>
-                                <input type="text" class="form-control" id="name1" name="name" placeholder="Nombre Departamento" required>
+                                <input type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" id="name1" name="name" placeholder="Nombre Departamento" required>
                             </div>
                             <button type="submit" class="btn btn-primary">Agregar Departamento</button>
                         </form>
@@ -68,7 +68,7 @@ $all = allShippingCity();
                         <h3>Nueva Ciudad</h3>
                         <form method="post" action="../includes/sqlinsert/add_shippingCity.php?opt=city">
                             <div class="form-group">
-                                <label for="name1">Estado</label>
+                                <label for="name1">Departamento</label>
                                 <select class="form-control" name="state_id" required>
                                     <option value="">-- SELECCIONE --</option>
                                     <?php foreach ($states as $c): ?>
@@ -79,7 +79,7 @@ $all = allShippingCity();
 
                             <div class="form-group">
                                 <label for="name1">Nombre</label>
-                                <input type="text" class="form-control" id="name1" name="name" placeholder="Nombre Ciudad" required>
+                                <input type="text" class="form-control" id="name1" name="name" onkeyup="javascript:this.value=this.value.toUpperCase();"  placeholder="Nombre Ciudad" required>
                             </div>
                             <button type="submit" class="btn btn-primary">Agregar Ciudad</button>
                         </form>

@@ -20,7 +20,7 @@ $i = 1;
         <ul class="app-breadcrumb breadcrumb side">
             <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
             <li class="breadcrumb-item active"><a href="dashboard.php">Dashboard</a></li>
-            <li class="breadcrumb-item">Pedidos Pendientes</li>
+            <li class="breadcrumb-item">Pedidos Completados</li>
         </ul>
     </div>
     <div class="row">
@@ -31,7 +31,7 @@ $i = 1;
                     <div class="container-fluid">
                         <div class="row mb-2">
                             <div class="col-sm-12  text-center"">
-                            <h1 class="m-0 text-dark">Busqueda de pedidos completados</h1> <br>
+                            <h1 class="m-0 text-dark">Búsqueda de pedidos completados</h1> <br>
                             <input  class="form-control form-control-lg"  type="text" id="search" placeholder="Escribe una  para buscar..." />
 
                             </div><!-- /.col -->
@@ -55,6 +55,7 @@ $i = 1;
                                     <th>Imagen</th>
                                     <th>Nombre</th>
                                     <th>Precio</th>
+                                    <th>Fecha de completado</th>
                                       <th>Es Adicion</th>
                                     <th>Estado del pedido</th>
                                     <th>Ver datalles del pedido</th>
@@ -72,6 +73,7 @@ $i = 1;
                                        
 
                                         <td > <?php echo numberCOP($productosCompletados['price']); ?></td>
+                                        <td > <?php echo $productosCompletados['date_complete']; ?></td>
                                         <td > <?php echo $productosCompletados['additions']; ?></td>
                                         <td >  <span class="badge badge-primary"><i class="fa fa-exclamation-triangle"></i> <?php echo $productosCompletados['request_status']; ?></span> </td>
                              
