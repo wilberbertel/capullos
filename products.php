@@ -8,7 +8,7 @@ $occasions = allOccasionsByCategory();
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Productos :: Capullos</title>
+        <title>Productos | Capullos</title>
         <link href="Assets/css/bootstrap-3.1.1.min.css" rel='stylesheet' type='text/css' />
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="Assets/js/jquery.min.js"></script>

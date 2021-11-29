@@ -57,6 +57,7 @@ $i = 1;
                                     <th>Precio</th>
                                     <th>Estado del pago</th>v
                                     <th>Fecha de compra</th>
+                                    <th>Fecha y hora de entrega</th>
                                     <th>Es Adicion</th>
                                     <th>Estado del pedido</th>
                                     <th>Ver datalles del pedido</th>
@@ -84,6 +85,7 @@ $i = 1;
                                        <?php }?>
                                         </td>
                                         <td > <?php echo $productosPendientes['date']; ?></td>
+                                        <td > <?php echo $productosPendientes['fecha_entrega']." | ".$productosPendientes['hora_entrega']; ?></td>
 
                                         <td > <?php echo $productosPendientes['additions']; ?></td>
 
@@ -114,6 +116,7 @@ $i = 1;
                                                      data-codigo="<?php echo $productosPendientes['order_code']; ?>"
                                                      data-banco="<?php echo $productosPendientes['bank']; ?>"
                                                      data-metodo="<?php echo $productosPendientes['payment_method']; ?>"
+                                                     data-fechaenvio="<?php echo $productosPendientes['fecha_entrega']." | ".$productosPendientes['hora_entrega']; ?>"
                                                      data-adicion="<?php echo $productosPendientes['additions']; ?>"
 
                                                      data-toggle="modal" data-target="#modalVer" >
@@ -200,6 +203,7 @@ $i = 1;
 
                             <h4 id="" name="" class="card-header">Detalles del Envio</h4>
                             <div class="card-body">
+                            <h5 id="fechaEnvio" namer="fechaEnvio"  class="card-title"></h5>
                             <h5 id="fechaVer" namer="fechaVer"  class="card-title"></h5>
                                 <h5 id="nombreDestinatarioVer" namer="nombreDestinatarioVer"  class="card-title"></h5>
                             </div>
@@ -329,8 +333,12 @@ $('#search').quicksearch('table tbody tr');
             var fechaPago = $(this).data('fecha');
             var banco = $(this).data('banco');
             var metodo = $(this).data('metodo');         
-            var adicion =  $(this).data('adicion');        
+            var adicion =  $(this).data('adicion'); 
+            var fechaEnvio =  $(this).data('fechaenvio'); 
+           
             $("#fechaVer").text("Fecha de la orden entrante: "+fecha);
+           
+            $("#fechaEnvio").text("Fecha programada para el envio: "+fechaEnvio);
             $("#nombreVer").text(nombre);       
             $("#nombreDestinatarioVer").text("Nombre del destinatario:  "+nombreDestinatario);
             $("#deVer").text("De: "+de);

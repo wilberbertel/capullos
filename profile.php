@@ -8,7 +8,7 @@ if (!$session->isUserLoggedIn(true)) {
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Perfil :: Capullos floristeria</title>
+        <title>Perfil | Capullos floristeria</title>
         <link rel="shortcut icon" href="Assets/images/favicon.ico">
         <link href="Assets/css/bootstrap-3.1.1.min.css" rel='stylesheet' type='text/css' />
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

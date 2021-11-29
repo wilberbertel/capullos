@@ -14,6 +14,8 @@ for ($i = 0; $i < count($arreglo); $i++) {
             'Para' => $arreglo[$i]['Para'],
             'Precio' => $arreglo[$i]['Precio'],
             'Imagen' => $arreglo[$i]['Imagen'],
+            'Fecha' => $arreglo[$i]['Fecha'],
+            'Hora' => $arreglo[$i]['Hora'],
             'Cantidad' => $arreglo[$i]['Cantidad']
         );
     }

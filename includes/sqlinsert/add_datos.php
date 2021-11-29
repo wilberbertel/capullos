@@ -8,16 +8,18 @@ $subCandenafecha =  explode("-", $fecha);
 $año = $subCandenafecha[0];
 $mes = $subCandenafecha[1];
 $dia = $subCandenafecha[2];
-$arreglocarritoCapullos = $_SESSION['carritoCapullosCopia'];
+$arreglocarritoCapullos = $_SESSION['carritoCapullos'];
 $ordenes = ordersSearch($_POST['recibo']);
 $nameState =   stateSearch($_POST['departamento']);
 $num = mysqli_num_rows($resultado);
  if ($ordenes['order_code']!=$_POST['recibo']) {
      if($_POST['idUser']=="INVALIDO"){
         for ($i = 0; $i < count($arreglocarritoCapullos); $i++) {
-            $db->query("INSERT INTO orders (id_product, date, quantity, subtotal, amount, order_code, operation_code, status, payment_method,bank) VALUES(
+            $db->query("INSERT INTO orders (id_product, date,fecha_entrega,hora_entrega quantity, subtotal, amount, order_code, operation_code, status, payment_method,bank) VALUES(
                '" . $arreglocarritoCapullos[$i]['Id'] . "',
-               '" .  $fecha  . "',           
+               '" .  $fecha  . "',   
+               '" . $arreglocarritoCapullos[$i]['Fecha'] . "',
+                       '" . $arreglocarritoCapullos[$i]['Hora'] . "',        
                '" . $arreglocarritoCapullos[$i]['Cantidad']. "',
                '" . $arreglocarritoCapullos[$i]['Precio']. "',
                '" .$arreglocarritoCapullos[$i]['Cantidad']*$arreglocarritoCapullos[$i]['Precio']. "',
@@ -39,6 +41,7 @@ $num = mysqli_num_rows($resultado);
                        '" . $mes . "',
                        '" . $año . "',
                        '" . $fecha . "'
+                   
                 )") or die($db->error);
       //}
       $ultima_orden =  lastOrders();
@@ -68,9 +71,11 @@ $num = mysqli_num_rows($resultado);
 
       
         for ($i = 0; $i < count($arreglocarritoCapullos); $i++) {
-            $db->query("INSERT INTO orders (id_product, date, user, quantity, subtotal, amount, order_code, operation_code, status, payment_method,bank) VALUES(
+            $db->query("INSERT INTO orders (id_product, date,fecha_entrega,hora_entrega, user, quantity, subtotal, amount, order_code, operation_code, status, payment_method,bank) VALUES(
                '" . $arreglocarritoCapullos[$i]['Id'] . "',
                '" .  $fecha  . "',
+               '" . $arreglocarritoCapullos[$i]['Fecha'] . "',
+                       '" . $arreglocarritoCapullos[$i]['Hora'] . "',
                '" . $_POST['idUser'] . "',
                '" . $arreglocarritoCapullos[$i]['Cantidad']. "',
                '" . $arreglocarritoCapullos[$i]['Precio']. "',
@@ -82,14 +87,14 @@ $num = mysqli_num_rows($resultado);
                '" . $_POST['banco'] . "'
                )") or die($db->error);
       
-            $db->query("INSERT INTO sold_products (id_product,quantity,price,total,hora,dia,mes,año,fecha) VALUES('" . $arreglocarritoCapullos[$i]['Id'] . "',
-                       '" . $arreglocarritoCapullos[$i]['Cantidad'] . "','" . $arreglocarritoCapullos[$i]['Precio'] . "','" . $arreglocarritoCapullos[$i]['Cantidad']*$arreglocarritoCapullos[$i]['Precio'] . "',
-                       '" . $hora . "',
-                       '" . $dia . "',
-                       '" . $mes . "',
-                       '" . $año . "',
-                       '" . $fecha . "'
-                )") or die($db->error);
+      $db->query("INSERT INTO sold_products (id_product,quantity,price,total,hora,dia,mes,año,fecha) VALUES('" . $arreglocarritoCapullos[$i]['Id'] . "',
+      '" . $arreglocarritoCapullos[$i]['Cantidad'] . "','" . $arreglocarritoCapullos[$i]['Precio'] . "','" . $arreglocarritoCapullos[$i]['Cantidad']*$arreglocarritoCapullos[$i]['Precio'] . "',
+      '" . $hora . "',
+      '" . $dia . "',
+      '" . $mes . "',
+      '" . $año . "',
+      '" . $fecha . "'
+)") or die($db->error);
  $ultima_orden =  lastOrders();
  $ultima_venta =  lastSoldProduct();
    // $id_venta = $db->insert_id;

@@ -56,6 +56,7 @@ $i = 1;
                                     <th>Nombre</th>
                                     <th>Precio</th>
                                     <th>Fecha de completado</th>
+                                    <th>Fecha y hora de entrega</th>
                                       <th>Es Adicion</th>
                                     <th>Estado del pedido</th>
                                     <th>Ver datalles del pedido</th>
@@ -74,6 +75,7 @@ $i = 1;
 
                                         <td > <?php echo numberCOP($productosCompletados['price']); ?></td>
                                         <td > <?php echo $productosCompletados['date_complete']; ?></td>
+                                        <td > <?php echo $productosCompletados['fecha_entrega']." | ".$productosCompletados['hora_entrega']; ?></td>
                                         <td > <?php echo $productosCompletados['additions']; ?></td>
                                         <td >  <span class="badge badge-primary"><i class="fa fa-exclamation-triangle"></i> <?php echo $productosCompletados['request_status']; ?></span> </td>
                              

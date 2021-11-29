@@ -2,9 +2,9 @@
 
 include "../load.php";
 
-if (isset($_POST['idEdit']) && isset($_POST['nombreEdit']) && isset($_POST['descripcionEdit']) && isset($_POST['precioEdit']) && isset($_POST['statusEdit']) &&  isset($_POST['categoriaEdit']) && isset($_POST['ocacionesEdit']) ) {
 
-    $db->query("update product set namep='" . remove_junk($_POST['nombreEdit']) . "',
+if (isset($_POST['idEdit']) && isset($_POST['nombreEdit']) && isset($_POST['descripcionEdit']) && isset($_POST['precioEdit']) && isset($_POST['statusEdit']) &&  isset($_POST['categoriaEdit']) && isset($_POST['ocacionesEdit'])) {
+  $db->query("update product set namep='" . remove_junk($_POST['nombreEdit']) . "',
                 description='" . remove_junk($_POST['descripcionEdit']) . "',
                 price='" . remove_junk($_POST['precioEdit']) . "',
                 category='" . remove_junk($_POST['categoriaEdit']) . "',
@@ -12,13 +12,13 @@ if (isset($_POST['idEdit']) && isset($_POST['nombreEdit']) && isset($_POST['desc
                 status='" . remove_junk($_POST['statusEdit']) . "'            
                  where id_product='" . $_POST['idEdit'] . "'");
 
-    $session->msg('s', "Producto actualizado exitosamente. ");
-    redirect('../../admin/products.php', false);
+  $session->msg('s', "Producto actualizado exitosamente. ");
+  redirect('../../admin/products.php', false);
 } else {
-
-    $session->msg('d', "No se actualizo  el producto. ");
-    redirect('../../admin/products.php', false);
+  $session->msg('d', "Favor de llenar todos los campos. ");
+  redirect('../../admin/products.php', false);
 }
+
 
 
 /* * else{
@@ -57,4 +57,3 @@ if (isset($_POST['idEdit']) && isset($_POST['nombreEdit']) && isset($_POST['desc
   redirect('../../admin/products.php', false);
   }
   } */
-?>

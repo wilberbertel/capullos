@@ -19,7 +19,7 @@ if ($existeOcacion['total'] < 1) {
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Ocacion :: Capullos</title>
+        <title>Ocacion | Capullos</title>
         <link href="Assets/css/bootstrap-3.1.1.min.css" rel='stylesheet' type='text/css' />
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="Assets/js/jquery.min.js"></script>

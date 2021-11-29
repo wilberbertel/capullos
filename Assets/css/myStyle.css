@@ -49,10 +49,10 @@
     resize: none;
     outline: none;
     background-color: #ffffff;
-    color: rgb(12, 0, 0);
+    color: rgb(255, 255, 255);
   }
   ::placeholder {
-    color: rgb(3, 3, 3);
+    color: rgb(250, 250, 250);
     border: none;
   }
 

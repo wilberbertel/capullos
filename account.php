@@ -4,7 +4,7 @@ require_once("includes/load.php");
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Iniciar sesion| Capullos</title>
+        <title>Iniciar sesion | Capullos</title>
         <link href="Assets/css/bootstrap-3.1.1.min.css" rel='stylesheet' type='text/css' />
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="Assets/js/jquery.min.js"></script>

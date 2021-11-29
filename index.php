@@ -95,7 +95,7 @@ require_once("includes/load.php");
                             <div class="col-md-3 animated wow fadeInLeft" data-wow-delay=".5s">
                                 <div class="col-md1 simpleCart_shelfItem">
 
-                                    <img class="img-responsive"  style="height:  320px; width: 90%; display: block;" src="uploads/product/<?php echo $productos['image_product']; ?>" alt="" />
+                                    <img class="img-responsive"  style="height:  300px; width: 100%; display: block;" src="uploads/product/<?php echo $productos['image_product']; ?>" alt="" />
                                     </a>
 
                                     <h3><?php echo $productos['namep']; ?></a></h3>

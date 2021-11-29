@@ -1,7 +1,7 @@
 <?php
 require_once("includes/load.php");
 $user = current_user();
-$tipo = page_require_tipo($user['type']);
+
 $categories = allCategories();
 $occasions = allOccasions();
 ?>

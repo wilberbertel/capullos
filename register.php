@@ -4,7 +4,7 @@ include "includes/load.php";
 <!DOCTYPE html>
 <html>
     <head>
-        <title> Registrar :: Capullos</title>
+        <title> Registrar | Capullos</title>
         <link href="Assets/css/bootstrap-3.1.1.min.css" rel='stylesheet' type='text/css' />
         <link rel="shortcut icon" href="Assets/images/favicon.ico">
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

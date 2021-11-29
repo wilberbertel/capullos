@@ -5,7 +5,7 @@ $states = allStateActive();
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Pagar :: Capullos floristeria</title>
+        <title>Pagar | Capullos floristeria</title>
         <link rel="shortcut icon" href="Assets/images/favicon.ico">
         <link rel="stylesheet" type="text/css" href="Assets/css/myStyle.css">
         <link href="Assets/css/bootstrap-3.1.1.min.css" rel='stylesheet' type='text/css' />
@@ -69,19 +69,19 @@ $states = allStateActive();
 
                                 <div class="col-md-6">	
                                     <span>NOMBRES *</span>
-                                    <input type="text" name="namesC"   value= "<?php echo $user['name'] ?>"  disabled> 
+                                    <input type="text" name="namesC" id="namesC"  class="form-control"   value= "<?php echo $user['name'] ?>"  readonly> 
                                 </div>
                                 <div class="col-md-6">	
                                     <span>APELLIDOS *</span>
-                                    <input type="text" name="lastNamesC"   value= "<?php echo $user['surname'] ?>" disabled> 
+                                    <input type="text" name="lastNamesC" id="lastNamesC"  class="form-control"    value= "<?php echo $user['surname'] ?>" readonly> 
                                 </div>
                                 <div class="col-md-6">	
                                     <span>TELEFONO *</span>
-                                    <input type="text" name="phoneC"   value= "<?php echo $user['phone'] ?>"  pattern="[0-9]{10}" disabled> 
+                                    <input type="text" name="phoneC" id="phoneC" class="form-control"   value= "<?php echo $user['phone'] ?>"  pattern="[0-9]{10}" readonly> 
                                 </div>
                                 <div class="col-md-6">	
                                     <span>CORREO *</span>
-                                    <input type="text" name="emailC"   value= "<?php echo $user['email'] ?>"  pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" disabled> 
+                                    <input type="text" name="emailC" id="emailC" class="form-control"   value= "<?php echo $user['email'] ?>"  pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" readonly> 
 
                                 </div>
                                 <h4><hr>.</h4>
@@ -90,11 +90,11 @@ $states = allStateActive();
                                     <h4>DATOS DEL ENVIO</h4>
                                     <div class="col-md-12">	
                                         <span>NOMBRES * </span>
-                                        <input type="text" name="namesE" required> 
+                                        <input type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" name="namesE" required> 
 
 
                                         <span>APELLIDOS *</span>
-                                        <input type="text" name="lastNamesE" required> 
+                                        <input type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"  name="lastNamesE" required> 
 
                                         <span>Pais *</span>
                                         <select  style="width:310px;" title="Pais" name="countryE" id="countryE" class="form-control" disabled>   
@@ -132,19 +132,19 @@ $states = allStateActive();
 
                                     <div class="col-md-6">	
                                         <span>NOMBRES *</span>
-                                        <input type="text" name="namesC" required> 
+                                        <input type="text"  class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" name="namesC" id="namesC" required> 
                                     </div>
                                     <div class="col-md-6">	
                                         <span>APELLIDOS *</span>
-                                        <input type="text" name="lastNamesC" required> 
+                                        <input type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();"  name="lastNamesC" id="lastNamesC" required> 
                                     </div>
                                     <div class="col-md-6">	
                                         <span>TELEFONO *</span>
-                                        <input type="text" name="phoneC" pattern="[0-9]{10}" required> 
+                                        <input type="text" class="form-control" name="phoneC" id="phoneC" pattern="[0-9]{10}" required> 
                                     </div>
                                     <div class="col-md-6">	
                                         <span>CORREO *</span>
-                                        <input type="text" name="emailC"  pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" required> 
+                                        <input type="text"class="form-control"  name="emailC" id="emailC" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" required> 
                                     </div>
                                     <div class="word-in">
                                         <a class="forgot"  style="cursor:pointer;"  data-toggle="modal" data-target=".bd-example-modal-lg">¿Inicie sesion para llenar datos?</a>	
@@ -153,9 +153,9 @@ $states = allStateActive();
                                     <h4>DATOS DE ENVIO</h4>
                                     <div class="col-md-12">	
                                         <span>NOMBRES * </span>
-                                        <input type="text" name="namesE" required> 
+                                        <input type="text"  class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" name="namesE" required> 
                                         <span>APELLIDOS *</span>
-                                        <input type="text" name="lastNamesE" required> 
+                                        <input type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" name="lastNamesE" required> 
 
                                         <span>Pais *</span>
                                         <select  style="width:310px;" title="Pais" name="countryE" id="countryE" class="form-control" disabled>   
@@ -228,8 +228,22 @@ $states = allStateActive();
                                                     <td><?php echo $arreglocarritoCapullos[$i]['Para']; ?></td>
 
 
-                                                </tr>			  
+                                                </tr>	
+                                                <tr>
+                                                    <th>Fecha de envio: </th>		
+                                                    <th> </th>
+                                                    <th>Hora de envio:</th>
+
+                                                </tr>
+                                                <tr>
+                                                    <td><?php echo $arreglocarritoCapullos[$i]['Fecha']; ?></td>
+                                                    <td></td>
+                                                    <td><?php echo $arreglocarritoCapullos[$i]['Hora']; ?></td>
+
+
+                                                </tr>                                            			  
                                             </table>
+                                           
                                       <!--   <h4>Fecha y hora de envio</h4>
 
 
@@ -243,7 +257,7 @@ $states = allStateActive();
                                                                       margin: 8px 0;
                                                                       box-sizing: border-box;" type="date" id="start" name="trip-start"
                                                                       value="<?php //echo get_date();?>"
-                                                                      min="<?php e//cho get_date();?>" max="<?php //echo limiteFecha();?>" required></span></th>
+                                                                      min="<?php //echo get_date();?>" max="<?php //echo limiteFecha();?>" required></span></th>
                                                 </tr>
                                                 <tr>
                                                     <th><span>Hora: </span> </th>		

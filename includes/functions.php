@@ -23,6 +23,16 @@ function remove_junk($str) {
     return $str;
 }
 
+
+function console_log($output, $with_script_tags = true) {
+    $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) . 
+');';
+    if ($with_script_tags) {
+        $js_code = '<script>' . $js_code . '</script>';
+    }
+    echo $js_code;
+}
+
 /* -------------------------------------------------------------- */
 /* Function for Uppercase first character
   /*-------------------------------------------------------------- */
@@ -92,7 +102,7 @@ function read_date($str) {
 }
 function limiteFecha(){
     $fecha_actual = date("Y-m-d");
-    $fechaLimite = date("Y-m-d",strtotime($fecha_actual."+ 1 days")); 
+    $fechaLimite = date("Y-m-d",strtotime($fecha_actual."+ 5 days")); 
 
     return    $fechaLimite;
 
@@ -102,7 +112,9 @@ function limiteFecha(){
   /*-------------------------------------------------------------- */
 
 function get_date() {
-    return strftime("%Y-%m-%d", time());
+    $fecha_actual = date("Y-m-d");
+    $fecha = date("Y-m-d",strtotime($fecha_actual."+ 2 days")); 
+    return   $fecha ;
 }
 
 function make_date() {

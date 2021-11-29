@@ -2,7 +2,6 @@
 require_once("includes/load.php");
 $user = current_user();
 $arreglo;
-$tipo = page_require_tipo($user['type']);
 $additions = productByAdditions();
 
 if (isset($_SESSION['carritoCapullos'])) {
@@ -29,6 +28,8 @@ if (isset($_SESSION['carritoCapullos'])) {
             $para = "";
             $precio = "";
             $imagen = "";
+            $fechaEnvio = "";
+            $horaEnvio = "";
             $res = searchProductCarrito($_POST['id_product']);
             $nombre = $res['namep'];
             $descripcion = $res['description'];
@@ -37,6 +38,8 @@ if (isset($_SESSION['carritoCapullos'])) {
             $para = $_POST['para'];
             $precio = $res['price'];
             $imagen = $res['image_product'];
+            $fechaEnvio = $_POST['fechaentrega'];
+            $horaEnvio = $_POST['horaentrega'];
             $arregloNuevo = array(
                 'Id' => $_POST['id_product'],
                 'Nombre' => $nombre,
@@ -46,6 +49,8 @@ if (isset($_SESSION['carritoCapullos'])) {
                 'Para' => $para,
                 'Precio' => $precio,
                 'Imagen' => $imagen,
+                'Fecha' => $fechaEnvio,
+                'Hora' => $horaEnvio,
                 'Cantidad' => 1
             );
         }
@@ -62,6 +67,8 @@ if (isset($_SESSION['carritoCapullos'])) {
         $para = "";
         $precio = "";
         $imagen = "";
+        $fechaEnvio = "";
+        $horaEnvio = "";
         $res = searchProductCarrito($_POST['id_product']);
 
         $nombre = $res['namep'];
@@ -71,7 +78,8 @@ if (isset($_SESSION['carritoCapullos'])) {
         $para = $_POST['para'];
         $precio = $res['price'];
         $imagen = $res['image_product'];
-
+        $fechaEnvio = $_POST['fechaentrega'];
+        $horaEnvio = $_POST['horaentrega'];
         $arreglo[] = array(
             'Id' => $_POST['id_product'],
             'Nombre' => $nombre,
@@ -81,6 +89,8 @@ if (isset($_SESSION['carritoCapullos'])) {
             'Para' => $para,
             'Precio' => $precio,
             'Imagen' => $imagen,
+            'Fecha' => $fechaEnvio,
+                'Hora' => $horaEnvio,
             'Cantidad' => 1
         );
         $_SESSION['carritoCapullos'] = $arreglo;

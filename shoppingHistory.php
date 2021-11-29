@@ -11,7 +11,7 @@ $shopping = historyShopping($user['id_users']);
 <!DOCTYPE html>
 <html>
     <head>
-        <title> Historial de compras ::  Capullos</title>
+        <title> Historial de compras |  Capullos</title>
         <link href="Assets/css/bootstrap-3.1.1.min.css" rel='stylesheet' type='text/css' />
         <link rel="shortcut icon" href="Assets/images/favicon.ico">
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
